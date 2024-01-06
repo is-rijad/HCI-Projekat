@@ -30,6 +30,20 @@ namespace Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Kreveti",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Tip = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ZaOsoba = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Kreveti", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Sobe",
                 columns: table => new
                 {
@@ -87,16 +101,100 @@ namespace Backend.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "SobeKreveti",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SobaId = table.Column<int>(type: "int", nullable: false),
+                    KrevetId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SobeKreveti", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SobeKreveti_Kreveti_KrevetId",
+                        column: x => x.KrevetId,
+                        principalTable: "Kreveti",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SobeKreveti_Sobe_SobaId",
+                        column: x => x.SobaId,
+                        principalTable: "Sobe",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Recenzije",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SobaId = table.Column<int>(type: "int", nullable: false),
+                    GostId = table.Column<int>(type: "int", nullable: false),
+                    Ocjena = table.Column<int>(type: "int", nullable: false),
+                    Komentar = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Datum = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Recenzije", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Recenzije_Gosti_GostId",
+                        column: x => x.GostId,
+                        principalTable: "Gosti",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Recenzije_Sobe_SobaId",
+                        column: x => x.SobaId,
+                        principalTable: "Sobe",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Recenzije_GostId",
+                table: "Recenzije",
+                column: "GostId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Recenzije_SobaId",
+                table: "Recenzije",
+                column: "SobaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SobeKreveti_KrevetId",
+                table: "SobeKreveti",
+                column: "KrevetId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SobeKreveti_SobaId",
+                table: "SobeKreveti",
+                column: "SobaId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Menadzeri");
+
+            migrationBuilder.DropTable(
+                name: "Recenzije");
+
+            migrationBuilder.DropTable(
+                name: "SobeKreveti");
+
+            migrationBuilder.DropTable(
                 name: "Gosti");
 
             migrationBuilder.DropTable(
-                name: "Menadzeri");
+                name: "Kreveti");
 
             migrationBuilder.DropTable(
                 name: "Sobe");

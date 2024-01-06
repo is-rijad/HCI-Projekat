@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(HCIDBContext))]
-    [Migration("20240106220327_inicijalna-baza")]
+    [Migration("20240106221108_inicijalna-baza")]
     partial class inicijalnabaza
     {
         /// <inheritdoc />
@@ -63,6 +63,59 @@ namespace Backend.Migrations
                     b.UseTptMappingStrategy();
                 });
 
+            modelBuilder.Entity("Backend.Data.Modeli.Krevet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Tip")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ZaOsoba")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Kreveti");
+                });
+
+            modelBuilder.Entity("Backend.Data.Modeli.Recenzija", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Datum")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("GostId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Komentar")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Ocjena")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SobaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GostId");
+
+                    b.HasIndex("SobaId");
+
+                    b.ToTable("Recenzije");
+                });
+
             modelBuilder.Entity("Backend.Data.Modeli.Soba", b =>
                 {
                     b.Property<int>("Id")
@@ -107,6 +160,29 @@ namespace Backend.Migrations
                     b.ToTable("Sobe");
                 });
 
+            modelBuilder.Entity("Backend.Data.Modeli.SobaKrevet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("KrevetId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SobaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KrevetId");
+
+                    b.HasIndex("SobaId");
+
+                    b.ToTable("SobeKreveti");
+                });
+
             modelBuilder.Entity("Backend.Data.Modeli.Gost", b =>
                 {
                     b.HasBaseType("Backend.Data.Modeli.KorisnickiNalog");
@@ -130,6 +206,44 @@ namespace Backend.Migrations
                     b.HasBaseType("Backend.Data.Modeli.KorisnickiNalog");
 
                     b.ToTable("Menadzeri");
+                });
+
+            modelBuilder.Entity("Backend.Data.Modeli.Recenzija", b =>
+                {
+                    b.HasOne("Backend.Data.Modeli.Gost", "Gost")
+                        .WithMany()
+                        .HasForeignKey("GostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Backend.Data.Modeli.Soba", "Soba")
+                        .WithMany()
+                        .HasForeignKey("SobaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Gost");
+
+                    b.Navigation("Soba");
+                });
+
+            modelBuilder.Entity("Backend.Data.Modeli.SobaKrevet", b =>
+                {
+                    b.HasOne("Backend.Data.Modeli.Krevet", "Krevet")
+                        .WithMany()
+                        .HasForeignKey("KrevetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Backend.Data.Modeli.Soba", "Soba")
+                        .WithMany()
+                        .HasForeignKey("SobaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Krevet");
+
+                    b.Navigation("Soba");
                 });
 
             modelBuilder.Entity("Backend.Data.Modeli.Gost", b =>

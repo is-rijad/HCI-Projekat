@@ -8,6 +8,9 @@ namespace Backend.Data {
         public DbSet<Soba> Sobe { get; set; }
         public DbSet<Gost> Gosti { get; set; }
         public DbSet<Menadzer> Menadzeri { get; set; }
+        public DbSet<Krevet> Kreveti { get; set; }
+        public DbSet<Recenzija> Recenzije { get; set; }
+        public DbSet<SobaKrevet> SobeKreveti { get; set; }
 
 
         public HCIDBContext(
