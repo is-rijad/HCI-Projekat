@@ -26,5 +26,6 @@ namespace Backend.Data.Modeli {
 
         public bool IsGost => this.Gost != null;
         public bool IsMenadzer => this.Menadzer != null;
+        public bool IsAdmin { get; set; }
     }
 }
