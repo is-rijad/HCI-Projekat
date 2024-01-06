@@ -1,11 +1,14 @@
+using Backend.Data;
+using Microsoft.EntityFrameworkCore;
+
 var config = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", false)
     .Build();
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
-//builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//    options.UseSqlServer(config.GetConnectionString("db1")));
+builder.Services.AddDbContext<HCIDBContext>(options =>
+    options.UseSqlServer(config.GetConnectionString("HCI_Database")));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
