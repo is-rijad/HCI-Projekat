@@ -1,0 +1,38 @@
+header {
+  padding: 3px;
+  margin: 3px 3px 0 3px;
+}
+#breadcrumb {
+  padding: 12px 0 0 10px;
+}
+#informacije {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+}
+nav {
+  margin-bottom: 10px;
+}
+nav a {
+  color: black;
+}
+.nav-link, .breadcrumb-item {
+  cursor: pointer;
+}
+.active {
+  font-style: italic;
+}
+.btn {
+  border: 1px solid darkgray;
+  border-radius: 50px;
+}
+img {
+  mix-blend-mode: multiply;
+  cursor: pointer;
+}
+header h1 {
+  cursor: pointer;
+
+}
+

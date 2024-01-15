@@ -11,6 +11,12 @@ namespace Backend.Data {
         public DbSet<Krevet> Kreveti { get; set; }
         public DbSet<Recenzija> Recenzije { get; set; }
         public DbSet<SobaKrevet> SobeKreveti { get; set; }
+        public DbSet<ZauzetaSoba> ZauzeteSobe { get; set; }
+        public DbSet<Aranzman> Aranzmani { get; set; }
+        public DbSet<SobaAranzman> SobeAranzmani { get; set; }
+        public DbSet<Cijena> Cijene { get; set; }
+        
+
 
 
         public HCIDBContext(
@@ -20,6 +26,16 @@ namespace Backend.Data {
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Soba>().HasMany(x => x.ZauzetaSoba).WithOne(x => x.Soba).HasForeignKey(x => x.SobaId);
+            modelBuilder.Entity<Soba>().HasMany(x => x.Kreveti).WithOne(x => x.Soba).HasForeignKey(x => x.SobaId);
+            modelBuilder.Entity<Soba>().HasMany(x => x.Aranzmani).WithOne(x => x.Soba).HasForeignKey(x => x.SobaId);
+            modelBuilder.Entity<Soba>().HasMany(x => x.SobaCijene).WithOne(x => x.Soba).HasForeignKey(x => x.SobaId);
+
+            modelBuilder.Entity<Soba>().Navigation(e => e.ZauzetaSoba).AutoInclude();
+            modelBuilder.Entity<Soba>().Navigation(e => e.Kreveti).AutoInclude();
+            modelBuilder.Entity<Soba>().Navigation(e => e.Aranzmani).AutoInclude();
+            modelBuilder.Entity<Soba>().Navigation(e => e.SobaCijene).AutoInclude();
 
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) {
                 relationship.DeleteBehavior = DeleteBehavior.Cascade;

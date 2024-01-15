@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Backend.Data.Modeli {
     [Table("Sobe")]
@@ -10,7 +11,12 @@ namespace Backend.Data.Modeli {
         public string Slike { get; set; }
         [Required]
         public int BrojGostiju { get; set; }
+        [Required]
+        public string NazivSobe { get; set; }
+        public string Opis { get; set; }
 
+
+        public bool BesplatnoOtkazivanje { get; set; }
         public bool Klima { get; set; }
         public bool Bazen { get; set; }
         public bool Spa { get; set; }
@@ -20,5 +26,9 @@ namespace Backend.Data.Modeli {
         public bool Minibar { get; set; }
         public bool Balkon { get; set; }
 
+        public ICollection<SobaKrevet> Kreveti { get; set; }
+        public ICollection<SobaAranzman> Aranzmani { get; set; } 
+        public ICollection<ZauzetaSoba> ZauzetaSoba { get; set; }
+        public ICollection<Cijena> SobaCijene { get; set; }
     }
 }

@@ -1,0 +1,93 @@
+input, textarea {
+  background-color: darkgray;
+}
+#body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, fit-content(100%));
+  grid-gap: 10px;
+  padding: 10px;
+  padding-top: 0;
+}
+div * {
+  margin-top: 10px;
+}
+#slika {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+#slika img {
+  display: block;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#slika h6 {
+  text-align: center;
+}
+#opce-informacije {
+  width: 70%;
+  margin-left: 10%;
+}
+#opce-informacije * {
+  display: block;
+  width: 100%;
+}
+#opce-informacije-detaljno {
+  min-height: 30px;
+  height: 270px;
+  max-height: 270px;
+}
+
+#cijena {
+  margin-left: -10%;
+}
+.cijena-item, .krevet-item {
+  display: flex;
+  justify-content: space-between;
+}
+.form-control {
+  width: 50%;
+}
+#ostalo {
+  margin-left: 20%;
+}
+#aranzmani h4 {
+  width: 100%;
+}
+#aranzmani-naslovi {
+  margin-top: 10px;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+}
+#aranzmani-naslovi * {
+  width: 50%;
+  text-align: center;
+
+}
+.aranzman-itemi {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.aranzman-itemi :nth-child(2) {
+  text-align: center;
+}
+#spremi-otkazi {
+  grid-column: 3;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  padding: 5%;
+}
+#spremi-otkazi * {
+  width: 40%;
+  height: fit-content;
+  text-align: center;
+}
+
+label, input, a, #slika * {
+  cursor: pointer;
+}
