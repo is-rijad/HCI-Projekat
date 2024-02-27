@@ -29,6 +29,7 @@
       <h6>{{Slike.nizSlika.length}}</h6>
       <h6 title="Sljedeća slika" class="slika-strelica" (click)="handlerSlika.promijeniSliku(1)">></h6>
     </div>
+  </div>
   <div id="opce-informacije">
     <h4>Općenito</h4>
     <label for="opce-informacije-naziv">Naziv:</label>
@@ -57,9 +58,9 @@
 
   <div id="kreveti">
     <h4>Kreveti</h4>
-    <div *ngFor="let krevet of soba.kreveti" id="krevet-itemi">
+    <div *ngFor="let krevet of this.soba.kreveti" id="krevet-itemi">
       <div class="krevet-item">
-        <label for="broj-kreveta-{{krevet.krevetId}}}">{{krevet.krevet.tip}}i:</label>
+        <label for="broj-kreveta-{{krevet.krevetId}}}">{{krevet.krevet.tip}} kreveti:</label>
         <input [(ngModel)]="krevet.brojKreveta" class="form-control" type="number" id="broj-kreveta-{{krevet.krevetId}}}">
       </div>
     </div>

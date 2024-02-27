@@ -21,7 +21,7 @@ namespace Backend.Endpoints.Kreveti.GetAll
             if (kreveti.Count == 0)
             {
                 response.Status = 404;
-                response.Message = "Nije pronađen nijedan aranžman.";
+                response.Message = "Nije pronađen nijedan krevet.";
             }
             response.Kreveti = kreveti;
             return response;

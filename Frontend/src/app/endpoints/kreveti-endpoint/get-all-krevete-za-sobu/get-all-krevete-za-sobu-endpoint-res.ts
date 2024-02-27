@@ -1,4 +1,4 @@
-import {KrevetSobaModel} from "../../models/krevetSobaModel";
+import {KrevetSobaModel} from "../../../models/krevetSobaModel";
 
 
 export interface GetAllKreveteZaSobuEndpointRes {

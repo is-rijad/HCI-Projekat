@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="852d609e-a4a5-4fbe-83b1-e7f4046b6b91" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/endpoints/kreveti-endpoint/get-all-krevete/get-all-krevete-enpoint-res.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/endpoints/kreveti-endpoint/get-all-krevete/get-all-krevete-enpoint.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/pretraga/pretraga.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pretraga/pretraga.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/navigator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/navigator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/pregled-detalja/pregled-detalja.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pregled-detalja/pregled-detalja.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/aranzmani-endpoint/get-all-aranzmane/get-all-aranzmane-endpoint-res.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/aranzmani-endpoint/get-all-aranzmane/get-all-aranzmane-endpoint-res.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/kreveti-endpoint/get-all-krevete-za-sobu-endpoint-res.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/kreveti-endpoint/get-all-krevete-za-sobu/get-all-krevete-za-sobu-endpoint-res.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/kreveti-endpoint/get-all-krevete-za-sobu-endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/kreveti-endpoint/get-all-krevete-za-sobu/get-all-krevete-za-sobu-endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Kreveti/GetAll/GetAllKrevete.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Kreveti/GetAll/GetAllKrevete.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +82,7 @@
       <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\kreveti-endpoint\get-all-krevete-za-sobu" />
       <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\aranzmani-endpoint\get-all-aranzmane" />
       <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\components" />
       <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend" />
@@ -121,7 +129,7 @@
       <workItem from="1707140498003" duration="682000" />
       <workItem from="1707166160729" duration="8007000" />
       <workItem from="1707251809886" duration="78000" />
-      <workItem from="1709062108654" duration="1721000" />
+      <workItem from="1709062108654" duration="5069000" />
     </task>
     <servers />
   </component>

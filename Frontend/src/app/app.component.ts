@@ -18,7 +18,9 @@ export class AppComponent implements OnInit{
   constructor(public navigator : Navigator) {}
 
   async ngOnInit(){
-    await this.navigator.navigiraj("pocetna")
+    // await this.navigator.navigiraj("pocetna")
+    Navigator.trenutniIdSobe = 6;
+    await this.navigator.navigiraj("modifikacija", [6])
   }
 
   protected readonly Navigator = Navigator;

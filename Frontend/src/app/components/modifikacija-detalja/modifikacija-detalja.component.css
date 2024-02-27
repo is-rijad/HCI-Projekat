@@ -1,17 +1,16 @@
-input, textarea {
+input, select, textarea {
   background-color: darkgray;
 }
-input:disabled {
-  background-color: #131313;
 
+.form-control {
+  width: 70%;
 }
 #body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, fit-content(100%));
   grid-gap: 10px;
-  padding: 10px;
-  padding-top: 0;
+  padding: 0 10px 10px;
 }
 div * {
   margin-top: 10px;
@@ -20,14 +19,23 @@ div * {
   grid-column-start: 1;
   grid-column-end: 2;
 }
+#slika div h6 {
+  display: inline;
+  font-size: xx-large;
+}
+.slika-strelica:hover {
+  font-weight: bolder;
+}
+.slika-strelica {
+  cursor: pointer;
+}
 #slika img {
   display: block;
-  width: 80%;
+  object-fit: contain;
+  width: 500px;
+  height: 500px;
   margin-left: auto;
   margin-right: auto;
-}
-#slika h6 {
-  text-align: center;
 }
 #opce-informacije {
   width: 70%;
@@ -37,61 +45,62 @@ div * {
   display: block;
   width: 100%;
 }
+#opce-informacije-naziv {
+  text-align: center;
+}
 #opce-informacije-detaljno {
-  min-height: 30px;
-  height: 270px;
-  max-height: 270px;
+  height: 280px;
 }
 
-#cijena {
-  margin-left: -10%;
-}
-.cijena-item, .krevet-item {
-  display: flex;
-  justify-content: space-between;
-}
-.form-control {
-  width: 50%;
-}
-#ostalo {
-  margin-left: 20%;
-}
-#aranzmani h4 {
+#soba-posjeduje {
   width: 100%;
-}
-#aranzmani-naslovi {
-  margin-top: 10px;
-  width: 100%;
-  height: fit-content;
+  grid-column: 1;
   display: flex;
-  justify-content: space-between;
+  justify-content: normal;
+  gap: 20px;
+  flex-wrap: wrap;
 }
-#aranzmani-naslovi * {
-  width: 50%;
+#kreveti {
+  margin-left: 20px;
+}
+.krevet-item{
+  display: flex;
+  gap: 10px;
+}
+label, input, a {
+  cursor: text;
+}
+#slika-modal-div {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.2);
   text-align: center;
+  overflow: hidden;
+}
+#slika-modal-div img {
+  width: 80vw;
+  height: 60vh;
+}
+#slika-modal-div .modal-content {
+  height: 100vh;
+  margin-top: 0px;
+}
+#slika-modal-div .modal-body h6{
+  font-size: xxx-large;
+}
+#slika-modal-div .modal-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+}
+#slika-modal-div .modal-body div{
+  width: 100%;
+}
+#slika-modal-div .modal-body div h6{
+  display: inline;
+}
 
-}
-.aranzman-itemi {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-.aranzman-itemi :nth-child(2) {
-  text-align: center;
-}
-#spremi-otkazi {
-  grid-column: 3;
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  padding: 5%;
-}
-#spremi-otkazi * {
-  width: 40%;
-  height: fit-content;
-  text-align: center;
-}
-
-label, input, a, #slika * {
-  cursor: pointer;
-}

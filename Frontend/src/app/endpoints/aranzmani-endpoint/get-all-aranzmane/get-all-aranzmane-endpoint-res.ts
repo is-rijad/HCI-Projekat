@@ -1,5 +1,5 @@
-import {AranzmanSobaModel} from "../../../models/aranzmanSobaModel";
+import {AranzmanModel} from "../../../models/aranzmanModel";
 
 export interface GetAllAranzmaneEndpointRes {
-  aranzmani : AranzmanSobaModel[]
+  aranzmani : AranzmanModel[]
 }

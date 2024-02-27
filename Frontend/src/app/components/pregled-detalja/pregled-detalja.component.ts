@@ -12,7 +12,7 @@ import {
   GetAllAranzmaneZaSobuEndpoint
 } from "../../endpoints/aranzmani-endpoint/get-aranzmane-za-sobu/get-all-aranzmane-za-sobu-endpoint";
 import {GetAllAranzmaneEndpoint} from "../../endpoints/aranzmani-endpoint/get-all-aranzmane/get-all-aranzmane-endpoint";
-import {GetAllKreveteZaSobuEndpoint} from "../../endpoints/kreveti-endpoint/get-all-krevete-za-sobu-endpoint";
+import {GetAllKreveteZaSobuEndpoint} from "../../endpoints/kreveti-endpoint/get-all-krevete-za-sobu/get-all-krevete-za-sobu-endpoint";
 import {
   GetAllCijeneZaSobuEndpoint
 } from "../../endpoints/aranzmani-endpoint/get-cijene-za-sobu/get-all-cijene-za-sobu-endpoint";
