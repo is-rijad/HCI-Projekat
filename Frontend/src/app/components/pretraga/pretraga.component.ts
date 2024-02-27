@@ -77,7 +77,7 @@ export class PretragaComponent implements OnInit{
 
   async otvoriDetalje(id: number) {
     Navigator.trenutniIdSobe = id;
-    await this.navigator.navigiraj('pregled', [id])
+    await this.navigator.navigiraj('modifikacija', [id])
   }
 
   protected readonly Slike = Slike;

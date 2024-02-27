@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {RouterOutlet} from '@angular/router';
+import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {PretragaComponent} from "./components/pretraga/pretraga.component";
 import {Navigator} from "./navigator";
 @Component({
