@@ -1,5 +1,5 @@
 export interface KrevetModel {
-  krevetId: number;
+  id: number;
   tip: string;
   zaOsoba: number;
 }

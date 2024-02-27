@@ -58,10 +58,10 @@
 
   <div id="kreveti">
     <h4>Kreveti</h4>
-    <div *ngFor="let krevet of this.soba.kreveti" id="krevet-itemi">
+    <div *ngFor="let krevet of soba.kreveti; trackBy:trackKrevete" id="krevet-itemi">
       <div class="krevet-item">
         <label for="broj-kreveta-{{krevet.krevetId}}}">{{krevet.krevet.tip}} kreveti:</label>
-        <input [(ngModel)]="krevet.brojKreveta" class="form-control" type="number" id="broj-kreveta-{{krevet.krevetId}}}">
+        <input [(ngModel)]="krevet.brojKreveta" style="width: 50%" class="form-control form-control-number" type="number" id="broj-kreveta-{{krevet.krevetId}}}">
       </div>
     </div>
   </div>
@@ -108,14 +108,14 @@
       <h6>Aranžman:</h6>
       <h6>Doplata:</h6>
     </div>
-    <div *ngFor="let aranzman of soba.aranzmani" class="aranzman-itemi">
+    <div *ngFor="let aranzman of soba.aranzmani; trackBy: trackAranzmane" class="aranzman-itemi">
     <div>
     <input class="form-check form-check-input form-check-inline aranzman-check" type="checkbox" id="aranzman-{{aranzman.aranzmanId}}">
     <label for="aranzman-{{aranzman.aranzmanId}}">{{aranzman.aranzman.nazivAranzmana}}</label>
     </div>
 
     <div>
-    <input [(ngModel)]="aranzman.doplata" style="width: 30%" class="form-control form-check-inline doplata-input" type="number" min="0" id="doplata-{{aranzman.aranzmanId}}">
+    <input [(ngModel)]="aranzman.doplata"  class="form-control form-check-inline form-control-number doplata-input" type="number" min="0" id="doplata-{{aranzman.aranzmanId}}">
     <label class="" for="doplata-{{aranzman.aranzmanId}}">%</label>
     </div>
   </div>

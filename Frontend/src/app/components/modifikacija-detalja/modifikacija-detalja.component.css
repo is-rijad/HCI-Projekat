@@ -1,6 +1,9 @@
 input, select, textarea {
   background-color: darkgray;
 }
+input:disabled {
+  background-color: rgba(0,0,0,0.36);
+}
 
 .form-control {
   width: 70%;
@@ -51,6 +54,18 @@ div * {
 #opce-informacije-detaljno {
   height: 280px;
 }
+#aranzmani {
+  width: 100%;
+}
+#aranzmani-naslovi {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.aranzman-itemi {
+  display: flex;
+  justify-content: space-between;
+}
 
 #soba-posjeduje {
   width: 100%;
@@ -61,13 +76,18 @@ div * {
   flex-wrap: wrap;
 }
 #kreveti {
-  margin-left: 20px;
+  margin: 0 20px 0 20px;
+  width: 80%;
 }
 .krevet-item{
   display: flex;
   gap: 10px;
+  justify-content: space-between;
 }
 label, input, a {
+  cursor: pointer;
+}
+.form-control-number {
   cursor: text;
 }
 #slika-modal-div {

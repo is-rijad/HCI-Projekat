@@ -41,7 +41,7 @@ import {KrevetSobaModel} from "../../models/krevetSobaModel";
 })
 export class ModifikacijaDetaljaComponent implements OnInit {
   soba: SobaModel = {aranzmani: [], cijene: [], kreveti: [], balkon: false, bazen: false, besplatnoOtkazivanje: false, brojGostiju: 0, cijenaZaDjecu: 0, djecaDo: 0, dozvoljeniLjubimci: false, id: 0, klima: false, minibar: false, nazivSobe: "", opis: "", prilagodjenInvalidima: false, brojSlika: 0, spa: false, teretana: false};
-  aranzmani: AranzmanModel[] = [];
+  aranzmani: AranzmanSobaModel[] = [];
   kreveti: KrevetSobaModel[] = [];
   constructor(private modifikacijaEndpoint: ModifikacijaEndpoint,
               private otvoriDetaljeEndpoint: OtvoriDetaljeEndpoint,
@@ -61,29 +61,49 @@ export class ModifikacijaDetaljaComponent implements OnInit {
     })
     this.getAllAranzmaneEndpoint.Akcija().subscribe({
       next: res => {
-        this.aranzmani = res.aranzmani
+        this.aranzmani = this.soba.aranzmani;
+        for (let i = 0; i < res.aranzmani.length; i++) {
+          if(res.aranzmani[i].nazivAranzmana == "Bez aranžmana")
+            continue;
+          if(this.soba.aranzmani.find((a) => a.aranzmanId == res.aranzmani[i].id) == undefined)
+            this.aranzmani.push({
+              id: 0,
+              sobaId: this.soba.id,
+              aranzman: res.aranzmani[i],
+              aranzmanId: res.aranzmani[i].id,
+              doplata: 0,
+            })
+        }
       },
       complete: () => this.aranzmaniUcitani()
     })
     this.getAllKreveteEnpoint.Akcija().subscribe({
       next: res => {
-        let kreveti = this.soba.kreveti;
+        this.kreveti = this.soba.kreveti
        for (let i = 0; i < res.kreveti.length; i++) {
-          if(kreveti[i] == undefined)
-            this.soba.kreveti.push({
-              id: 0,
-              sobaId: this.soba.id,
-              krevet: res.kreveti[i],
-              krevetId: res.kreveti[i].krevetId,
-              brojKreveta: 0,
-            })
-        }
+         console.log(res.kreveti[i])
+         console.log(this.soba.kreveti.find((a) => a.krevet.id == res.kreveti[i].id))
+         if(this.soba.kreveti.find((a) => a.krevet.id == res.kreveti[i].id) == undefined)
+           this.kreveti.push({
+             id: 0,
+             sobaId: this.soba.id,
+             krevet: res.kreveti[i],
+             krevetId: res.kreveti[i].id,
+             brojKreveta: 0,
+           })
+         }
+       this.kreveti.sort((a,b) => b.brojKreveta - a.brojKreveta)
+        this.soba.kreveti = [];
+       this.soba.kreveti = this.kreveti;
       },
     })
   }
 
   private async aranzmaniUcitani() {
-      while (document.getElementsByClassName("aranzman-check").length < this.aranzmani.length) {
+    this.aranzmani.sort((a, b) => b.doplata - a.doplata)
+    this.soba.aranzmani = [];
+    this.soba.aranzmani = this.aranzmani;
+    while (document.getElementsByClassName("aranzman-check").length < this.soba.aranzmani.length) {
           await new Promise(r => setTimeout(r, 500));
       }
       for (let i = 0; i < this.soba.aranzmani.length; i++) {
@@ -140,4 +160,10 @@ export class ModifikacijaDetaljaComponent implements OnInit {
   protected readonly Slike = Slike;
 
 
+  trackAranzmane(index: any, item: AranzmanSobaModel) {
+    return item.aranzman
+  }
+  trackKrevete(index: any, item: KrevetSobaModel) {
+    return item.krevet
+  }
 }

@@ -11,7 +11,7 @@ export class GetAllAranzmaneEndpoint implements BaseEndpoint<void, GetAllAranzma
   constructor(private httpClient:HttpClient) {}
 
   Akcija(req: void): Observable<GetAllAranzmaneEndpointRes> {
-    let url = Config.adresaServera + "Aranzmani/GetZaSobu?Id=" + Navigator.trenutniIdSobe
+    let url = Config.adresaServera + "Aranzmani/GetAll"
     return this.httpClient.get<GetAllAranzmaneEndpointRes>(url);
   }
 
