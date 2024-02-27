@@ -15,11 +15,11 @@ namespace Backend.Endpoints.Cijene.GetCijenuZaId {
         public override async Task<GetCijenuZaIdEndpointRes> Akcija([FromQuery] GetCijenuZaIdEndpointReq req)
         {
             var response = new GetCijenuZaIdEndpointRes();
-            var cijene = await _dbContext.Cijene.Where(s => s.Id == req.Id).ToListAsync();
+            var cijene = await _dbContext.Cijene.Where(c => c.SobaId == req.Id).ToListAsync();
             if (cijene.Count == 0)
             {
                 response.Status = 404;
-                response.Message = "Soba nije pronađena!";
+                response.Message = "Nijedna cijena nije pronađena!";
             }
 
             response.Cijene = cijene;

@@ -3,12 +3,15 @@ import {GetAllAranzmaneZaSobuEndpointRes} from "./get-all-aranzmane-za-sobu-endp
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
+import {Config} from "../../../config";
+import {Navigator} from "../../../navigator";
 
 @Injectable()
 export class GetAllAranzmaneZaSobuEndpoint implements BaseEndpoint<void, GetAllAranzmaneZaSobuEndpointRes> {
   constructor(private httpClient:HttpClient) {}
 
-  Akcija(url: string, req: void): Observable<GetAllAranzmaneZaSobuEndpointRes> {
+  Akcija(): Observable<GetAllAranzmaneZaSobuEndpointRes> {
+    let url = Config.adresaServera + "Aranzmani/GetZaSobu?id=" + Navigator.trenutniIdSobe;
     return this.httpClient.get<GetAllAranzmaneZaSobuEndpointRes>(url);
   }
 

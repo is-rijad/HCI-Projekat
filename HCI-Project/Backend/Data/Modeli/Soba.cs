@@ -8,12 +8,12 @@ namespace Backend.Data.Modeli {
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Slike { get; set; }
-        [Required]
         public int BrojGostiju { get; set; }
         [Required]
         public string NazivSobe { get; set; }
         public string Opis { get; set; }
+        public float DjecaDo { get; set; }
+        public float CijenaZaDjecu { get; set; }
 
 
         public bool BesplatnoOtkazivanje { get; set; }
@@ -26,9 +26,10 @@ namespace Backend.Data.Modeli {
         public bool Minibar { get; set; }
         public bool Balkon { get; set; }
 
-        public ICollection<SobaKrevet> Kreveti { get; set; }
-        public ICollection<SobaAranzman> Aranzmani { get; set; } 
-        public ICollection<ZauzetaSoba> ZauzetaSoba { get; set; }
-        public ICollection<Cijena> SobaCijene { get; set; }
+        public List<SobaKrevet> Kreveti { get; set; }
+        public List<SobaAranzman> Aranzmani { get; set; } 
+        public List<ZauzetaSoba> ZauzetaSoba { get; set; }
+        public List<Cijena> Cijene { get; set; }
+        public List<Slika> Slike { get; set; }
     }
 }

@@ -50,8 +50,8 @@
 
       <h5 class="mb-2 mt-2">Ostali filteri</h5>
       <div style="margin-bottom: 5px">
-        <input type="checkbox" class="form-check form-check-input form-check-inline" id="besplatno-otkazivanje" title="Da li želite besplatno otkazivanje?">
-        <label for="besplatno-otkazivanje" class="form-check-label">Besplatno otkazivanje</label>
+        <input type="checkbox" class="form-check form-check-input form-check-inline" id="filter-besplatno-otkazivanje" title="Da li želite besplatno otkazivanje?">
+        <label for="filter-besplatno-otkazivanje" class="form-check-label">Besplatno otkazivanje</label>
       </div>
       <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 5px">
         <div>
@@ -88,7 +88,7 @@
   <div title="Pogledaj detalje o sobi" id="desni-panel">
     <div *ngFor="let soba of dostupneSobe" (click)="otvoriDetalje(6)" class="soba-item">
       <div class="soba-slika">
-        <img class="soba-slika-slika" src="assets/SlikaHotel.jpg" width="220" alt="">
+        <img ngSrc="{{Slike.getRandomSliku()}}" class="soba-slika-slika" width="220" height="150" alt="">
       </div>
       <div class="soba-opis-div">
         <div>

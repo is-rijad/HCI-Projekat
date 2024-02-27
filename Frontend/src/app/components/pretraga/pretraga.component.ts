@@ -1,6 +1,6 @@
 import {AfterContentInit, Component, OnInit} from '@angular/core';
 import {PretragaEndpointRes, PretragaEndpointResSoba} from "../../endpoints/pretraga-endpoint/pretraga-endpoint-res";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
 import {PretragaEndpoint} from "../../endpoints/pretraga-endpoint/pretraga-endpoint";
@@ -8,6 +8,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {PretragaEndpointReq} from "../../endpoints/pretraga-endpoint/pretraga-endpoint-req";
 import {Config} from "../../config";
 import {Navigator} from "../../navigator";
+import {Slike} from "../../slike";
 
 @Component({
   selector: 'app-pretraga',
@@ -16,7 +17,8 @@ import {Navigator} from "../../navigator";
     NgForOf,
     FormsModule,
     NgIf,
-    HttpClientModule
+    HttpClientModule,
+    NgOptimizedImage
   ],
   providers: [
     PretragaEndpoint,
@@ -51,7 +53,7 @@ export class PretragaComponent implements OnInit{
     let req :PretragaEndpointReq = {
 
     }
-    this.pretragaEndpoint.Akcija(Config.adresaServera + "Sobe/GetSobe", req).subscribe({
+    this.pretragaEndpoint.Akcija(req).subscribe({
       next: res => {
          this.dostupneSobe = res.sobe;
       }
@@ -74,7 +76,9 @@ export class PretragaComponent implements OnInit{
   }
 
   async otvoriDetalje(id: number) {
-    this.navigator.trenutniIdSobe = id;
-    await this.navigator.navigiraj('modifikacija', [id])
+    Navigator.trenutniIdSobe = id;
+    await this.navigator.navigiraj('pregled', [id])
   }
+
+  protected readonly Slike = Slike;
 }

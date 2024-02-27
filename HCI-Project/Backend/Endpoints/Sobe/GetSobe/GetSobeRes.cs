@@ -11,7 +11,7 @@ namespace Backend.Endpoints.Sobe.GetSobe
     {
         public int Id { get; set; }
         public string NazivSobe { get; set; }
-        public string Slike { get; set; }
+        public string Slika { get; set; }
         public int BrojGostiju { get; set; }
         public string Opis { get; set; }
     }

@@ -1,13 +1,18 @@
 import {KrevetModel} from "./krevetModel";
 import {AranzmanModel} from "./aranzmanModel";
 import {AranzmanSobaModel} from "./aranzmanSobaModel";
+import {CijenaModel} from "./cijenaModel";
+import {SlikaModel} from "./slikaModel";
+import {KrevetSobaModel} from "./krevetSobaModel";
 
 export interface SobaModel {
   id: number;
-  slike: string;
+  brojSlika: number;
   nazivSobe: string;
   brojGostiju: number;
   opis: string;
+  djecaDo: number;
+  cijenaZaDjecu: number;
 
   besplatnoOtkazivanje: boolean;
   klima: boolean;
@@ -19,6 +24,7 @@ export interface SobaModel {
   minibar: boolean;
   balkon: boolean;
 
-  kreveti:KrevetModel[];
-  aranzmani:AranzmanSobaModel[];
+  kreveti : KrevetSobaModel[];
+  aranzmani : AranzmanSobaModel[];
+  cijene : CijenaModel[];
 }

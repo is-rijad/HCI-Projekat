@@ -3,8 +3,8 @@ import {Router} from "@angular/router";
 
 @Injectable({providedIn:"root"})
 export class Navigator {
-  trenutniIdSobe : number = 0;
-  trenutniElementi : HTMLCollectionOf<Element> | null = null;
+  static trenutniIdSobe : number = 0;
+  static trenutniElementi : HTMLCollectionOf<Element> | null = null;
 
   constructor(private router : Router) {}
 
@@ -17,14 +17,14 @@ export class Navigator {
     }
     await this.router.navigate(urlNiz);
     let elementi = document.getElementsByClassName(url);
-    if (this.trenutniElementi != null) {
-      for (let i = 0; i < this.trenutniElementi.length; i++) {
-        this.trenutniElementi[i].classList.remove("active");
+    if (Navigator.trenutniElementi != null) {
+      for (let i = 0; i < Navigator.trenutniElementi.length; i++) {
+        Navigator.trenutniElementi[i].classList.remove("active");
       }
     }
-    this.trenutniElementi = elementi;
-    for(let i = 0; i < this.trenutniElementi.length; i++) {
-      this.trenutniElementi[i].classList.add("active");
+    Navigator.trenutniElementi = elementi;
+    for(let i = 0; i < Navigator.trenutniElementi.length; i++) {
+      Navigator.trenutniElementi[i].classList.add("active");
     }
   }
 }

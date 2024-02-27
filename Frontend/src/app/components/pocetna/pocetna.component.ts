@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-pocetna',
@@ -7,6 +7,5 @@ import { Component } from '@angular/core';
   templateUrl: './pocetna.component.html',
   styleUrl: './pocetna.component.css'
 })
-export class PocetnaComponent {
-
+export class PocetnaComponent{
 }

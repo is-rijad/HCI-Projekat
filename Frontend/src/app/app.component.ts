@@ -20,4 +20,6 @@ export class AppComponent implements OnInit{
   async ngOnInit(){
     await this.navigator.navigiraj("pocetna")
   }
+
+  protected readonly Navigator = Navigator;
 }

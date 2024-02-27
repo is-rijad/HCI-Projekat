@@ -1,6 +1,10 @@
 input, textarea {
   background-color: darkgray;
 }
+input:disabled {
+  background-color: #131313;
+
+}
 #body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

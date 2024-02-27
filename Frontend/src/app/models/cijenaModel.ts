@@ -1,7 +1,6 @@
 export interface CijenaModel {
-  id: number
+  id: number | null
   sobaId : number
   brojOsoba : number
   cijenaSobe : number
-  djecaDo : number
 }

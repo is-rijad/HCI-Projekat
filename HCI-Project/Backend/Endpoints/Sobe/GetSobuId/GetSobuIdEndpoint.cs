@@ -1,4 +1,6 @@
 ﻿using Backend.Data;
+using Backend.Data.Modeli;
+using Backend.Migrations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +18,7 @@ namespace Backend.Endpoints.Sobe.GetSobuId {
         {
             var response = new GetSobuIdEndpointRes();
             var soba = await _dbContext.Sobe.Where(s => s.Id == req.Id).FirstOrDefaultAsync();
+            soba.Slike.ForEach(s => s.Path = Config.URLAplikacije + s.Path);
             if (soba == null)
             {
                 response.Status = 404;

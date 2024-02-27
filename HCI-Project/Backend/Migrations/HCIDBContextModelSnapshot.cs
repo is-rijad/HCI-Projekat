@@ -41,19 +41,16 @@ namespace Backend.Migrations
 
             modelBuilder.Entity("Backend.Data.Modeli.Cijena", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
 
                     b.Property<int>("BrojOsoba")
                         .HasColumnType("int");
 
                     b.Property<float>("CijenaSobe")
-                        .HasColumnType("real");
-
-                    b.Property<float>("DjecaDo")
                         .HasColumnType("real");
 
                     b.Property<int>("SobaId")
@@ -160,6 +157,28 @@ namespace Backend.Migrations
                     b.ToTable("Recenzije");
                 });
 
+            modelBuilder.Entity("Backend.Data.Modeli.Slika", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SobaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SobaId");
+
+                    b.ToTable("Slike");
+                });
+
             modelBuilder.Entity("Backend.Data.Modeli.Soba", b =>
                 {
                     b.Property<int>("Id")
@@ -179,6 +198,12 @@ namespace Backend.Migrations
 
                     b.Property<int>("BrojGostiju")
                         .HasColumnType("int");
+
+                    b.Property<float>("CijenaZaDjecu")
+                        .HasColumnType("real");
+
+                    b.Property<float>("DjecaDo")
+                        .HasColumnType("real");
 
                     b.Property<bool>("DozvoljeniLjubimci")
                         .HasColumnType("bit");
@@ -200,10 +225,6 @@ namespace Backend.Migrations
                     b.Property<bool>("PrilagodjenInvalidima")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Slike")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("Spa")
                         .HasColumnType("bit");
 
@@ -217,11 +238,11 @@ namespace Backend.Migrations
 
             modelBuilder.Entity("Backend.Data.Modeli.SobaAranzman", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
 
                     b.Property<int>("AranzmanId")
                         .HasColumnType("int");
@@ -243,11 +264,11 @@ namespace Backend.Migrations
 
             modelBuilder.Entity("Backend.Data.Modeli.SobaKrevet", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
 
                     b.Property<int>("BrojKreveta")
                         .HasColumnType("int");
@@ -326,7 +347,7 @@ namespace Backend.Migrations
             modelBuilder.Entity("Backend.Data.Modeli.Cijena", b =>
                 {
                     b.HasOne("Backend.Data.Modeli.Soba", "Soba")
-                        .WithMany("SobaCijene")
+                        .WithMany("Cijene")
                         .HasForeignKey("SobaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -349,6 +370,17 @@ namespace Backend.Migrations
                         .IsRequired();
 
                     b.Navigation("Gost");
+
+                    b.Navigation("Soba");
+                });
+
+            modelBuilder.Entity("Backend.Data.Modeli.Slika", b =>
+                {
+                    b.HasOne("Backend.Data.Modeli.Soba", "Soba")
+                        .WithMany("Slike")
+                        .HasForeignKey("SobaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Soba");
                 });
@@ -424,9 +456,11 @@ namespace Backend.Migrations
                 {
                     b.Navigation("Aranzmani");
 
+                    b.Navigation("Cijene");
+
                     b.Navigation("Kreveti");
 
-                    b.Navigation("SobaCijene");
+                    b.Navigation("Slike");
 
                     b.Navigation("ZauzetaSoba");
                 });
