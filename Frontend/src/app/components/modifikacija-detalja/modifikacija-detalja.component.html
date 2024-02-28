@@ -37,7 +37,7 @@
     <label for="opce-informacije-detaljno">Detaljno:</label>
     <textarea  [(ngModel)]="soba.opis" class="form-control" rows="5" cols="60" id="opce-informacije-detaljno" placeholder="Enter text"></textarea>
   </div>
-  <div id="cijena">
+  <div *ngIf="sveCijeneUcitane" id="cijena">
     <h4>Cijena</h4>
     <div class="cijena-items">
       <div *ngFor="let cijena of soba.cijene" class="cijena-item">
@@ -56,9 +56,9 @@
     </div>
   </div>
 
-  <div id="kreveti">
+  <div *ngIf="sviKrevetiUcitani" id="kreveti">
     <h4>Kreveti</h4>
-    <div *ngFor="let krevet of soba.kreveti; trackBy:trackKrevete" id="krevet-itemi">
+    <div *ngFor="let krevet of soba.kreveti" id="krevet-itemi">
       <div class="krevet-item">
         <label for="broj-kreveta-{{krevet.krevetId}}}">{{krevet.krevet.tip}} kreveti:</label>
         <input [(ngModel)]="krevet.brojKreveta" style="width: 50%" class="form-control form-control-number" type="number" id="broj-kreveta-{{krevet.krevetId}}}">
@@ -102,13 +102,13 @@
       </div>
     </div>
 
-  <div id="aranzmani">
+  <div *ngIf="sviAranzmaniUcitani" id="aranzmani">
     <h4>Aranžmani</h4>
     <div id="aranzmani-naslovi">
       <h6>Aranžman:</h6>
       <h6>Doplata:</h6>
     </div>
-    <div *ngFor="let aranzman of soba.aranzmani; trackBy: trackAranzmane" class="aranzman-itemi">
+    <div *ngFor="let aranzman of soba.aranzmani" class="aranzman-itemi">
     <div>
     <input class="form-check form-check-input form-check-inline aranzman-check" type="checkbox" id="aranzman-{{aranzman.aranzmanId}}">
     <label for="aranzman-{{aranzman.aranzmanId}}">{{aranzman.aranzman.nazivAranzmana}}</label>

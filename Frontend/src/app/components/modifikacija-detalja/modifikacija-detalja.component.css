@@ -52,7 +52,8 @@ div * {
   text-align: center;
 }
 #opce-informacije-detaljno {
-  height: 280px;
+  min-height: 350px;
+  max-height: 350px;
 }
 #aranzmani {
   width: 100%;

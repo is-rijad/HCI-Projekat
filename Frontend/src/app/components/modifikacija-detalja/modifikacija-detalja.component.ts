@@ -14,11 +14,9 @@ import {Slike} from "../../slike";
 import {HandlerSlika} from "../../handlerSlika";
 import {GetAllAranzmaneEndpoint} from "../../endpoints/aranzmani-endpoint/get-all-aranzmane/get-all-aranzmane-endpoint";
 import {GetAllKreveteEnpoint} from "../../endpoints/kreveti-endpoint/get-all-krevete/get-all-krevete-enpoint";
-import {AranzmanSobaModel} from "../../models/aranzmanSobaModel";
-import {AranzmanModel} from "../../models/aranzmanModel";
-import {KrevetModel} from "../../models/krevetModel";
-import {KrevetSobaModel} from "../../models/krevetSobaModel";
-
+import {
+  GetAllCijeneZaSobuEndpoint
+} from "../../endpoints/aranzmani-endpoint/get-cijene-za-sobu/get-all-cijene-za-sobu-endpoint";
 
 @Component({
   selector: 'app-modifikacija-detalja',
@@ -36,17 +34,20 @@ import {KrevetSobaModel} from "../../models/krevetSobaModel";
     OtvoriDetaljeEndpoint,
     HandlerSlika,
     GetAllKreveteEnpoint,
-    GetAllAranzmaneEndpoint
+    GetAllAranzmaneEndpoint,
+    GetAllCijeneZaSobuEndpoint
   ]
 })
 export class ModifikacijaDetaljaComponent implements OnInit {
   soba: SobaModel = {aranzmani: [], cijene: [], kreveti: [], balkon: false, bazen: false, besplatnoOtkazivanje: false, brojGostiju: 0, cijenaZaDjecu: 0, djecaDo: 0, dozvoljeniLjubimci: false, id: 0, klima: false, minibar: false, nazivSobe: "", opis: "", prilagodjenInvalidima: false, brojSlika: 0, spa: false, teretana: false};
-  aranzmani: AranzmanSobaModel[] = [];
-  kreveti: KrevetSobaModel[] = [];
+  protected sviKrevetiUcitani: boolean = false;
+  protected sviAranzmaniUcitani: boolean = false;
+  protected sveCijeneUcitane: boolean = false;
   constructor(private modifikacijaEndpoint: ModifikacijaEndpoint,
               private otvoriDetaljeEndpoint: OtvoriDetaljeEndpoint,
               private getAllAranzmaneEndpoint:GetAllAranzmaneEndpoint,
               private getAllKreveteEnpoint:GetAllKreveteEnpoint,
+              private getAllCijeneZaSobuEndpoint:GetAllCijeneZaSobuEndpoint,
               protected navigator : Navigator,
               protected handlerSlika:HandlerSlika) {
   }
@@ -61,12 +62,11 @@ export class ModifikacijaDetaljaComponent implements OnInit {
     })
     this.getAllAranzmaneEndpoint.Akcija().subscribe({
       next: res => {
-        this.aranzmani = this.soba.aranzmani;
         for (let i = 0; i < res.aranzmani.length; i++) {
           if(res.aranzmani[i].nazivAranzmana == "Bez aranžmana")
             continue;
           if(this.soba.aranzmani.find((a) => a.aranzmanId == res.aranzmani[i].id) == undefined)
-            this.aranzmani.push({
+            this.soba.aranzmani.push({
               id: 0,
               sobaId: this.soba.id,
               aranzman: res.aranzmani[i],
@@ -74,17 +74,15 @@ export class ModifikacijaDetaljaComponent implements OnInit {
               doplata: 0,
             })
         }
+        this.sviAranzmaniUcitani = true;
       },
       complete: () => this.aranzmaniUcitani()
     })
     this.getAllKreveteEnpoint.Akcija().subscribe({
       next: res => {
-        this.kreveti = this.soba.kreveti
        for (let i = 0; i < res.kreveti.length; i++) {
-         console.log(res.kreveti[i])
-         console.log(this.soba.kreveti.find((a) => a.krevet.id == res.kreveti[i].id))
          if(this.soba.kreveti.find((a) => a.krevet.id == res.kreveti[i].id) == undefined)
-           this.kreveti.push({
+           this.soba.kreveti.push({
              id: 0,
              sobaId: this.soba.id,
              krevet: res.kreveti[i],
@@ -92,17 +90,30 @@ export class ModifikacijaDetaljaComponent implements OnInit {
              brojKreveta: 0,
            })
          }
-       this.kreveti.sort((a,b) => b.brojKreveta - a.brojKreveta)
-        this.soba.kreveti = [];
-       this.soba.kreveti = this.kreveti;
+       this.soba.kreveti = this.soba.kreveti.sort((a,b) => b.brojKreveta - a.brojKreveta)
       },
+      complete: () => this.sviKrevetiUcitani = true
+    })
+    this.getAllCijeneZaSobuEndpoint.Akcija().subscribe({
+      next: res => {
+        let cijene = res.cijene.sort((a,b) => b.brojOsoba - a.brojOsoba)
+        for (let i = this.soba.brojGostiju - 1, j = 0; i >= 0; i--, j++) {
+          if(res.cijene[j] == undefined)
+            this.soba.cijene.push({
+              id: 0,
+              sobaId: this.soba.id,
+              cijenaSobe: 0,
+              brojOsoba: i+1
+            })
+        }
+        this.soba.cijene = this.soba.cijene.sort((a,b) => b.brojOsoba - a.brojOsoba)
+      },
+      complete: () => this.sveCijeneUcitane = true
     })
   }
 
   private async aranzmaniUcitani() {
-    this.aranzmani.sort((a, b) => b.doplata - a.doplata)
-    this.soba.aranzmani = [];
-    this.soba.aranzmani = this.aranzmani;
+    this.soba.aranzmani = this.soba.aranzmani.sort((a, b) => b.doplata - a.doplata)
     while (document.getElementsByClassName("aranzman-check").length < this.soba.aranzmani.length) {
           await new Promise(r => setTimeout(r, 500));
       }
@@ -119,27 +130,11 @@ export class ModifikacijaDetaljaComponent implements OnInit {
               aranzmanDoplata.disabled = !aranzmanDoplata.disabled;
           })
       }
+      this.sviAranzmaniUcitani = true;
   }
 
-    private async cijeneUcitane() {
-        while (this.soba?.brojGostiju! == 0 || this.soba.cijene.length == 0) {
-            await new Promise(r => setTimeout(r, 500));
-        }
-        for (let i = 0; i < this.soba?.brojGostiju!; i++) {
-            if (this.soba.cijene[i] == undefined) {
-                this.soba.cijene.push({
-                    id: null,
-                    brojOsoba: i + 1,
-                    cijenaSobe: 0,
-                    sobaId: this.soba.id
-                })
-            }
-        }
-        this.soba.cijene = this.soba.cijene.sort((a, b) => b.brojOsoba-a.brojOsoba);
-    }
-
     spremiPromjene() {
-        this.soba.aranzmani.forEach(a => a.id = null);
+      this.soba.aranzmani.forEach(a => a.id = null);
         this.soba.cijene.forEach(c => c.id = null);
         this.soba.kreveti.forEach(k => k.id = null);
       let request : ModifikacijaEndpointReq = {
@@ -158,12 +153,4 @@ export class ModifikacijaDetaljaComponent implements OnInit {
     }
 
   protected readonly Slike = Slike;
-
-
-  trackAranzmane(index: any, item: AranzmanSobaModel) {
-    return item.aranzman
-  }
-  trackKrevete(index: any, item: KrevetSobaModel) {
-    return item.krevet
-  }
 }
