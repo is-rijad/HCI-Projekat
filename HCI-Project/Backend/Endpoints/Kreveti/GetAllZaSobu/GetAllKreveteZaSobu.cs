@@ -43,7 +43,7 @@ namespace Backend.Endpoints.Kreveti.GetAllZaSobu
                 response.Status = 404;
                 response.Message = "Nije pronađen nijedan aranžman.";
             }
-            response.Kreveti = responseKreveti;
+            response.Kreveti = responseKreveti.OrderByDescending(k => k.BrojKreveta).ToList();
             return response;
         }
     }

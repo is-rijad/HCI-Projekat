@@ -3,7 +3,7 @@ import {NavigationEnd, Router, RouterEvent} from "@angular/router";
 
 @Injectable({providedIn:"root"})
 export class Navigator {
-  static trenutniIdSobe : number = 0;
+  static trenutniIdSobe : number = -1;
   static trenutniElementi : HTMLCollectionOf<Element> | null = null;
 
   constructor(private router : Router) {
@@ -16,7 +16,8 @@ export class Navigator {
 
 
   async navigiraj(url: string, params:any[] = []) {
-    if (params[0] != 0) {
+    Navigator.trenutniIdSobe = params[0]
+    if (params[0] != -1) {
       let urlNiz: any[] = [];
       urlNiz.push(`../${url}`);
       for (let i of params) {

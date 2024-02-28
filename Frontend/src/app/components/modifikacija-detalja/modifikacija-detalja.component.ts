@@ -18,6 +18,15 @@ import {
   GetAllCijeneZaSobuEndpoint
 } from "../../endpoints/aranzmani-endpoint/get-cijene-za-sobu/get-all-cijene-za-sobu-endpoint";
 import {Alert, TipAlerta} from "../../alert";
+import {
+  GetAllAranzmaneZaSobuEndpoint
+} from "../../endpoints/aranzmani-endpoint/get-aranzmane-za-sobu/get-all-aranzmane-za-sobu-endpoint";
+import {
+  GetAllKreveteZaSobuEndpointRes
+} from "../../endpoints/kreveti-endpoint/get-all-krevete-za-sobu/get-all-krevete-za-sobu-endpoint-res";
+import {
+  GetAllKreveteZaSobuEndpoint
+} from "../../endpoints/kreveti-endpoint/get-all-krevete-za-sobu/get-all-krevete-za-sobu-endpoint";
 
 @Component({
   selector: 'app-modifikacija-detalja',
@@ -34,8 +43,8 @@ import {Alert, TipAlerta} from "../../alert";
     ModifikacijaEndpoint,
     OtvoriDetaljeEndpoint,
     HandlerSlika,
-    GetAllKreveteEnpoint,
-    GetAllAranzmaneEndpoint,
+    GetAllKreveteZaSobuEndpoint,
+    GetAllAranzmaneZaSobuEndpoint,
     GetAllCijeneZaSobuEndpoint
   ]
 })
@@ -46,8 +55,8 @@ export class ModifikacijaDetaljaComponent implements OnInit {
   protected sveCijeneUcitane: boolean = false;
   constructor(private modifikacijaEndpoint: ModifikacijaEndpoint,
               private otvoriDetaljeEndpoint: OtvoriDetaljeEndpoint,
-              private getAllAranzmaneEndpoint:GetAllAranzmaneEndpoint,
-              private getAllKreveteEnpoint:GetAllKreveteEnpoint,
+              private getAllAranzmaneEndpoint:GetAllAranzmaneZaSobuEndpoint,
+              private getAllKreveteEnpoint:GetAllKreveteZaSobuEndpoint,
               private getAllCijeneZaSobuEndpoint:GetAllCijeneZaSobuEndpoint,
               protected navigator : Navigator,
               protected handlerSlika:HandlerSlika) {
@@ -56,62 +65,34 @@ export class ModifikacijaDetaljaComponent implements OnInit {
 
   ngOnInit(): void {
     this.soba.brojSlika = Slike.nizSlika.length;
-    this.otvoriDetaljeEndpoint.Akcija().subscribe({
-      next: res => {
-        this.soba = res.soba;
-      }
-    })
-    this.getAllAranzmaneEndpoint.Akcija().subscribe({
-      next: res => {
-        for (let i = 0; i < res.aranzmani.length; i++) {
-          if(res.aranzmani[i].nazivAranzmana == "Bez aranžmana")
-            continue;
-          if(this.soba.aranzmani.find((a) => a.aranzmanId == res.aranzmani[i].id) == undefined)
-            this.soba.aranzmani.push({
-              id: 0,
-              sobaId: this.soba.id,
-              aranzman: res.aranzmani[i],
-              aranzmanId: res.aranzmani[i].id,
-              doplata: 0,
-            })
+
+    if(Navigator.trenutniIdSobe != 0) {
+      this.otvoriDetaljeEndpoint.Akcija().subscribe({
+        next: res => {
+          this.soba = res.soba;
         }
-        this.sviAranzmaniUcitani = true;
-      },
-      complete: () => this.aranzmaniUcitani()
-    })
-    this.getAllKreveteEnpoint.Akcija().subscribe({
-      next: res => {
-       for (let i = 0; i < res.kreveti.length; i++) {
-         if(this.soba.kreveti.find((a) => a.krevet.id == res.kreveti[i].id) == undefined)
-           this.soba.kreveti.push({
-             id: 0,
-             sobaId: this.soba.id,
-             krevet: res.kreveti[i],
-             krevetId: res.kreveti[i].id,
-             brojKreveta: 0,
-           })
-         }
-       this.soba.kreveti = this.soba.kreveti.sort((a,b) => b.brojKreveta - a.brojKreveta)
-      },
-      complete: () => this.sviKrevetiUcitani = true
-    })
-    this.getAllCijeneZaSobuEndpoint.Akcija().subscribe({
-      next: res => {
-        let cijene = res.cijene.sort((a,b) => b.brojOsoba - a.brojOsoba)
-        for (let i = this.soba.brojGostiju - 1, j = 0; i >= 0; i--, j++) {
-          if(res.cijene[j] == undefined)
-            this.soba.cijene.push({
-              id: 0,
-              sobaId: this.soba.id,
-              cijenaSobe: 0,
-              brojOsoba: i+1
-            })
-        }
-        this.soba.cijene = this.soba.cijene.sort((a,b) => b.brojOsoba - a.brojOsoba)
-      },
-      complete: () => this.sveCijeneUcitane = true
-    })
-  }
+      })
+    }
+      this.getAllAranzmaneEndpoint.Akcija().subscribe({
+        next: res => {
+          this.soba.aranzmani = res.aranzmani
+          this.sviAranzmaniUcitani = true;
+        },
+        complete: () => this.aranzmaniUcitani()
+      })
+      this.getAllKreveteEnpoint.Akcija().subscribe({
+        next: res => {
+          this.soba.kreveti = res.kreveti
+        },
+        complete: () => this.sviKrevetiUcitani = true
+      })
+      this.getAllCijeneZaSobuEndpoint.Akcija().subscribe({
+        next: res => {
+          this.soba.cijene = res.cijene
+          },
+        complete: () => this.sveCijeneUcitane = true
+      })
+    }
 
   private async aranzmaniUcitani() {
     this.soba.aranzmani = this.soba.aranzmani.sort((a, b) => b.doplata - a.doplata)

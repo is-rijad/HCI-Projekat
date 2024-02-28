@@ -20,6 +20,9 @@
         <li title="Potvrdi" class="breadcrumb-item">Potvrda</li>
       </ol>
     </nav>
+    <div id="dodaj-sobu">
+      <a (click)="navigator.navigiraj('modifikacija', [0])" title="Dodajte novu sobu" class="btn btn-primary">Dodaj sobu</a>
+    </div>
   </div>
 </header>
 <div *ngIf="Alert.alert.aktivan" id="alert" class="alert alert-{{Alert.alert.tip}}">

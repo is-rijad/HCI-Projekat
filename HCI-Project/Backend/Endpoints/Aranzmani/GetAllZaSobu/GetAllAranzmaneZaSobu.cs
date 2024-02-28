@@ -1,4 +1,5 @@
-﻿using Backend.Data;
+﻿using System.Collections.Immutable;
+using Backend.Data;
 using Backend.Data.Modeli;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,8 @@ namespace Backend.Endpoints.Aranzmani.GetAllZaSobu
             var responseAranzmani = new List<SobaAranzman>();
             foreach (var aranzman in sviAranzmani)
             {
+                if(aranzman.NazivAranzmana == "Bez aranžmana")
+                    continue;
                 var doplata = 0f;
                 if (sobaAranzman.Contains(aranzman))
                     doplata = sobaAranzmanLista.Find(sa => sa.AranzmanId == aranzman.Id).Doplata;
@@ -42,7 +45,7 @@ namespace Backend.Endpoints.Aranzmani.GetAllZaSobu
                 response.Status = 404;
                 response.Message = "Nije pronađen nijedan aranžman.";
             }
-            response.Aranzmani = responseAranzmani;
+            response.Aranzmani = responseAranzmani.OrderByDescending(a => a.Doplata).ToList();
             return response;
         }
     }
