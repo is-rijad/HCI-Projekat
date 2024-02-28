@@ -124,4 +124,11 @@ label, input, a {
 #slika-modal-div .modal-body div h6{
   display: inline;
 }
+#spremi-otkazi {
+  grid-column: 3;
+  display: flex;
+  justify-self: end;
+  gap: 10px;
+  margin-right: 20px;
+}
 

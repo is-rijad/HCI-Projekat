@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {PretragaComponent} from "./components/pretraga/pretraga.component";
 import {Navigator} from "./navigator";
+import {Alert} from "./alert";
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -24,4 +25,5 @@ export class AppComponent implements OnInit{
   }
 
   protected readonly Navigator = Navigator;
+  protected readonly Alert = Alert;
 }

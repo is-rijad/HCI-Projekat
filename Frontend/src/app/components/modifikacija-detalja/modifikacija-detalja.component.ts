@@ -17,6 +17,7 @@ import {GetAllKreveteEnpoint} from "../../endpoints/kreveti-endpoint/get-all-kre
 import {
   GetAllCijeneZaSobuEndpoint
 } from "../../endpoints/aranzmani-endpoint/get-cijene-za-sobu/get-all-cijene-za-sobu-endpoint";
+import {Alert, TipAlerta} from "../../alert";
 
 @Component({
   selector: 'app-modifikacija-detalja',
@@ -146,7 +147,7 @@ export class ModifikacijaDetaljaComponent implements OnInit {
       this.modifikacijaEndpoint.Akcija(request).subscribe({
           next: (res) => {
             if (res.status == 200) {
-
+              Alert.alert = new Alert(TipAlerta.success, "Promjene su uspješno spremljene")
             }
           }
       })

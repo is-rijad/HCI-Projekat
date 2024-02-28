@@ -22,4 +22,7 @@
     </nav>
   </div>
 </header>
+<div *ngIf="Alert.alert.aktivan" id="alert" class="alert alert-{{Alert.alert.tip}}">
+  {{Alert.alert.sadrzaj}}
+</div>
 <router-outlet></router-outlet>
