@@ -90,17 +90,7 @@ export class ModifikacijaDetaljaComponent implements OnInit {
         },
         complete: () => this.sviKrevetiUcitani = true
       })
-      this.getAllCijeneZaSobuEndpoint.Akcija().subscribe({
-        next: res => {
-          this.soba.cijene = res.cijene
-          },
-        complete: async () => {
-          this.sveCijeneUcitane = true;
-          while (document.getElementById(`cijena-za-${this.soba.brojGostiju}`) == null)
-            await new Promise(r => setTimeout(r, 500))
-            document.getElementById(`cijena-za-${this.soba.brojGostiju}`)!.oninput = () => this.izracunajCijene();
-        }
-      })
+      this.dohvatiCijene();
     }
 
   private async aranzmaniUcitani() {
@@ -160,5 +150,20 @@ export class ModifikacijaDetaljaComponent implements OnInit {
       if (this.autoCijena) this.soba.cijenaZaDjecu = cijenaZaMax / 2;
     }
   }
+
+  dohvatiCijene() {
+    this.getAllCijeneZaSobuEndpoint.Akcija(this.soba.brojGostiju).subscribe({
+      next: res => {
+        this.soba.cijene = res.cijene
+      },
+      complete: async () => {
+        this.sveCijeneUcitane = true;
+        while (document.getElementById(`cijena-za-${this.soba.brojGostiju}`) == null)
+          await new Promise(r => setTimeout(r, 500))
+        document.getElementById(`cijena-za-${this.soba.brojGostiju}`)!.oninput = () => this.izracunajCijene();
+      }
+    })
+  }
+
   protected readonly Slike = Slike;
 }

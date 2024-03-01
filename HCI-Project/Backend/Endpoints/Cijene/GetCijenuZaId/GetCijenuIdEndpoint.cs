@@ -16,37 +16,61 @@ namespace Backend.Endpoints.Cijene.GetCijenuZaId {
         [HttpGet]
         public override async Task<GetCijenuZaIdEndpointRes> Akcija([FromQuery] GetCijenuZaIdEndpointReq req)
         {
-            var cijene = await _dbContext.Cijene.Where(sa => sa.SobaId == req.Id).OrderByDescending(c => c.BrojOsoba).ToListAsync(); 
-            var soba = await _dbContext.Sobe.Where(s => s.Id == req.Id).FirstOrDefaultAsync();
             var responseCijene = new List<Cijena>();
-            for (int i = soba.BrojGostiju - 1, j = 0; i >= 0; i--, j++)
+
+            if (req.Id == 0)
             {
-                {
-                    if (j < cijene.Count)
-                    {
-                        responseCijene.Add(cijene[j]);
-                    }
-                    else
+                for (int i = req.BrojOsoba; i >= 1; i--) {
                     {
                         responseCijene.Add(new Cijena()
                         {
-                            BrojOsoba = i + 1,
+                            BrojOsoba = i,
                             CijenaSobe = 0,
-                            SobaId = soba.Id,
+                            SobaId = req.Id,
                         });
                     }
                 }
             }
+            else
+            {
+                var cijene = await _dbContext.Cijene.Where(sa => sa.SobaId == req.Id).OrderByDescending(c => c.BrojOsoba).ToListAsync();
+                if (cijene.Count > req.BrojOsoba)
+                {
+                    var posljednjiIndex = cijene.Count - req.BrojOsoba;
+                    for (int i = 0, j = 0; i < posljednjiIndex; i++) {
+                        {
+                            cijene.RemoveAt(j);
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = cijene.Count; i < req.BrojOsoba; i++) {
+                        {
+                            cijene.Add(new Cijena()
+                            {
+                                BrojOsoba = i + 1,
+                                CijenaSobe = 0,
+                                SobaId = req.Id,
+                            });
+                        }
+                    }
+                }
+                
+
+                responseCijene = cijene.OrderByDescending(c => c.BrojOsoba).ToList();
+            }
+            
 
             var response = new GetCijenuZaIdEndpointRes();
-                if (responseCijene.Count == 0)
-                {
-                    response.Status = 404;
-                    response.Message = "Nije pronađen nijedan aranžman.";
-                }
+            if (responseCijene.Count == 0)
+            {
+                response.Status = 404;
+                response.Message = "Nije pronađena nijedna cijena.";
+            }
 
-                response.Cijene = responseCijene;
-                return response;
+            response.Cijene = responseCijene;
+            return response;
         }
     }
 }

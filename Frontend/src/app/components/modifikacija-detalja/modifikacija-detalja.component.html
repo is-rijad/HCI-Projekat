@@ -36,6 +36,9 @@
     <input [(ngModel)]="soba.nazivSobe" class="form-control" type="text" id="opce-informacije-naziv">
     <label for="opce-informacije-detaljno">Detaljno:</label>
     <textarea  [(ngModel)]="soba.opis" class="form-control" rows="5" cols="60" id="opce-informacije-detaljno" placeholder="Enter text"></textarea>
+    <label for="broj-osoba">Broj osoba:</label>
+    <input (input)="dohvatiCijene()" [(ngModel)]="soba.brojGostiju" class="form-control form-control-number" type="number" id="broj-osoba">
+
   </div>
   <div *ngIf="sveCijeneUcitane" id="cijena">
     <div id="cijene-header">

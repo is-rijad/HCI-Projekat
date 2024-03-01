@@ -7,11 +7,11 @@ import {Config} from "../../../config";
 import {Navigator} from "../../../navigator";
 
 @Injectable()
-export class GetAllCijeneZaSobuEndpoint implements BaseEndpoint<void, GetAllCijeneZaSobuEndpointRes> {
+export class GetAllCijeneZaSobuEndpoint implements BaseEndpoint<number, GetAllCijeneZaSobuEndpointRes> {
   constructor(private httpClient:HttpClient) {}
 
-  Akcija(): Observable<GetAllCijeneZaSobuEndpointRes> {
-    let url = Config.adresaServera + "Cijene/GetCijenuZaId?Id=" + Navigator.trenutniIdSobe;
+  Akcija(brojGostiju : number): Observable<GetAllCijeneZaSobuEndpointRes> {
+    let url = Config.adresaServera + "Cijene/GetCijenuZaId?Id=" + Navigator.trenutniIdSobe + "&BrojOsoba=" + brojGostiju;
     return this.httpClient.get<GetAllCijeneZaSobuEndpointRes>(url);
   }
 

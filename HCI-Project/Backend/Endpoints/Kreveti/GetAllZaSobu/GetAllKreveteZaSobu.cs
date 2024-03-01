@@ -18,25 +18,41 @@ namespace Backend.Endpoints.Kreveti.GetAllZaSobu
         [HttpGet]
         public override async Task<GetAllKreveteZaSobuRes> Akcija([FromQuery] int id)
         {
-            var sobaKrevet = await _dbContext.SobeKreveti.Where(sa => sa.SobaId == id).Select(a => a.Krevet).ToListAsync();
-            var sobaKrevetLista = await _dbContext.SobeKreveti.Where(sa => sa.SobaId == id).ToListAsync();
-            var sviKreveti = await _dbContext.Kreveti.ToListAsync();
-            var soba = await _dbContext.Sobe.Where(s => s.Id == id).FirstOrDefaultAsync();
             var responseKreveti = new List<SobaKrevet>();
-            foreach (var krevet in sviKreveti)
+            var sviKreveti = await _dbContext.Kreveti.ToListAsync();
+
+            if (id == 0)
             {
-                var kreveti = 0;
-                if (sobaKrevet.Contains(krevet))
-                    kreveti = sobaKrevetLista.Find(sa => sa.KrevetId == krevet.Id).BrojKreveta;
-                responseKreveti.Add(new SobaKrevet()
+                foreach (var krevet in sviKreveti)
                 {
-                    Krevet = krevet,
-                    KrevetId = krevet.Id,
-                    BrojKreveta = kreveti,
-                    Soba = soba,
-                    SobaId = soba.Id
-                });
+                    responseKreveti.Add(new SobaKrevet()
+                    {
+                        Krevet = krevet,
+                        KrevetId = krevet.Id,
+                        BrojKreveta = 0,
+                        SobaId = id
+                    });
+                }
             }
+            else
+            {
+                var sobaKrevet = await _dbContext.SobeKreveti.Where(sa => sa.SobaId == id).Select(a => a.Krevet).ToListAsync();
+                var sobaKrevetLista = await _dbContext.SobeKreveti.Where(sa => sa.SobaId == id).ToListAsync();
+                var soba = await _dbContext.Sobe.Where(s => s.Id == id).FirstOrDefaultAsync();
+                foreach (var krevet in sviKreveti) {
+                    var kreveti = 0;
+                    if (sobaKrevet.Contains(krevet))
+                        kreveti = sobaKrevetLista.Find(sa => sa.KrevetId == krevet.Id).BrojKreveta;
+                    responseKreveti.Add(new SobaKrevet()
+                    {
+                        Krevet = krevet,
+                        KrevetId = krevet.Id,
+                        BrojKreveta = kreveti,
+                        SobaId = soba.Id
+                    });
+                }
+            }
+            
             var response = new GetAllKreveteZaSobuRes();
             if (responseKreveti.Count == 0)
             {
