@@ -86,7 +86,7 @@
     </div>
   </div>
   <div title="Pogledaj detalje o sobi" id="desni-panel">
-    <div *ngFor="let soba of dostupneSobe" (click)="otvoriDetalje(6)" class="soba-item">
+    <div *ngFor="let soba of dostupneSobe" (click)="otvoriDetalje(soba.id)" class="soba-item">
       <div class="soba-slika">
         <img ngSrc="{{Slike.getRandomSliku()}}" class="soba-slika-slika" width="220" height="150" alt="">
       </div>

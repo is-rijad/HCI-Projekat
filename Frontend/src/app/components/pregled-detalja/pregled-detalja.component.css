@@ -87,6 +87,12 @@ div * {
 label, input, a, select {
     cursor: pointer;
 }
+textarea {
+  cursor: default;
+}
+.form-check {
+  cursor: default;
+}
 .form-control-number {
   cursor: text;
 }

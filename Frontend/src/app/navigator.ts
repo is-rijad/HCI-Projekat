@@ -28,12 +28,10 @@ export class Navigator {
   }
   private handlerKartica(url: string) {
     let indexDo = url.indexOf('/', 1);
-    console.log(indexDo)
     if(indexDo <= 0)
       url = url.substring(1);
     else
       url = url.substring(1, indexDo);
-    console.log(url)
 
     let elementi = document.getElementsByClassName(url);
     if (Navigator.trenutniElementi != null) {

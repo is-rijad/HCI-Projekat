@@ -40,15 +40,19 @@ export class PregledDetaljaComponent implements OnInit{
   brojDjece: number = 0;
   aranzmanDoplata : any;
   cijenaSobe = 0;
-  constructor(private otvoriDetaljeEndpoint:OtvoriDetaljeEndpoint,
+  datumPrijave : Date = new Date();
+  datumOdjave : Date = new Date(new Date().setDate(this.datumPrijave.getDate() + 1));
+  datumPrijaveElement:any;
+  datumOdjaveElement:any;
+    constructor(private otvoriDetaljeEndpoint:OtvoriDetaljeEndpoint,
               protected handlerSlika:HandlerSlika) {
   }
   ngOnInit(): void {
-    let sobaId = Navigator.trenutniIdSobe;
 
-    let trenutniDatum = new Date();
-    (document.getElementById("datum-prijave") as HTMLInputElement).valueAsDate = trenutniDatum;
-    (document.getElementById("datum-odjave") as HTMLInputElement).valueAsDate = trenutniDatum;
+    this.datumPrijaveElement = (document.getElementById("datum-prijave") as HTMLInputElement);
+    this.datumOdjaveElement = (document.getElementById("datum-odjave") as HTMLInputElement);
+    this.datumPrijaveElement.valueAsDate = this.datumPrijave;
+    this.datumOdjaveElement.valueAsDate = this.datumOdjave;
 
 
     this.otvoriDetaljeEndpoint.Akcija().subscribe({
@@ -69,6 +73,8 @@ export class PregledDetaljaComponent implements OnInit{
                 <option value='${aranzmanSobaModel.doplata}'>${aranzmanSobaModel.aranzman.nazivAranzmana}</option>`;
           }
         }
+        aranzmaniSelect!.innerHTML += `
+                <option value='0'>Bez aranžmana</option>`
       }
     })
 
@@ -90,20 +96,25 @@ export class PregledDetaljaComponent implements OnInit{
   }
 
   protected izracunajCijenu() {
-    let cijenaZaOdrasle = 0;
-    for (let i = 0; i < this.soba.cijene.length; i++) {
-      if (this.soba.cijene[i].brojOsoba == this.brojOdraslih)
-        cijenaZaOdrasle = this.soba.cijene[i].cijenaSobe
-    }
+    this.aranzmanDoplata = (document.getElementById("aranzman") as HTMLSelectElement).value;
+    let cijenaZaOdrasle = this.soba.cijene.find(c => c.brojOsoba == this.brojOdraslih)?.cijenaSobe;
+    if(cijenaZaOdrasle == undefined) return;
 
     let cijenaZaDjecu = this.soba.cijenaZaDjecu * this.brojDjece
 
-    this.cijenaSobe = (cijenaZaOdrasle + cijenaZaDjecu) * ((this.aranzmanDoplata / 100) + 1);
+    this.datumPrijave = this.datumPrijaveElement.valueAsDate;
+    this.datumOdjave = this.datumOdjaveElement.valueAsDate;
+
+    let brojNoci = this.datediff(this.datumPrijave.valueOf(), this.datumOdjave.valueOf())
+
+    this.cijenaSobe = (((cijenaZaOdrasle + cijenaZaDjecu) * ((this.aranzmanDoplata / 100) + 1)) * brojNoci);
 
     if (isNaN(this.cijenaSobe))
       this.cijenaSobe = 0
   }
-
+  datediff(first : number, second : number) {
+    return Math.round((second - first) / (1000 * 60 * 60 * 24));
+  }
   private async cijeneUcitane() {
     while (this.soba.cijene.length < this.soba.brojGostiju) {
       await new Promise(() => setTimeout(() => delay(2000)))

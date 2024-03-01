@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="852d609e-a4a5-4fbe-83b1-e7f4046b6b91" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/pregled-detalja/pregled-detalja.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pregled-detalja/pregled-detalja.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/pregled-detalja/pregled-detalja.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pregled-detalja/pregled-detalja.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/pregled-detalja/pregled-detalja.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pregled-detalja/pregled-detalja.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/pretraga/pretraga.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pretraga/pretraga.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/navigator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/navigator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Migrations/HCIDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Migrations/HCIDBContextModelSnapshot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +135,7 @@
       <workItem from="1709134225308" duration="6358000" />
       <workItem from="1709214513617" duration="106000" />
       <workItem from="1709214676752" duration="225000" />
-      <workItem from="1709297078115" duration="9906000" />
+      <workItem from="1709297078115" duration="13874000" />
     </task>
     <servers />
   </component>
