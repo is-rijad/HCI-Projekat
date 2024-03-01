@@ -37,6 +37,7 @@ div * {
     height: 328px;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
 }
 #opce-informacije {
     width: 70%;
@@ -50,7 +51,8 @@ div * {
     text-align: center;
 }
 #opce-informacije-detaljno {
-    height: 280px;
+    min-height: 280px;
+    max-height: 280px;
 }
 
 #rezervacija {
@@ -82,8 +84,11 @@ div * {
     display: flex;
     gap: 10px;
 }
-label, input, a {
+label, input, a, select {
     cursor: pointer;
+}
+.form-control-number {
+  cursor: text;
 }
 #slika-modal-div {
   display: block;

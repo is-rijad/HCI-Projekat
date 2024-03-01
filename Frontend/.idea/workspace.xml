@@ -5,32 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="852d609e-a4a5-4fbe-83b1-e7f4046b6b91" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/modal.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/endpoints/base-response.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/base-response.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/endpoints/login-endpoint/login-endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/login-endpoint/login-endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Data/HCIDBContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Data/HCIDBContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Data/Modeli/Slika.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Data/Modeli/Soba.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Data/Modeli/Soba.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Slike/DodajSliku/DodajSlikuEndpoint.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Slike/DodajSliku/DodajSlikuEndpointReq.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Slike/DodajSliku/DodajSlikuEndpointRes.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Slike/ObrisiSliku/ObrisiSlikuEndpoint.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Slike/ObrisiSliku/ObrisiSlikuEndpointReq.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Slike/ObrisiSliku/ObrisiSlikuEndpointRes.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSlikeZaSobu/GetSlikeZaSobuEndpoint.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSlikeZaSobu/GetSlikeZaSobuEndpointReq.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSlikeZaSobu/GetSlikeZaSobuEndpointRes.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSobe/GetSobeEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSobe/GetSobeEndpoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSobuId/GetSobuIdEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSobuId/GetSobuIdEndpoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Migrations/HCIDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Migrations/HCIDBContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/pregled-detalja/pregled-detalja.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pregled-detalja/pregled-detalja.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/pregled-detalja/pregled-detalja.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pregled-detalja/pregled-detalja.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/pretraga/pretraga.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pretraga/pretraga.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +131,7 @@
       <workItem from="1709134225308" duration="6358000" />
       <workItem from="1709214513617" duration="106000" />
       <workItem from="1709214676752" duration="225000" />
-      <workItem from="1709297078115" duration="4611000" />
+      <workItem from="1709297078115" duration="5305000" />
     </task>
     <servers />
   </component>

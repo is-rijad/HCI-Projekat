@@ -1,7 +1,7 @@
 <div *ngIf="handlerSlika.isModalVidljiv" id="slika-modal-div" class="modal" tabindex="-1">
     <div class="modal-content">
       <div class="modal-header">
-        <button (click)="handlerSlika.isModalVidljiv = !handlerSlika.isModalVidljiv" type="button" class="btn-close"></button>
+        <button title="Izađi" (click)="handlerSlika.isModalVidljiv = !handlerSlika.isModalVidljiv" type="button" class="btn-close"></button>
       </div>
       <div class="modal-body">
           <h6 title="Prethodna slika" class="slika-strelica" (click)="handlerSlika.promijeniSliku(-1)"><</h6>
@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button (click)="handlerSlika.isModalVidljiv = !handlerSlika.isModalVidljiv" type="button" class="btn btn-secondary">Izlaz</button>
+        <button title="Izađi" (click)="handlerSlika.isModalVidljiv = !handlerSlika.isModalVidljiv" type="button" class="btn btn-secondary">Izlaz</button>
       </div>
     </div>
 </div>
@@ -22,7 +22,7 @@
 
 <div id="body">
     <div id="slika">
-        <img (click)="handlerSlika.isModalVidljiv = !handlerSlika.isModalVidljiv" id="slika-slika" src="{{Slike.nizSlika[0]}}" alt="">
+        <img title="Prikaži preko cijelog zaslona" (click)="handlerSlika.isModalVidljiv = !handlerSlika.isModalVidljiv" id="slika-slika" src="{{Slike.nizSlika[0]}}" alt="">
       <div style="text-align: center">
         <h6 title="Prethodna slika" class="slika-strelica" (click)="handlerSlika.promijeniSliku(-1)"><</h6>
         <h6>{{handlerSlika.trenutniIndexSlike}}</h6>
@@ -58,7 +58,7 @@
 
         </div>
         <div id="rezervacija-aranzman">
-        <h4>Aranzman</h4>
+        <h4>Aranžman</h4>
         <select [(ngModel)]="aranzmanDoplata" (input)="izracunajCijenu()"  id="aranzman" class="form-select form-control" title="Izaberite aranžman.">
 
         </select>
@@ -71,7 +71,7 @@
         </div>
 
         <div id="rezervacija-button">
-            <a class="btn btn-primary">Rezerviši</a>
+            <a title="Napravi rezervaciju" class="btn btn-primary">Rezerviši</a>
         </div>
     </div>
 
@@ -114,11 +114,12 @@
 
     <div id="kreveti">
         <h4>Kreveti</h4>
-
-        <div class="krevet-item">
-        <h5>1</h5>
-        <h5>Bračni krevet</h5>
-            </div>
+        <div *ngFor="let krevet of soba.kreveti" id="krevet-itemi">
+          <div class="krevet-item">
+            <h5>{{krevet.brojKreveta}}</h5>
+            <h5>{{krevet.krevet.tip}} krevet</h5>
+          </div>
+        </div>
     </div>
 
 
