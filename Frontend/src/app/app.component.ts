@@ -4,19 +4,23 @@ import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {PretragaComponent} from "./components/pretraga/pretraga.component";
 import {Navigator} from "./navigator";
 import {Alert} from "./alert";
+import {Slike} from "./slike";
+import {Modal} from "./modal";
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet, PretragaComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  providers: [Navigator]
+  providers: []
 })
 export class AppComponent implements OnInit{
   title = 'Hotel Leo';
 
 
-  constructor(public navigator : Navigator) {}
+  constructor(public navigator : Navigator,
+              protected modal: Modal) {
+  }
 
   async ngOnInit(){
     await this.navigator.navigiraj("pocetna")

@@ -36,6 +36,21 @@ img {
 }
 header h1 {
   cursor: pointer;
-
+}
+#alert {
+  position: fixed;
+  top: 10px;
+  width: 50%;
+  left: 25%;
+}
+.modal {
+  display: block;
+  position: fixed;
+  top: 20px;
+  width: 50%;
+  left: 25%;
+}
+.modal-body {
+  text-align: center;
 }
 

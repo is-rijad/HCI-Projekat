@@ -5,12 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="852d609e-a4a5-4fbe-83b1-e7f4046b6b91" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/modal.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/navigator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/navigator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/base-response.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/base-response.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/login-endpoint/login-endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/login-endpoint/login-endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Data/HCIDBContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Data/HCIDBContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Data/Modeli/Slika.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Data/Modeli/Soba.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Data/Modeli/Soba.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Slike/DodajSliku/DodajSlikuEndpoint.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Slike/DodajSliku/DodajSlikuEndpointReq.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Slike/DodajSliku/DodajSlikuEndpointRes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Slike/ObrisiSliku/ObrisiSlikuEndpoint.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Slike/ObrisiSliku/ObrisiSlikuEndpointReq.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Slike/ObrisiSliku/ObrisiSlikuEndpointRes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSlikeZaSobu/GetSlikeZaSobuEndpoint.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSlikeZaSobu/GetSlikeZaSobuEndpointReq.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSlikeZaSobu/GetSlikeZaSobuEndpointRes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSobe/GetSobeEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSobe/GetSobeEndpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSobuId/GetSobuIdEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSobuId/GetSobuIdEndpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Migrations/HCIDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Migrations/HCIDBContextModelSnapshot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +49,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -43,37 +69,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;development&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jsx.switch.disabled&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/isrij/source/repos/HCI-Projekat/Frontend/src/assets/HotelSlike&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\isrij\\source\\repos\\HCI-Projekat\\Frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/isrij/source/repos/HCI-Projekat/Frontend/src/app/models/krevetModel.ts&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "development",
+    "ignore.virus.scanning.warn.message": "true",
+    "jsx.switch.disabled": "true",
+    "last_opened_file_path": "C:/Users/isrij/source/repos/HCI-Projekat/Frontend/src/app",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "configurable.group.editor",
+    "ts.external.directory.path": "C:\\Users\\isrij\\source\\repos\\HCI-Projekat\\Frontend\\node_modules\\typescript\\lib",
+    "two.files.diff.last.used.file": "C:/Users/isrij/source/repos/HCI-Projekat/Frontend/src/app/models/krevetModel.ts",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app" />
       <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\assets\HotelSlike" />
       <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\slike-endpoint" />
       <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\assets" />
       <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\aranzmani-endpoint" />
-      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\kreveti-endpoint\get-all-krevete-za-sobu" />
@@ -124,7 +150,10 @@
       <workItem from="1707166160729" duration="8007000" />
       <workItem from="1707251809886" duration="78000" />
       <workItem from="1709062108654" duration="9971000" />
-      <workItem from="1709134225308" duration="6292000" />
+      <workItem from="1709134225308" duration="6358000" />
+      <workItem from="1709214513617" duration="106000" />
+      <workItem from="1709214676752" duration="225000" />
+      <workItem from="1709297078115" duration="4611000" />
     </task>
     <servers />
   </component>

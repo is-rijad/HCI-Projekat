@@ -27,6 +27,7 @@ import {
 import {
   GetAllKreveteZaSobuEndpoint
 } from "../../endpoints/kreveti-endpoint/get-all-krevete-za-sobu/get-all-krevete-za-sobu-endpoint";
+import {Modal} from "../../modal";
 
 @Component({
   selector: 'app-modifikacija-detalja',
@@ -49,22 +50,25 @@ import {
   ]
 })
 export class ModifikacijaDetaljaComponent implements OnInit {
-  soba: SobaModel = {aranzmani: [], cijene: [], kreveti: [], balkon: false, bazen: false, besplatnoOtkazivanje: false, brojGostiju: 0, cijenaZaDjecu: 0, djecaDo: 0, dozvoljeniLjubimci: false, id: 0, klima: false, minibar: false, nazivSobe: "", opis: "", prilagodjenInvalidima: false, brojSlika: 0, spa: false, teretana: false};
+  soba: SobaModel = {aranzmani: [], cijene: [], kreveti: [], balkon: false, bazen: false, besplatnoOtkazivanje: false, brojGostiju: 0, cijenaZaDjecu: 0, djecaDo: 12, dozvoljeniLjubimci: false, id: 0, klima: false, minibar: false, nazivSobe: "", opis: "", prilagodjenInvalidima: false, brojSlika: 0, spa: false, teretana: false};
   protected sviKrevetiUcitani: boolean = false;
   protected sviAranzmaniUcitani: boolean = false;
   protected sveCijeneUcitane: boolean = false;
+  protected autoCijena : boolean = true;
   constructor(private modifikacijaEndpoint: ModifikacijaEndpoint,
               private otvoriDetaljeEndpoint: OtvoriDetaljeEndpoint,
               private getAllAranzmaneEndpoint:GetAllAranzmaneZaSobuEndpoint,
               private getAllKreveteEnpoint:GetAllKreveteZaSobuEndpoint,
               private getAllCijeneZaSobuEndpoint:GetAllCijeneZaSobuEndpoint,
               protected navigator : Navigator,
-              protected handlerSlika:HandlerSlika) {
+              protected handlerSlika:HandlerSlika,
+              protected modal:Modal) {
   }
 
 
   ngOnInit(): void {
     this.soba.brojSlika = Slike.nizSlika.length;
+
 
     if(Navigator.trenutniIdSobe != 0) {
       this.otvoriDetaljeEndpoint.Akcija().subscribe({
@@ -90,7 +94,12 @@ export class ModifikacijaDetaljaComponent implements OnInit {
         next: res => {
           this.soba.cijene = res.cijene
           },
-        complete: () => this.sveCijeneUcitane = true
+        complete: async () => {
+          this.sveCijeneUcitane = true;
+          while (document.getElementById(`cijena-za-${this.soba.brojGostiju}`) == null)
+            await new Promise(r => setTimeout(r, 500))
+            document.getElementById(`cijena-za-${this.soba.brojGostiju}`)!.oninput = () => this.izracunajCijene();
+        }
       })
     }
 
@@ -115,24 +124,41 @@ export class ModifikacijaDetaljaComponent implements OnInit {
       this.sviAranzmaniUcitani = true;
   }
 
-    spremiPromjene() {
-      this.soba.aranzmani.forEach(a => a.id = null);
+    async spremiPromjene() {
+      this.modal.napraviDijalog("Da li ste sigurni da želite spasiti promjene?")
+      while (this.modal.potvdna == null) {
+        await new Promise((r) => setTimeout(r, 500));
+      }
+      if (this.modal.potvdna) {
+        this.soba.aranzmani.forEach(a => a.id = null);
         this.soba.cijene.forEach(c => c.id = null);
         this.soba.kreveti.forEach(k => k.id = null);
-      let request : ModifikacijaEndpointReq = {
+        let request: ModifikacijaEndpointReq = {
           aranzmani: this.soba.aranzmani.filter(a => a.doplata > 0),
           cijene: this.soba.cijene.filter(c => c.cijenaSobe > 0),
           kreveti: this.soba.kreveti.filter(k => k.brojKreveta > 0),
           soba: this.soba
-      }
-      this.modifikacijaEndpoint.Akcija(request).subscribe({
+        }
+        this.modifikacijaEndpoint.Akcija(request).subscribe({
           next: (res) => {
             if (res.status == 200) {
-              Alert.alert = new Alert(TipAlerta.success, "Promjene su uspješno spremljene")
+              Alert.alert = new Alert(TipAlerta.success, res.message)
             }
           }
-      })
+        })
+      }
     }
 
+  izracunajCijene() {
+    if (this.autoCijena) {
+      let cijenaZaMax = this.soba.cijene[0].cijenaSobe;
+      for (let i = 1; i < this.soba.cijene.length; i++) {
+        if (this.autoCijena) {
+          this.soba.cijene[i].cijenaSobe = cijenaZaMax * (1 - (i * 0.05));
+        }
+      }
+      if (this.autoCijena) this.soba.cijenaZaDjecu = cijenaZaMax / 2;
+    }
+  }
   protected readonly Slike = Slike;
 }

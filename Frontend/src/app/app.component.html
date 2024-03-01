@@ -28,4 +28,18 @@
 <div *ngIf="Alert.alert.aktivan" id="alert" class="alert alert-{{Alert.alert.tip}}">
   {{Alert.alert.sadrzaj}}
 </div>
+<div *ngIf="modal.aktivan" id="modal-div" class="modal" tabindex="-1">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button title="Izađi" (click)="modal.aktivan = !modal.aktivan" type="button" class="btn-close"></button>
+    </div>
+    <div class="modal-body">
+      {{modal.sadrzaj}}
+    </div>
+    <div class="modal-footer">
+      <button title="Izađi" (click)="modal.otkazi()" type="button" class="btn btn-danger">Izlaz</button>
+      <button title="Potvrdi" (click)="modal.potvrdi()" type="button" class="btn btn-primary">Potvrdi</button>
+    </div>
+  </div>
+</div>
 <router-outlet></router-outlet>

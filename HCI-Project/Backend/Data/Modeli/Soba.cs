@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
 
 namespace Backend.Data.Modeli {
     [Table("Sobe")]
@@ -30,6 +29,5 @@ namespace Backend.Data.Modeli {
         public List<SobaAranzman> Aranzmani { get; set; } 
         public List<ZauzetaSoba> ZauzetaSoba { get; set; }
         public List<Cijena> Cijene { get; set; }
-        public List<Slika> Slike { get; set; }
     }
 }

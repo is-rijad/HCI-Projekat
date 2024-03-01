@@ -39,6 +39,7 @@ div * {
   height: 500px;
   margin-left: auto;
   margin-right: auto;
+  cursor: pointer;
 }
 #opce-informacije {
   width: 70%;
@@ -54,6 +55,11 @@ div * {
 #opce-informacije-detaljno {
   min-height: 350px;
   max-height: 350px;
+}
+#cijene-header {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20%;
 }
 #aranzmani {
   width: 100%;
@@ -85,10 +91,10 @@ div * {
   gap: 10px;
   justify-content: space-between;
 }
-label, input, a {
+label, a, .form-check-input {
   cursor: pointer;
 }
-.form-control-number {
+textarea, input:only-of-type(number) {
   cursor: text;
 }
 #slika-modal-div {
