@@ -27,7 +27,14 @@ export class Navigator {
     }
   }
   private handlerKartica(url: string) {
-    url = url.substring(1);
+    let indexDo = url.indexOf('/', 1);
+    console.log(indexDo)
+    if(indexDo <= 0)
+      url = url.substring(1);
+    else
+      url = url.substring(1, indexDo);
+    console.log(url)
+
     let elementi = document.getElementsByClassName(url);
     if (Navigator.trenutniElementi != null) {
       for (let i = 0; i < Navigator.trenutniElementi.length; i++) {
