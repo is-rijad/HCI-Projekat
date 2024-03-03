@@ -7,8 +7,8 @@ import {Injectable} from "@angular/core";
 import {Navigator} from "../../navigator";
 
 @Injectable()
-export class OtvoriDetaljeEndpoint implements BaseEndpoint<void, OtvoriDetaljeEndpointRes>{
-  constructor(private httpClient : HttpClient) {
+export class OtvoriDetaljeEndpoint implements BaseEndpoint<void, OtvoriDetaljeEndpointRes> {
+  constructor(private httpClient: HttpClient) {
   }
 
   Akcija(): Observable<OtvoriDetaljeEndpointRes> {

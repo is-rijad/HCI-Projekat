@@ -1,21 +1,21 @@
 import {Injectable} from "@angular/core";
 import {NavigationEnd, Router, RouterEvent} from "@angular/router";
 
-@Injectable({providedIn:"root"})
+@Injectable({providedIn: "root"})
 export class Navigator {
-  static trenutniIdSobe : number = -1;
-  static trenutniElementi : HTMLCollectionOf<Element> | null = null;
+  static trenutniIdSobe: number = -1;
+  static trenutniElementi: HTMLCollectionOf<Element> | null = null;
 
-  constructor(private router : Router) {
+  constructor(public router: Router) {
     this.router.events.subscribe((event) => {
-      if(event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd) {
         this.handlerKartica((event as RouterEvent).url);
       }
     })
   }
 
 
-  async navigiraj(url: string, params:any[] = []) {
+  async navigiraj(url: string, params: any[] = []) {
     Navigator.trenutniIdSobe = params[0]
     if (params[0] != -1) {
       let urlNiz: any[] = [];
@@ -26,9 +26,14 @@ export class Navigator {
       await this.router.navigate(urlNiz);
     }
   }
+
+  async navigirajSPodacima(url: string, extras: any) {
+    await this.router.navigate([`/${url}`], {state: extras})
+  }
+
   private handlerKartica(url: string) {
     let indexDo = url.indexOf('/', 1);
-    if(indexDo <= 0)
+    if (indexDo <= 0)
       url = url.substring(1);
     else
       url = url.substring(1, indexDo);

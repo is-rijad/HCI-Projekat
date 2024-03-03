@@ -1,4 +1,4 @@
 export interface SlikaModel {
-  id:number
-  path:string
+  id: number
+  path: string
 }

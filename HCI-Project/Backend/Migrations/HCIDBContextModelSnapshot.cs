@@ -289,10 +289,20 @@ namespace Backend.Migrations
                     b.Property<DateTime>("DatumOdlaska")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("GostId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SobaAranzmanId")
+                        .HasColumnType("int");
+
                     b.Property<int>("SobaId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GostId");
+
+                    b.HasIndex("SobaAranzmanId");
 
                     b.HasIndex("SobaId");
 
@@ -394,13 +404,29 @@ namespace Backend.Migrations
 
             modelBuilder.Entity("Backend.Data.Modeli.ZauzetaSoba", b =>
                 {
+                    b.HasOne("Backend.Data.Modeli.Gost", "Gost")
+                        .WithMany()
+                        .HasForeignKey("GostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Backend.Data.Modeli.SobaAranzman", "SobaAranzman")
+                        .WithMany()
+                        .HasForeignKey("SobaAranzmanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Backend.Data.Modeli.Soba", "Soba")
                         .WithMany("ZauzetaSoba")
                         .HasForeignKey("SobaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Gost");
+
                     b.Navigation("Soba");
+
+                    b.Navigation("SobaAranzman");
                 });
 
             modelBuilder.Entity("Backend.Data.Modeli.Gost", b =>

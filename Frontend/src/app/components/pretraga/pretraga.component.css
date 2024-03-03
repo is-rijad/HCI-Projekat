@@ -2,6 +2,7 @@ header {
   padding: 3px;
   margin: 3px 3px 0 3px;
 }
+
 #wrapper {
   padding: 3px;
   margin: 0 3px 3px 3px;
@@ -9,15 +10,18 @@ header {
   justify-content: space-around;
   overflow-y: hidden;
 }
+
 #breadcrumb {
   padding: 12px 0 0 10px;
 }
+
 #informacije {
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin-bottom: 10px;
 }
+
 nav {
   margin-bottom: 10px;
 }
@@ -26,9 +30,11 @@ nav {
   display: inline;
   width: 30%;
 }
+
 .lijevi-panel-button {
   cursor: pointer;
 }
+
 #desni-panel {
   display: inline;
   width: 70%;
@@ -45,6 +51,7 @@ nav {
   height: fit-content;
   max-height: 74vh;
 }
+
 .soba-item {
   display: flex;
   width: 100%;
@@ -55,32 +62,39 @@ nav {
   border-radius: 20px;
   cursor: pointer;
 }
+
 .soba-opis-div {
   width: 100%;
   padding: 5px;
   position: relative;
 }
+
 .soba-opis {
   width: 100%;
 }
-.soba-opis-opis{
+
+.soba-opis-opis {
   width: 70%;
   max-height: 70px;
   overflow-y: scroll;
 }
+
 .soba-opis-naslov {
   width: 100%;
   text-align: center;
 }
+
 .soba-opis-br-osoba {
   text-align: right;
   position: absolute;
   right: 5px;
   bottom: 5px;
 }
-.soba-opis-br-osoba *{
+
+.soba-opis-br-osoba * {
   display: inline;
 }
+
 input, select {
   background-color: darkgray;
 }

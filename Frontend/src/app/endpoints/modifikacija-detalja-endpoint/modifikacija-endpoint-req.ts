@@ -4,8 +4,8 @@ import {AranzmanSobaModel} from "../../models/aranzmanSobaModel";
 import {CijenaModel} from "../../models/cijenaModel";
 
 export interface ModifikacijaEndpointReq {
-    soba : SobaModel
-    kreveti : KrevetSobaModel[]
-    aranzmani : AranzmanSobaModel[]
-    cijene : CijenaModel[]
- }
+  soba: SobaModel
+  kreveti: KrevetSobaModel[]
+  aranzmani: AranzmanSobaModel[]
+  cijene: CijenaModel[]
+}

@@ -10,7 +10,15 @@ namespace Backend.Data.Modeli {
         [ForeignKey(nameof(Soba))]
         public int SobaId{ get; set; }
         [JsonIgnore]
-        public Soba Soba { get; set; }
+        public Soba? Soba { get; set; }
+        [ForeignKey(nameof(Gost))] 
+        public int GostId { get; set; }
+        [JsonIgnore]
+        public Gost? Gost { get; set;}
+        [ForeignKey(nameof(SobaAranzman))] 
+        public int SobaAranzmanId { get; set; }
+        [JsonIgnore]
+        public SobaAranzman? SobaAranzman { get; set;}
         [Required]
         public int BrojOsoba { get; set; }
         [Required]

@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {RouterOutlet} from '@angular/router';
 import {PretragaComponent} from "./components/pretraga/pretraga.component";
 import {Navigator} from "./navigator";
 import {Alert} from "./alert";
-import {Slike} from "./slike";
 import {Modal} from "./modal";
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -14,15 +14,15 @@ import {Modal} from "./modal";
   styleUrl: './app.component.css',
   providers: []
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'Hotel Leo';
 
 
-  constructor(public navigator : Navigator,
+  constructor(public navigator: Navigator,
               protected modal: Modal) {
   }
 
-  async ngOnInit(){
+  async ngOnInit() {
     await this.navigator.navigiraj("pocetna")
   }
 

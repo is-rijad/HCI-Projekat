@@ -6,20 +6,25 @@
     </nav>
     <div *ngIf="!filtriranjeUpaljeno" id="lijevi-panel-pretraga">
       <label for="datum-prijave" class="form-label">Datum prijave:</label>
-      <input type="date" [(ngModel)]="datumPrijave" class="form-control form-control-date mb-2" id="datum-prijave" title="Izaberite datum prijave.">
+      <input type="date" [(ngModel)]="datumPrijave" class="form-control form-control-date mb-2" id="datum-prijave"
+             title="Izaberite datum prijave.">
 
       <label for="datum-odjave" class="form-label">Datum odjave:</label>
-      <input type="date" [(ngModel)]="datumOdjave" class="form-control form-control-date mb-2" id="datum-odjave" title="Izaberite datum odjave.">
+      <input type="date" [(ngModel)]="datumOdjave" class="form-control form-control-date mb-2" id="datum-odjave"
+             title="Izaberite datum odjave.">
 
       <label for="broj-odraslih" class="form-label">Broj odraslih:</label>
-      <input type="number" [(ngModel)]="brojOdraslih" class="form-control form-control-number mb-2" id="broj-odraslih" title="Izaberite broj odraslih osoba.">
+      <input type="number" [(ngModel)]="brojOdraslih" class="form-control form-control-number mb-2" id="broj-odraslih"
+             title="Izaberite broj odraslih osoba.">
 
       <label for="broj-djece" class="form-label">Broj djece:</label>
-      <input type="number" [(ngModel)]="brojDjece" class="form-control form-control-number mb-2" id="broj-djece" title="Izaberite broj djece.">
+      <input type="number" [(ngModel)]="brojDjece" class="form-control form-control-number mb-2" id="broj-djece"
+             title="Izaberite broj djece.">
 
       <div style="display: flex; align-items: center">
-      <input type="checkbox" [(ngModel)]="besplatnoOtkazivanje" class="form-check form-check-input form-check-inline" id="besplatno-otkazivanje" title="Izaberite broj djece.">
-      <label for="besplatno-otkazivanje" class="form-check-label">Besplatno otkazivanje</label>
+        <input type="checkbox" [(ngModel)]="besplatnoOtkazivanje" class="form-check form-check-input form-check-inline"
+               id="besplatno-otkazivanje" title="Izaberite broj djece.">
+        <label for="besplatno-otkazivanje" class="form-check-label">Besplatno otkazivanje</label>
       </div>
     </div>
     <div *ngIf="filtriranjeUpaljeno" id="lijevi-panel-filtriranje">
@@ -42,44 +47,55 @@
 
       <h5 class="mb-2 mt-2">Kreveti</h5>
       <label for="broj-bracnih-kreveta" class="form-label">Broj bračnih kreveta:</label>
-      <input type="number" class="form-control form-control-number" id="broj-bracnih-kreveta" title="Izaberite broj bračnih kreveta.">
+      <input type="number" class="form-control form-control-number" id="broj-bracnih-kreveta"
+             title="Izaberite broj bračnih kreveta.">
       <label for="broj-obicnih-kreveta" class="form-label">Broj običnih kreveta:</label>
-      <input type="number" class="form-control form-control-number" id="broj-obicnih-kreveta" title="Izaberite broj običnih kreveta.">
+      <input type="number" class="form-control form-control-number" id="broj-obicnih-kreveta"
+             title="Izaberite broj običnih kreveta.">
       <label for="broj-pomocnih-kreveta" class="form-label">Broj pomoćnih kreveta:</label>
-      <input type="number" class="form-control form-control-number" id="broj-pomocnih-kreveta" title="Izaberite broj pomoćnih kreveta.">
+      <input type="number" class="form-control form-control-number" id="broj-pomocnih-kreveta"
+             title="Izaberite broj pomoćnih kreveta.">
 
       <h5 class="mb-2 mt-2">Ostali filteri</h5>
       <div style="margin-bottom: 5px">
-        <input type="checkbox" class="form-check form-check-input form-check-inline" id="filter-besplatno-otkazivanje" title="Da li želite besplatno otkazivanje?">
+        <input type="checkbox" class="form-check form-check-input form-check-inline" id="filter-besplatno-otkazivanje"
+               title="Da li želite besplatno otkazivanje?">
         <label for="filter-besplatno-otkazivanje" class="form-check-label">Besplatno otkazivanje</label>
       </div>
       <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 5px">
         <div>
-        <input type="checkbox" class="form-check form-check-input form-check-inline" id="klima" title="Da li želite sobu s klimom?">
-        <label for="klima" class="form-check-label">Klima</label>
+          <input type="checkbox" class="form-check form-check-input form-check-inline" id="klima"
+                 title="Da li želite sobu s klimom?">
+          <label for="klima" class="form-check-label">Klima</label>
         </div>
-      <div>
-        <input type="checkbox" class="form-check form-check-input form-check-inline" id="teretana" title="Da li želite sobu s pristupom teretani?">
-        <label for="teretana" class="form-check-label">Teretana</label>
-      </div>
         <div>
-          <input type="checkbox" class="form-check form-check-input form-check-inline" id="bazen" title="Da li želite sobu s pristupom bazenu?">
+          <input type="checkbox" class="form-check form-check-input form-check-inline" id="teretana"
+                 title="Da li želite sobu s pristupom teretani?">
+          <label for="teretana" class="form-check-label">Teretana</label>
+        </div>
+        <div>
+          <input type="checkbox" class="form-check form-check-input form-check-inline" id="bazen"
+                 title="Da li želite sobu s pristupom bazenu?">
           <label for="bazen" class="form-check-label">Bazen</label>
         </div>
         <div>
-          <input type="checkbox" class="form-check form-check-input form-check-inline" id="spa" title="Da li želite sobu s pristupom spa centru?">
+          <input type="checkbox" class="form-check form-check-input form-check-inline" id="spa"
+                 title="Da li želite sobu s pristupom spa centru?">
           <label for="spa" class="form-check-label">Spa</label>
         </div>
         <div>
-          <input type="checkbox" class="form-check form-check-input form-check-inline" id="balkon" title="Da li želite sobu s pristupom balkonu?">
+          <input type="checkbox" class="form-check form-check-input form-check-inline" id="balkon"
+                 title="Da li želite sobu s pristupom balkonu?">
           <label for="balkon" class="form-check-label">Balkon</label>
         </div>
         <div>
-          <input type="checkbox" class="form-check form-check-input form-check-inline" id="dozvoljeni-ljubimci" title="Da li želite sobu u kojoj su dozvoljeni ljubimci?">
+          <input type="checkbox" class="form-check form-check-input form-check-inline" id="dozvoljeni-ljubimci"
+                 title="Da li želite sobu u kojoj su dozvoljeni ljubimci?">
           <label for="dozvoljeni-ljubimci" class="form-check-label">Dozvoljeni ljubimci</label>
         </div>
         <div>
-          <input type="checkbox" class="form-check form-check-input form-check-inline" id="prilagodjeno-invalidima" title="Da li želite sobu koja je prilagođena invalidima?">
+          <input type="checkbox" class="form-check form-check-input form-check-inline" id="prilagodjeno-invalidima"
+                 title="Da li želite sobu koja je prilagođena invalidima?">
           <label for="prilagodjeno-invalidima" class="form-check-label">Prilagođeno invalidima</label>
         </div>
       </div>
@@ -95,7 +111,7 @@
           <h4 class="p-3 soba-opis-naslov">{{soba.nazivSobe}}</h4>
         </div>
         <div class="soba-opis">
-            <h6 class="soba-opis-opis">{{soba.opis}}</h6>
+          <h6 class="soba-opis-opis">{{soba.opis}}</h6>
           <div class="soba-opis-br-osoba">
             <h6>{{brojOdraslih}}</h6>
             <h6> odraslih, </h6>
@@ -105,8 +121,8 @@
             <h4>54</h4>
             <h4> KM</h4>
           </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
+</div>

@@ -1,27 +1,34 @@
 <header>
   <div id="informacije">
     <img title="Idi na pocetnu stranicu" (click)="navigator.navigiraj('pocetna')" src="assets/logo.png" width="50">
-    <h1 title="Idi na pocetnu stranicu" (click)="navigator.navigiraj('pocetna')" >Hotel Leo</h1>
+    <h1 title="Idi na pocetnu stranicu" (click)="navigator.navigiraj('pocetna')">Hotel Leo</h1>
   </div>
   <nav class="nav nav-pills nav-fill">
-    <a  title="Idi na početnu stranicu" (click)="navigator.navigiraj('pocetna')" class="btn nav-link pocetna">Početna</a>
-    <a  title="Idi na pretragu" (click)="navigator.navigiraj('pretraga')" class=" btn nav-link pretraga">Pretraga</a>
-    <a  title="Idi na postavke" class="btn nav-link">Postavke</a>
+    <a title="Idi na početnu stranicu" (click)="navigator.navigiraj('pocetna')" class="btn nav-link pocetna">Početna</a>
+    <a title="Idi na pretragu" (click)="navigator.navigiraj('pretraga')" class=" btn nav-link pretraga">Pretraga</a>
+    <a title="Idi na postavke" class="btn nav-link">Postavke</a>
     <a title="Odjavi se" class="btn nav-link">Odjava</a>
   </nav>
   <div id="breadcrumb">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li title="Idi na početnu stranicu" (click)="navigator.navigiraj('pocetna')" class="breadcrumb-item pocetna">Početna</li>
-        <li title="Idi na pretragu" (click)="navigator.navigiraj('pretraga')" class="breadcrumb-item pretraga">Pretraga</li>
-        <li title="Idi na pregled detalja" (click)="navigator.navigiraj('pregled', [Navigator.trenutniIdSobe])" class="breadcrumb-item pregled">Pregled detalja</li>
-        <li title="Idi na plaćanje" class="breadcrumb-item">Plaćanje</li>
-        <li title="Idi na modifikaciju" (click)="navigator.navigiraj('modifikacija', [Navigator.trenutniIdSobe])" class="breadcrumb-item modifikacija">Modifikacija detalja</li>
-        <li title="Potvrdi" class="breadcrumb-item">Potvrda</li>
+        <li title="Idi na početnu stranicu" (click)="navigator.navigiraj('pocetna')" class="breadcrumb-item pocetna">
+          Početna
+        </li>
+        <li title="Idi na pretragu" (click)="navigator.navigiraj('pretraga')" class="breadcrumb-item pretraga">
+          Pretraga
+        </li>
+        <li title="Idi na modifikaciju" (click)="navigator.navigiraj('modifikacija', [Navigator.trenutniIdSobe])"
+            class="breadcrumb-item modifikacija">Modifikacija detalja
+        </li>
+        <li title="Idi na potvrdu rezervacije" (click)="navigator.navigiraj('potvrda')" class="breadcrumb-item potvrda">
+          Potvrda
+        </li>
       </ol>
     </nav>
     <div id="dodaj-sobu">
-      <a (click)="navigator.navigiraj('modifikacija', [0])" title="Dodajte novu sobu" class="btn btn-primary">Dodaj sobu</a>
+      <a (click)="navigator.navigiraj('modifikacija', [0])" title="Dodajte novu sobu" class="btn btn-primary">Dodaj
+        sobu</a>
     </div>
   </div>
 </header>

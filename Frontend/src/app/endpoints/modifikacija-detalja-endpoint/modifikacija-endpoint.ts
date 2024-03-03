@@ -7,8 +7,9 @@ import {BaseEndpoint} from "../base-endpoint";
 import {Config} from "../../config";
 
 @Injectable()
-export class ModifikacijaEndpoint implements BaseEndpoint<ModifikacijaEndpointReq, ModifikacijaEndpointRes>{
-  constructor(private httpClient : HttpClient) {}
+export class ModifikacijaEndpoint implements BaseEndpoint<ModifikacijaEndpointReq, ModifikacijaEndpointRes> {
+  constructor(private httpClient: HttpClient) {
+  }
 
   Akcija(req: ModifikacijaEndpointReq): Observable<ModifikacijaEndpointRes> {
     let url = Config.adresaServera + "Sobe/ModifikujSobu";

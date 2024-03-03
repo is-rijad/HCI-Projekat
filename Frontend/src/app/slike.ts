@@ -11,6 +11,7 @@ export class Slike {
     "assets/hotelSlike/pexels-quark-studio-2507007.jpg",
     "assets/hotelSlike/pexels-thorsten-technoman-338504.jpg"
   ]
+
   static getRandomSliku() {
     let index = Math.floor(Math.random() * this.nizSlika.length);
     return this.nizSlika[index];

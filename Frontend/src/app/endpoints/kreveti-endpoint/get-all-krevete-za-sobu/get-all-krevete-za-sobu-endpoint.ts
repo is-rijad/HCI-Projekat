@@ -8,7 +8,8 @@ import {Navigator} from "../../../navigator";
 
 @Injectable()
 export class GetAllKreveteZaSobuEndpoint implements BaseEndpoint<void, GetAllKreveteZaSobuEndpointRes> {
-  constructor(private httpClient:HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+  }
 
   Akcija(): Observable<GetAllKreveteZaSobuEndpointRes> {
     let url = Config.adresaServera + "Kreveti/GetZaSobu?id=" + Navigator.trenutniIdSobe;

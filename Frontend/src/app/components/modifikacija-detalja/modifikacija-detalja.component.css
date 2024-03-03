@@ -1,13 +1,15 @@
 input, select, textarea {
   background-color: darkgray;
 }
+
 input:disabled {
-  background-color: rgba(0,0,0,0.36);
+  background-color: rgba(0, 0, 0, 0.36);
 }
 
 .form-control {
   width: 70%;
 }
+
 #body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -15,23 +17,29 @@ input:disabled {
   grid-gap: 10px;
   padding: 0 10px 10px;
 }
+
 div * {
   margin-top: 10px;
 }
+
 #slika {
   grid-column-start: 1;
   grid-column-end: 2;
 }
+
 #slika div h6 {
   display: inline;
   font-size: xx-large;
 }
+
 .slika-strelica:hover {
   font-weight: bolder;
 }
+
 .slika-strelica {
   cursor: pointer;
 }
+
 #slika img {
   display: block;
   object-fit: contain;
@@ -41,29 +49,36 @@ div * {
   margin-right: auto;
   cursor: pointer;
 }
+
 #opce-informacije {
   width: 70%;
   margin-left: 10%;
 }
+
 #opce-informacije * {
   display: block;
   width: 100%;
 }
+
 #opce-informacije-naziv {
   text-align: center;
 }
+
 #opce-informacije-detaljno {
   min-height: 350px;
   max-height: 350px;
 }
+
 #cijene-header {
   display: flex;
   justify-content: flex-start;
   gap: 20%;
 }
+
 #aranzmani {
   width: 100%;
 }
+
 #aranzmani-naslovi {
   display: flex;
   justify-content: space-evenly;
@@ -82,40 +97,49 @@ div * {
   gap: 20px;
   flex-wrap: wrap;
 }
+
 #kreveti {
   margin: 0 20px 0 20px;
   width: 80%;
 }
-.krevet-item{
+
+.krevet-item {
   display: flex;
   gap: 10px;
   justify-content: space-between;
 }
+
 label, a, .form-check-input {
   cursor: pointer;
 }
+
 textarea, input:only-of-type(number) {
   cursor: text;
 }
+
 #slika-modal-div {
   display: block;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   text-align: center;
   overflow: hidden;
 }
+
 #slika-modal-div img {
   width: 80vw;
   height: 60vh;
 }
+
 #slika-modal-div .modal-content {
   height: 100vh;
   margin-top: 0px;
 }
-#slika-modal-div .modal-body h6{
+
+#slika-modal-div .modal-body h6 {
   font-size: xxx-large;
 }
+
 #slika-modal-div .modal-body {
   display: flex;
   flex-direction: row;
@@ -124,12 +148,15 @@ textarea, input:only-of-type(number) {
   justify-content: center;
   column-gap: 20px;
 }
-#slika-modal-div .modal-body div{
+
+#slika-modal-div .modal-body div {
   width: 100%;
 }
-#slika-modal-div .modal-body div h6{
+
+#slika-modal-div .modal-body div h6 {
   display: inline;
 }
+
 #spremi-otkazi {
   grid-column: 3;
   display: flex;

@@ -1,120 +1,146 @@
 input, select, textarea {
-    background-color: darkgray;
+  background-color: darkgray;
 }
 
 .form-control {
-    width: 70%;
+  width: 70%;
 }
+
 #body {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, fit-content(100%));
-    grid-gap: 10px;
-    padding: 10px;
-    padding-top: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, fit-content(100%));
+  grid-gap: 10px;
+  padding: 10px;
+  padding-top: 0;
 }
+
 div * {
-    margin-top: 10px;
+  margin-top: 10px;
 }
+
 #slika {
-    grid-column-start: 1;
-    grid-column-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
 }
+
 #slika div h6 {
   display: inline;
   font-size: xx-large;
 }
+
 .slika-strelica:hover {
   font-weight: bolder;
 }
+
 .slika-strelica {
   cursor: pointer;
 }
+
 #slika img {
-    display: block;
-    object-fit: contain;
-    width: 500px;
-    height: 328px;
-    margin-left: auto;
-    margin-right: auto;
-    cursor: pointer;
+  display: block;
+  object-fit: contain;
+  width: 500px;
+  height: 328px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
 }
+
 #opce-informacije {
-    width: 70%;
-    margin-left: 10%;
+  width: 70%;
+  margin-left: 10%;
 }
+
 #opce-informacije * {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
+
 #opce-informacije-naziv {
-    text-align: center;
+  text-align: center;
 }
+
 #opce-informacije-detaljno {
-    min-height: 280px;
-    max-height: 280px;
+  min-height: 280px;
+  max-height: 280px;
 }
 
 #rezervacija {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
+
 #rezervacija-period, #rezervacija-za-osoba, #rezervacija-aranzman, #rezervacija-cijena {
-    width: 50%;
+  width: 50%;
 }
+
 #rezervacija-cijena h1 {
-    display: inline;
+  display: inline;
 }
+
 #rezervacija-button, #rezervacija-button a {
-    width: 90%;
-    text-align: center;
+  width: 90%;
+  text-align: center;
 }
+
 #soba-posjeduje {
-    width: 100%;
-    grid-column: 1;
-    display: flex;
-    justify-content: normal;
-    gap: 20px;
-    flex-wrap: wrap;
+  width: 100%;
+  grid-column: 1;
+  display: flex;
+  justify-content: normal;
+  gap: 20px;
+  flex-wrap: wrap;
 }
+
 #kreveti {
-    margin-left: 20px;
+  margin-left: 20px;
 }
-.krevet-item{
-    display: flex;
-    gap: 10px;
+
+.krevet-item {
+  display: flex;
+  gap: 10px;
 }
+
 label, input, a, select {
-    cursor: pointer;
+  cursor: pointer;
 }
+
 textarea {
   cursor: default;
 }
+
 .form-check {
   cursor: default;
 }
+
 .form-control-number {
   cursor: text;
 }
+
 #slika-modal-div {
   display: block;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   text-align: center;
   overflow: hidden;
 }
+
 #slika-modal-div img {
   width: 80vw;
   height: 60vh;
 }
+
 #slika-modal-div .modal-content {
   height: 100vh;
   margin-top: 0px;
 }
-#slika-modal-div .modal-body h6{
+
+#slika-modal-div .modal-body h6 {
   font-size: xxx-large;
 }
+
 #slika-modal-div .modal-body {
   display: flex;
   flex-direction: row;
@@ -123,10 +149,12 @@ textarea {
   justify-content: center;
   column-gap: 20px;
 }
-#slika-modal-div .modal-body div{
+
+#slika-modal-div .modal-body div {
   width: 100%;
 }
-#slika-modal-div .modal-body div h6{
+
+#slika-modal-div .modal-body div h6 {
   display: inline;
 }
 

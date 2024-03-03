@@ -1,13 +1,13 @@
 import {BaseResponse} from "../base-response";
 
 export class PretragaEndpointRes extends BaseResponse {
-  sobe : PretragaEndpointResSoba[] = [];
+  sobe: PretragaEndpointResSoba[] = [];
 }
 
 export interface PretragaEndpointResSoba {
-  id : number,
-  nazivSobe : string,
-  slika : string,
-  brojGostiju : number,
-  opis : string
+  id: number,
+  nazivSobe: string,
+  slika: string,
+  brojGostiju: number,
+  opis: string
 }

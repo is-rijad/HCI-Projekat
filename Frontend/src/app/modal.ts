@@ -17,10 +17,12 @@ export class Modal {
     this.sadrzaj = sadrzaj;
     this.aktivan = true;
   }
+
   potvrdi() {
     this.potvdna = true;
     this.aktivan = false;
   }
+
   otkazi() {
     this.potvdna = false;
     this.aktivan = false;

@@ -8,9 +8,10 @@ import {Navigator} from "../../../navigator";
 
 @Injectable()
 export class GetAllCijeneZaSobuEndpoint implements BaseEndpoint<number, GetAllCijeneZaSobuEndpointRes> {
-  constructor(private httpClient:HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+  }
 
-  Akcija(brojGostiju : number): Observable<GetAllCijeneZaSobuEndpointRes> {
+  Akcija(brojGostiju: number): Observable<GetAllCijeneZaSobuEndpointRes> {
     let url = Config.adresaServera + "Cijene/GetCijenuZaId?Id=" + Navigator.trenutniIdSobe + "&BrojOsoba=" + brojGostiju;
     return this.httpClient.get<GetAllCijeneZaSobuEndpointRes>(url);
   }

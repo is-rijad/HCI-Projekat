@@ -1,0 +1,33 @@
+<div id="body">
+  <div id="opce-informacije">
+    <h2>{{podaci.soba.nazivSobe}} soba</h2>
+    <h4>{{podaci.soba.opis}}</h4>
+  </div>
+
+  <div id="rezervacija-period">
+    <h2>Period</h2>
+    <h3>Od: {{podaci.detaljiRezervacije.datumDolaska | date: 'dd-MM-yyyy'}}</h3>
+    <h3>Do: {{podaci.detaljiRezervacije.datumOdlaska | date: 'dd-MM-yyyy'}}</h3>
+  </div>
+
+  <div id="rezervacija-za-osoba">
+    <h2>Za osoba</h2>
+    <h3>{{podaci.detaljiRezervacije.brojOsoba}} odraslih</h3>
+    <h3>{{podaci.detaljiRezervacije.brojDjece}} djece</h3>
+
+  </div>
+  <div id="rezervacija-aranzman">
+    <h2>{{podaci.sobaAranzman.aranzman.nazivAranzmana}} aranžman</h2>
+    <h3>Doplata za aranžman: {{podaci.sobaAranzman.doplata / 100}} %</h3>
+  </div>
+
+  <div id="rezervacija-cijena">
+    <h2>Cijena</h2>
+    <h3>{{podaci.detaljiRezervacije.cijena}} KM</h3>
+  </div>
+
+  <div id="rezervacija-button">
+    <a (click)="napraviRezervaciju()" title="Potvrdi rezervaciju" class="btn btn-primary">Rezerviši</a>
+  </div>
+
+</div>

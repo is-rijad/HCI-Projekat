@@ -1,6 +1,6 @@
 export class BaseResponse {
   status: number;
-  message : string;
+  message: string;
 
   constructor() {
     this.status = 200;
