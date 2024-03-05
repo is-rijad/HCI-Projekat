@@ -1,7 +1,9 @@
-﻿using Backend.Data;
+﻿using System.Reflection.Metadata.Ecma335;
+using Backend.Data;
 using Backend.Data.Modeli;
 using Backend.Endpoints;
 using Backend.Endpoints.Rezervacije.NapraviRezervaciju;
+using Backend.Endpoints.Sobe.GetSobe;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Servisi
@@ -77,5 +79,7 @@ namespace Backend.Servisi
                 SobaAranzman = sobaAranzman
             };
         }
+
+        
     }
 }

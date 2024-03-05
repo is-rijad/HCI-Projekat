@@ -23,7 +23,14 @@ namespace Backend.Endpoints.Sobe.GetSobe
         [HttpPost]
         public override async Task<GetSobeRes> Akcija([FromBody] GetSobeReq req)
         {
-            var sveSobe = await _dbContext.Sobe.Select(s => s.Id).ToListAsync();
+            var listaSoba = await _dbContext.Sobe.ToListAsync();
+            var sveSobe = new List<int>();
+            foreach (var soba in listaSoba)
+            {
+                if (FiltrirajSobe(soba, req))
+                    sveSobe.Add(soba.Id);
+            }
+
             var sobe = new GetSobeRes();
             foreach (var soba in sveSobe)
             {
@@ -49,6 +56,13 @@ namespace Backend.Endpoints.Sobe.GetSobe
                     });
                 }
             }
+
+            if (req.FilterPoCijeni == 1)
+                sobe.Sobe = sobe.Sobe.OrderBy(s => s.Cijena).ToList();
+            else if (req.FilterPoCijeni == 2)
+                sobe.Sobe = sobe.Sobe.OrderByDescending(s => s.Cijena).ToList();
+
+
             if (sobe.Sobe.Count == 0)
             {
                 sobe.Status = 404;
@@ -58,44 +72,65 @@ namespace Backend.Endpoints.Sobe.GetSobe
             return sobe;
         }
 
-        private async Task<List<Soba>> GetDostupneSobe(GetSobeReq request)
+        private bool FiltrirajSobe(Soba soba, GetSobeReq req)
         {
-            var sobe = await _dbContext.Sobe.ToListAsync();
-            var zauzete = await _dbContext.ZauzeteSobe.Include(zs => zs.Soba).Where(zs => !DostupnaSoba(zs, request)).ToListAsync();
-            
-            var dostupneSobe = new List<Soba>();
-
-            foreach (var soba in sobe)
-            {
-                var isZauzeta = false;
-                foreach (var zauzeta in zauzete)
-                {
-                    if (soba.Id == zauzeta.SobaId)
-                    {
-                        isZauzeta = true; 
-                        break;
-                    }
-                }
-                if (!isZauzeta)
-                    dostupneSobe.Add(soba);
-            }
-            return dostupneSobe;
-        }
-
-    private bool DostupnaSoba(ZauzetaSoba soba, GetSobeReq request)
-        {
-            if (soba.DatumDolaska < request.DatumPrijave) {
-                if (soba.DatumOdlaska > request.DatumPrijave)
+            if (req.Balkon)
+                if (!soba.Balkon)
                     return false;
-
-            }
-
-            else if (soba.DatumDolaska > request.DatumPrijave)
+            if (req.Bazen)
+                if (!soba.Bazen)
+                    return false;
+            if (req.BesplatnoOtkazivanje)
+                if (!soba.BesplatnoOtkazivanje)
+                    return false;
+            if (req.DozvoljeniLjubimci)
+                if (!soba.DozvoljeniLjubimci)
+                    return false;
+            if (req.Klima)
+                if (!soba.Klima)
+                    return false;
+            if (req.Minibar)
+                if (!soba.Minibar)
+                    return false;
+            if (req.PrilagodjenInvalidima)
+                if (!soba.PrilagodjenInvalidima)
+                    return false;
+            if (req.Spa)
+                if (!soba.Spa)
+                    return false;
+            if (req.Teretana)
+                if (!soba.Teretana)
+                    return false;
+            if (req.AranzmanId != 0)
             {
-                if (soba.DatumDolaska < request.DatumOdjave)
+                var aranzman = soba.Aranzmani.Find(a => a.AranzmanId == req.AranzmanId);
+                if (aranzman == null)
                     return false;
             }
-            else return false;
+
+            if (req.BrojBracnihKreveta != 0)
+            {
+                var krevet =
+                    soba.Kreveti.Find(a => a.Krevet?.Tip == "Bračni" && a.BrojKreveta == req.BrojBracnihKreveta);
+                if (krevet == null)
+                    return false;
+            }
+
+            if (req.BrojObicnihKreveta != 0)
+            {
+                var krevet =
+                    soba.Kreveti.Find(a => a.Krevet?.Tip == "Obični" && a.BrojKreveta == req.BrojObicnihKreveta);
+                if (krevet == null)
+                    return false;
+            }
+
+            if (req.BrojPomocnihKreveta != 0)
+            {
+                var krevet = soba.Kreveti.Find(a =>
+                    a.Krevet?.Tip == "Pomoćni" && a.BrojKreveta == req.BrojPomocnihKreveta);
+                if (krevet == null)
+                    return false;
+            }
 
             return true;
         }

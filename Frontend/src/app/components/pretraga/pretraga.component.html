@@ -27,19 +27,18 @@
         <label for="besplatno-otkazivanje" class="form-check-label">Besplatno otkazivanje</label>
       </div>
     </div>
-    <div *ngIf="filtriranjeUpaljeno" id="lijevi-panel-filtriranje">
-      <h5 class="mb-2">Opšti filteri</h5>
+    <div id="lijevi-panel-filtriranje">
+      <div style="display: flex; justify-content: space-between; align-items: center">
+        <h5 class="mb-2">Opšti filteri</h5>
+        <a (click)="ocistiFiltere()" title="Očisti sve filtere" class="btn btn-primary">Očisti filtere</a>
+      </div>
       <label for="filter-aranzman" class="form-label">Po aranžmanu:</label>
-      <select id="filter-aranzman" class="form-select" title="Izaberite filter po aranžmanu.">
+      <select (input)="dohvatiSobe()"   id="filter-aranzman" class="form-select" title="Izaberite filter po aranžmanu.">
         <option value="0" selected>Bez filtera</option>
-        <option value="1">All-inclusive</option>
-        <option value="2">Bez aranžmana</option>
-        <option value="3">Doručak</option>
-        <option value="4">Polu-pansion</option>
-        <option value="5">Puni-pansion</option>
+        <option *ngFor="let aranzman of aranzmani" value="{{aranzman.id }}">{{aranzman.nazivAranzmana}}</option>
       </select>
       <label for="filter-po-cijeni" class="form-label">Po cijeni:</label>
-      <select id="filter-po-cijeni" class="form-select" title="Izaberite filter po cijeni.">
+      <select (input)="dohvatiSobe()"  id="filter-po-cijeni" class="form-select" title="Izaberite filter po cijeni.">
         <option value="0" selected>Bez filtera</option>
         <option value="1">Najnižoj</option>
         <option value="2">Najvišoj</option>
@@ -47,54 +46,54 @@
 
       <h5 class="mb-2 mt-2">Kreveti</h5>
       <label for="broj-bracnih-kreveta" class="form-label">Broj bračnih kreveta:</label>
-      <input type="number" class="form-control form-control-number" id="broj-bracnih-kreveta"
+      <input (input)="dohvatiSobe()"  [(ngModel)]="brojBracnihKreveta" type="number" class="form-control form-control-number" id="broj-bracnih-kreveta"
              title="Izaberite broj bračnih kreveta.">
       <label for="broj-obicnih-kreveta" class="form-label">Broj običnih kreveta:</label>
-      <input type="number" class="form-control form-control-number" id="broj-obicnih-kreveta"
+      <input (input)="dohvatiSobe()"  [(ngModel)]="brojObicnihKreveta" type="number" class="form-control form-control-number" id="broj-obicnih-kreveta"
              title="Izaberite broj običnih kreveta.">
       <label for="broj-pomocnih-kreveta" class="form-label">Broj pomoćnih kreveta:</label>
-      <input type="number" class="form-control form-control-number" id="broj-pomocnih-kreveta"
+      <input (input)="dohvatiSobe()"  [(ngModel)]="brojDjecjihKreveta" type="number" class="form-control form-control-number" id="broj-pomocnih-kreveta"
              title="Izaberite broj pomoćnih kreveta.">
 
       <h5 class="mb-2 mt-2">Ostali filteri</h5>
       <div style="margin-bottom: 5px">
-        <input type="checkbox" class="form-check form-check-input form-check-inline" id="filter-besplatno-otkazivanje"
+        <input (input)="dohvatiSobe()"  [(ngModel)]="besplatnoOtkazivanje" type="checkbox" class="form-check form-check-input form-check-inline" id="filter-besplatno-otkazivanje"
                title="Da li želite besplatno otkazivanje?">
         <label for="filter-besplatno-otkazivanje" class="form-check-label">Besplatno otkazivanje</label>
       </div>
       <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 5px">
         <div>
-          <input type="checkbox" class="form-check form-check-input form-check-inline" id="klima"
+          <input (input)="dohvatiSobe()"  [(ngModel)]="klima" type="checkbox" class="form-check form-check-input form-check-inline" id="klima"
                  title="Da li želite sobu s klimom?">
           <label for="klima" class="form-check-label">Klima</label>
         </div>
         <div>
-          <input type="checkbox" class="form-check form-check-input form-check-inline" id="teretana"
+          <input (input)="dohvatiSobe()"  [(ngModel)]="teretana" type="checkbox" class="form-check form-check-input form-check-inline" id="teretana"
                  title="Da li želite sobu s pristupom teretani?">
           <label for="teretana" class="form-check-label">Teretana</label>
         </div>
         <div>
-          <input type="checkbox" class="form-check form-check-input form-check-inline" id="bazen"
+          <input (input)="dohvatiSobe()"  [(ngModel)]="bazen" type="checkbox" class="form-check form-check-input form-check-inline" id="bazen"
                  title="Da li želite sobu s pristupom bazenu?">
           <label for="bazen" class="form-check-label">Bazen</label>
         </div>
         <div>
-          <input type="checkbox" class="form-check form-check-input form-check-inline" id="spa"
+          <input (input)="dohvatiSobe()"  [(ngModel)]="spa" type="checkbox" class="form-check form-check-input form-check-inline" id="spa"
                  title="Da li želite sobu s pristupom spa centru?">
           <label for="spa" class="form-check-label">Spa</label>
         </div>
         <div>
-          <input type="checkbox" class="form-check form-check-input form-check-inline" id="balkon"
+          <input (input)="dohvatiSobe()"  [(ngModel)]="balkon" type="checkbox" class="form-check form-check-input form-check-inline" id="balkon"
                  title="Da li želite sobu s pristupom balkonu?">
           <label for="balkon" class="form-check-label">Balkon</label>
         </div>
         <div>
-          <input type="checkbox" class="form-check form-check-input form-check-inline" id="dozvoljeni-ljubimci"
+          <input (input)="dohvatiSobe()"  [(ngModel)]="dozvoljeniLjubimci" type="checkbox" class="form-check form-check-input form-check-inline" id="dozvoljeni-ljubimci"
                  title="Da li želite sobu u kojoj su dozvoljeni ljubimci?">
           <label for="dozvoljeni-ljubimci" class="form-check-label">Dozvoljeni ljubimci</label>
         </div>
         <div>
-          <input type="checkbox" class="form-check form-check-input form-check-inline" id="prilagodjeno-invalidima"
+          <input (input)="dohvatiSobe()"  [(ngModel)]="prilagodjenInvalidima" type="checkbox" class="form-check form-check-input form-check-inline" id="prilagodjeno-invalidima"
                  title="Da li želite sobu koja je prilagođena invalidima?">
           <label for="prilagodjeno-invalidima" class="form-check-label">Prilagođeno invalidima</label>
         </div>

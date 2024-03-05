@@ -4,13 +4,19 @@ export interface PretragaEndpointReq {
   brojOdraslih: number;
   brojDjece: number;
 
-  // besplatnoOtkazivanje: boolean | null;
-  // klima: boolean | null;
-  // bazen: boolean | null;
-  // spa: boolean | null;
-  // prilagodjenInvalidima: boolean | null;
-  // teretana: boolean | null;
-  // dozvoljeniLjubimci: boolean | null;
-  // minibar: boolean | null;
-  // balkon: boolean | null;
+  aranzmanId: number;
+  brojBracnihKreveta: number;
+  brojObicnihKreveta: number;
+  brojDjecjihKreveta: number;
+  filterPoCijeni: number;
+
+  besplatnoOtkazivanje: boolean;
+  klima: boolean;
+  bazen: boolean;
+  spa: boolean;
+  prilagodjenInvalidima: boolean;
+  teretana: boolean;
+  dozvoljeniLjubimci: boolean;
+  minibar: boolean;
+  balkon: boolean;
 }

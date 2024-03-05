@@ -16,7 +16,7 @@ namespace Backend.Endpoints.Aranzmani.GetAll
         [HttpGet]
         public override async Task<GetAllAranzmaneRes> Akcija([FromQuery] NoRequest req)
         {
-            var aranzmani = await _dbContext.Aranzmani.ToListAsync();
+            var aranzmani = await _dbContext.Aranzmani.OrderBy(a => a.NazivAranzmana).ToListAsync();
             var response = new GetAllAranzmaneRes();
             if (aranzmani.Count == 0)
             {

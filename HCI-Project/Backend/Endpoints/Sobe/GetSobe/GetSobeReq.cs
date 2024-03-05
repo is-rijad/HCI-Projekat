@@ -17,5 +17,11 @@
         public bool DozvoljeniLjubimci { get; set; }
         public bool Minibar { get; set; }
         public bool Balkon { get; set; }
+
+        public int FilterPoCijeni { get; set; }
+        public int AranzmanId { get; set; }
+        public int BrojBracnihKreveta { get; set; }
+        public int BrojObicnihKreveta { get; set; }
+        public int BrojPomocnihKreveta { get; set; }
     }
 }
