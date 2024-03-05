@@ -1,5 +1,7 @@
 ﻿using Backend.Data;
 using Backend.Data.Modeli;
+using Backend.Endpoints.Rezervacije.NapraviRezervaciju;
+using Backend.Servisi;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,26 +11,44 @@ namespace Backend.Endpoints.Sobe.GetSobe
     public class GetSobeEndpoint : BaseEndpoint<GetSobeReq, GetSobeRes>
     {
         private readonly HCIDBContext _dbContext;
+        private readonly ProvjeriRezervaciju _provjeriRezervaciju;
 
-        public GetSobeEndpoint(HCIDBContext context)
+        public GetSobeEndpoint(HCIDBContext context,
+            ProvjeriRezervaciju provjeriRezervaciju)
         {
             _dbContext = context;
+            _provjeriRezervaciju = provjeriRezervaciju;
         }
 
         [HttpPost]
         public override async Task<GetSobeRes> Akcija([FromBody] GetSobeReq req)
         {
-            var sobe = new GetSobeRes()
+            var sveSobe = await _dbContext.Sobe.Select(s => s.Id).ToListAsync();
+            var sobe = new GetSobeRes();
+            foreach (var soba in sveSobe)
             {
-                Sobe = _dbContext.Sobe.Select((soba) => new PregledSobeRes()
+                var rezultat = await _provjeriRezervaciju.Provjeri(new ProvjeriRezervacijuEndpointReq()
                 {
-                    Id = soba.Id,
-                    BrojGostiju = soba.BrojGostiju,
-                    NazivSobe = soba.NazivSobe,
-                    Opis = soba.Opis,
-                }).ToList()
-            };
-
+                    SobaId = soba,
+                    BrojDjece = req.BrojDjece,
+                    BrojOsoba = req.BrojOdraslih,
+                    DatumDolaska = req.DatumPrijave,
+                    DatumOdlaska = req.DatumOdjave,
+                    SobaAranzmanId = null
+                });
+                if (rezultat is ProvjeriRezervacijuEndpointRes)
+                {
+                    var rezultatRes = rezultat as ProvjeriRezervacijuEndpointRes;
+                    sobe.Sobe.Add(new PregledSobeRes()
+                    {
+                        Id = rezultatRes!.Soba!.Id,
+                        BrojGostiju = req.BrojOdraslih,
+                        Cijena = rezultatRes.DetaljiRezervacije!.Cijena,
+                        NazivSobe = rezultatRes.Soba.NazivSobe,
+                        Opis = rezultatRes.Soba.Opis
+                    });
+                }
+            }
             if (sobe.Sobe.Count == 0)
             {
                 sobe.Status = 404;

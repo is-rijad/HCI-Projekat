@@ -15,7 +15,7 @@ export class Navigator {
   }
 
 
-  async navigiraj(url: string, params: any[] = []) {
+  async navigiraj(url: string, params: any[] = [], extras:any = {}) {
     Navigator.trenutniIdSobe = params[0]
     if (params[0] != -1) {
       let urlNiz: any[] = [];
@@ -23,7 +23,7 @@ export class Navigator {
       for (let i of params) {
         urlNiz.push(i);
       }
-      await this.router.navigate(urlNiz);
+      await this.router.navigate(urlNiz, {state: extras});
     }
   }
 

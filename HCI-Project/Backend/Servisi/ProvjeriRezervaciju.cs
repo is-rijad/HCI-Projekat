@@ -43,15 +43,19 @@ namespace Backend.Servisi
             }
 
 
-            var baseCijena = (await _dbContext.Cijene.FirstOrDefaultAsync(c => c.BrojOsoba == req.BrojOsoba))?.CijenaSobe;
+            var baseCijena = (await _dbContext.Cijene.FirstOrDefaultAsync(c => c.SobaId == req.SobaId && c.BrojOsoba == req.BrojOsoba))?.CijenaSobe;
             if (baseCijena == null)
                 return new BaseResponse() { Message = "Soba nije dostupna za ovaj broj osoba!", Status = 500 };
 
-            var sobaAranzman = await _dbContext.SobeAranzmani.FirstOrDefaultAsync(s => s.Id == req.SobaAranzmanId);
+            var doplata = 0.0f;
+            SobaAranzman? sobaAranzman = null;
+            if (req.SobaAranzmanId != null) {
+                sobaAranzman = await _dbContext.SobeAranzmani.FirstOrDefaultAsync(s => s.Id == req.SobaAranzmanId);
 
-            if (sobaAranzman == null)
-                return new BaseResponse() { Message = "Soba nije dostupna za ovaj aranžman!", Status = 500 };
-            var doplata = sobaAranzman.Doplata;
+                if (sobaAranzman == null)
+                    return new BaseResponse() { Message = "Soba nije dostupna za ovaj aranžman!", Status = 500 };
+                doplata = sobaAranzman.Doplata;
+            }
 
             var cijena = (baseCijena * (1 + doplata / 100) + req.BrojDjece * soba.CijenaZaDjecu) *
                          (req.DatumOdlaska - req.DatumDolaska).Days;
@@ -61,7 +65,7 @@ namespace Backend.Servisi
                 {
                     SobaId = req.SobaId,
                     GostId = 9, //IZMJENA
-                    SobaAranzmanId = req.SobaAranzmanId,
+                    SobaAranzmanId = (req.SobaAranzmanId is not null) ? req.SobaAranzmanId!.Value : -1,
                     BrojOsoba = req.BrojOsoba,
                     BrojDjece = req.BrojDjece,
                     Cijena = cijena!.Value,
@@ -72,26 +76,6 @@ namespace Backend.Servisi
                 Soba = soba,
                 SobaAranzman = sobaAranzman
             };
-        }
-        public async Task<bool> Provjeri(Soba soba, NapraviRezervacijuEndpointReq req)
-        {
-
-            var rezervacije = await _dbContext.ZauzeteSobe.Where(s => s.SobaId == req.SobaId && s.DatumOdlaska.Date >= DateTime.Today).OrderBy(s => s.DatumDolaska).ThenBy(s => s.DatumOdlaska).ToListAsync();
-
-            foreach (var rezervacija in rezervacije) {
-                if (rezervacija.DatumDolaska.Date >= req.DatumOdlaska.Date)
-                    break;
-                if (req.DatumDolaska.Date > rezervacija.DatumDolaska.Date)
-                    if (req.DatumDolaska.Date < rezervacija.DatumOdlaska.Date)
-                        return false;
-                if (req.DatumDolaska.Date < rezervacija.DatumDolaska.Date)
-                    if (req.DatumOdlaska.Date > rezervacija.DatumDolaska.Date)
-                        return false;
-                if (req.DatumDolaska.Date == rezervacija.DatumDolaska.Date)
-                    return false;
-            }
-
-            return true;
         }
     }
 }

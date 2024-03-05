@@ -4,25 +4,25 @@
       <a class="nav-link lijevi-panel-button">Pretraga</a>
       <a class="nav-link lijevi-panel-button">Filtriranje</a>
     </nav>
-    <div *ngIf="!filtriranjeUpaljeno" id="lijevi-panel-pretraga">
+    <div id="lijevi-panel-pretraga">
       <label for="datum-prijave" class="form-label">Datum prijave:</label>
-      <input type="date" [(ngModel)]="datumPrijave" class="form-control form-control-date mb-2" id="datum-prijave"
+      <input (input)="dohvatiSobe()" type="date" class="form-control form-control-date mb-2" id="datum-prijave"
              title="Izaberite datum prijave.">
 
       <label for="datum-odjave" class="form-label">Datum odjave:</label>
-      <input type="date" [(ngModel)]="datumOdjave" class="form-control form-control-date mb-2" id="datum-odjave"
+      <input (input)="dohvatiSobe()" type="date" class="form-control form-control-date mb-2" id="datum-odjave"
              title="Izaberite datum odjave.">
 
       <label for="broj-odraslih" class="form-label">Broj odraslih:</label>
-      <input type="number" [(ngModel)]="brojOdraslih" class="form-control form-control-number mb-2" id="broj-odraslih"
+      <input  (input)="dohvatiSobe()" type="number" [(ngModel)]="brojOdraslih" class="form-control form-control-number mb-2" id="broj-odraslih"
              title="Izaberite broj odraslih osoba.">
 
       <label for="broj-djece" class="form-label">Broj djece:</label>
-      <input type="number" [(ngModel)]="brojDjece" class="form-control form-control-number mb-2" id="broj-djece"
+      <input (input)="dohvatiSobe()" type="number" [(ngModel)]="brojDjece" class="form-control form-control-number mb-2" id="broj-djece"
              title="Izaberite broj djece.">
 
       <div style="display: flex; align-items: center">
-        <input type="checkbox" [(ngModel)]="besplatnoOtkazivanje" class="form-check form-check-input form-check-inline"
+        <input (input)="dohvatiSobe()" type="checkbox" [(ngModel)]="besplatnoOtkazivanje" class="form-check form-check-input form-check-inline"
                id="besplatno-otkazivanje" title="Izaberite broj djece.">
         <label for="besplatno-otkazivanje" class="form-check-label">Besplatno otkazivanje</label>
       </div>
@@ -102,7 +102,7 @@
     </div>
   </div>
   <div title="Pogledaj detalje o sobi" id="desni-panel">
-    <div *ngFor="let soba of dostupneSobe" (click)="otvoriDetalje(soba.id)" class="soba-item">
+    <div *ngFor="let soba of dostupneSobe" (click)="otvoriDetalje(soba.id, {datumPrijave: datumPrijave, datumOdjave:datumOdjave, brojOdraslih:brojOdraslih, brojDjece:brojDjece})" class="soba-item">
       <div class="soba-slika">
         <img ngSrc="{{Slike.getRandomSliku()}}" class="soba-slika-slika" width="220" height="150" alt="">
       </div>
@@ -118,7 +118,7 @@
             <h6>{{brojDjece}}</h6>
             <h6> djece</h6>
             <br>
-            <h4>54</h4>
+            <h4>{{soba.cijena}}</h4>
             <h4> KM</h4>
           </div>
         </div>

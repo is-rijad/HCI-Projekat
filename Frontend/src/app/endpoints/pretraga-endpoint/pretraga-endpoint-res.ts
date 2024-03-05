@@ -7,7 +7,7 @@ export class PretragaEndpointRes extends BaseResponse {
 export interface PretragaEndpointResSoba {
   id: number,
   nazivSobe: string,
-  slika: string,
+  cijena: number,
   brojGostiju: number,
   opis: string
 }

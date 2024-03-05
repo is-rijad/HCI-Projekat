@@ -42,6 +42,7 @@ nav {
 
 #lijevi-panel-pretraga, #lijevi-panel-filtriranje {
   padding: 5px;
+  overflow-y: scroll;
 }
 
 #desni-panel {

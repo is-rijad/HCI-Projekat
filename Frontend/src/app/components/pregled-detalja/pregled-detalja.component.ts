@@ -68,6 +68,16 @@ export class PregledDetaljaComponent implements OnInit {
               protected handlerSlika: HandlerSlika,
               private provjeriRezervacijuEndpoint: ProvjeriRezervacijuEndpoint,
               private navigator: Navigator) {
+    let podaci = this.navigator.router.getCurrentNavigation()?.extras.state;
+    if(podaci == undefined) {
+      history.back();
+    }
+    else {
+      this.datumPrijave = podaci['datumPrijave']
+      this.datumOdjave = podaci['datumOdjave']
+      this.brojOdraslih = podaci['brojOdraslih']
+      this.brojDjece = podaci['brojDjece']
+    }
   }
 
   ngOnInit(): void {
@@ -83,8 +93,8 @@ export class PregledDetaljaComponent implements OnInit {
       next: res => {
         this.soba = res.soba;
       },
-      complete: () => {
-        this.cijeneUcitane();
+      complete: async () => {
+        await this.cijeneUcitane();
         let aranzmaniSelect = document.getElementById("aranzman");
         aranzmaniSelect!.innerHTML = "";
         for (let aranzmanSobaModel of this.soba.aranzmani) {
@@ -98,6 +108,7 @@ export class PregledDetaljaComponent implements OnInit {
         }
         aranzmaniSelect!.innerHTML += `
                 <option value='0'>Bez aranžmana</option>`
+        this.izracunajCijenu();
       }
     })
 
