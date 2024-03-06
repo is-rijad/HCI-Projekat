@@ -63,7 +63,7 @@ export class PretragaComponent implements OnInit {
               private navigator: Navigator,
               private getAllAranzmaneEndpoint: GetAllAranzmaneEndpoint) {
     this.podaci = (this.navigator.router.getCurrentNavigation()?.extras.state) as PretragaEndpointReq
-    if (Object.keys(this.podaci).length == 0) {
+    if (this.podaci == undefined || Object.keys(this.podaci).length == 0) {
       this.podaci = {
         aranzmanId: 0,
         balkon: false,

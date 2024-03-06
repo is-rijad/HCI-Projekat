@@ -77,11 +77,11 @@ export class ModifikacijaDetaljaComponent implements OnInit {
               protected navigator: Navigator,
               protected handlerSlika: HandlerSlika,
               protected modal: Modal) {
+
   }
 
   ngOnInit(): void {
     this.soba.brojSlika = Slike.nizSlika.length;
-
 
     if (Navigator.trenutniIdSobe != 0) {
       this.otvoriDetaljeEndpoint.Akcija().subscribe({

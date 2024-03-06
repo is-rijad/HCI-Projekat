@@ -4,6 +4,14 @@ body {
   overflow-y: hidden;
 }
 
+label, select, a, .form-check-input, input{
+  cursor: pointer;
+}
+
+textarea, .form-control-number {
+  cursor: text;
+}
+
 html, body {
   height: 100%;
 }

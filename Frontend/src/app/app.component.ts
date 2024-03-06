@@ -14,16 +14,12 @@ import {Modal} from "./modal";
   styleUrl: './app.component.css',
   providers: []
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Hotel Leo';
   protected readonly Navigator = Navigator;
   protected readonly Alert = Alert;
 
   constructor(public navigator: Navigator,
               protected modal: Modal) {
-  }
-
-  async ngOnInit() {
-    await this.navigator.navigiraj("moje-rezervacije")
   }
 }

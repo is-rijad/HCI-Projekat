@@ -36,8 +36,8 @@ export class PotvrdaRezervacijeComponent {
 
   constructor(private navigator: Navigator,
               private napraviRezervacijuEndpoint: NapraviRezervacijuEndpoint) {
-    this.podaci = this.navigator.router.getCurrentNavigation()?.extras.state as ProvjeriRezervacijuEndpointRes;
-    if (this.podaci == null) {
+    this.podaci = this.navigator.podaci as ProvjeriRezervacijuEndpointRes;
+    if (this.podaci == null || Object.keys(this.podaci).length == 0) {
       history.back();
     }
   }
@@ -55,7 +55,10 @@ export class PotvrdaRezervacijeComponent {
       next: res => {
         if (res.status == 200) {
           Alert.alert = new Alert(TipAlerta.success, res.message)
-          setTimeout(() => this.navigator.navigiraj('pocetna'), 2500);
+          setTimeout(() => {
+            this.navigator.podaci = null;
+            this.navigator.navigiraj('pocetna')
+          }, 2500);
         } else
           Alert.alert = new Alert(TipAlerta.error, res.message)
       },
