@@ -67,6 +67,7 @@ export class ModifikacijaDetaljaComponent implements OnInit {
   protected sviAranzmaniUcitani: boolean = false;
   protected sveCijeneUcitane: boolean = false;
   protected autoCijena: boolean = true;
+  protected readonly Slike = Slike;
 
   constructor(private modifikacijaEndpoint: ModifikacijaEndpoint,
               private otvoriDetaljeEndpoint: OtvoriDetaljeEndpoint,
@@ -77,7 +78,6 @@ export class ModifikacijaDetaljaComponent implements OnInit {
               protected handlerSlika: HandlerSlika,
               protected modal: Modal) {
   }
-
 
   ngOnInit(): void {
     this.soba.brojSlika = Slike.nizSlika.length;
@@ -104,27 +104,6 @@ export class ModifikacijaDetaljaComponent implements OnInit {
       complete: () => this.sviKrevetiUcitani = true
     })
     this.dohvatiCijene();
-  }
-
-  private async aranzmaniUcitani() {
-    this.soba.aranzmani = this.soba.aranzmani.sort((a, b) => b.doplata - a.doplata)
-    while (document.getElementsByClassName("aranzman-check").length < this.soba.aranzmani.length) {
-      await new Promise(r => setTimeout(r, 500));
-    }
-    for (let i = 0; i < this.soba.aranzmani.length; i++) {
-      let aranzmanCheck = document.getElementById(`aranzman-${this.soba.aranzmani[i].aranzmanId}`) as HTMLInputElement;
-      let aranzmanDoplata = document.getElementById(`doplata-${this.soba.aranzmani[i].aranzmanId}`) as HTMLInputElement;
-
-      if (this.soba.aranzmani[i].doplata > 0)
-        aranzmanCheck.checked = true;
-      else
-        aranzmanDoplata.disabled = true;
-
-      aranzmanCheck?.addEventListener("click", (event) => {
-        aranzmanDoplata.disabled = !aranzmanDoplata.disabled;
-      })
-    }
-    this.sviAranzmaniUcitani = true;
   }
 
   async spremiPromjene() {
@@ -178,5 +157,24 @@ export class ModifikacijaDetaljaComponent implements OnInit {
     })
   }
 
-  protected readonly Slike = Slike;
+  private async aranzmaniUcitani() {
+    this.soba.aranzmani = this.soba.aranzmani.sort((a, b) => b.doplata - a.doplata)
+    while (document.getElementsByClassName("aranzman-check").length < this.soba.aranzmani.length) {
+      await new Promise(r => setTimeout(r, 500));
+    }
+    for (let i = 0; i < this.soba.aranzmani.length; i++) {
+      let aranzmanCheck = document.getElementById(`aranzman-${this.soba.aranzmani[i].aranzmanId}`) as HTMLInputElement;
+      let aranzmanDoplata = document.getElementById(`doplata-${this.soba.aranzmani[i].aranzmanId}`) as HTMLInputElement;
+
+      if (this.soba.aranzmani[i].doplata > 0)
+        aranzmanCheck.checked = true;
+      else
+        aranzmanDoplata.disabled = true;
+
+      aranzmanCheck?.addEventListener("click", (event) => {
+        aranzmanDoplata.disabled = !aranzmanDoplata.disabled;
+      })
+    }
+    this.sviAranzmaniUcitani = true;
+  }
 }

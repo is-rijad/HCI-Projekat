@@ -1,51 +1,51 @@
 <header>
   <div id="informacije">
-    <img title="Idi na pocetnu stranicu" (click)="navigator.navigiraj('pocetna')" src="assets/logo.png" width="50">
-    <h1 title="Idi na pocetnu stranicu" (click)="navigator.navigiraj('pocetna')">Hotel Leo</h1>
+    <img (click)="navigator.navigiraj('pocetna')" src="assets/logo.png" title="Idi na pocetnu stranicu" width="50">
+    <h1 (click)="navigator.navigiraj('pocetna')" title="Idi na pocetnu stranicu">Hotel Leo</h1>
   </div>
   <nav class="nav nav-pills nav-fill">
-    <a title="Idi na početnu stranicu" (click)="navigator.navigiraj('pocetna')" class="btn nav-link pocetna">Početna</a>
-    <a title="Idi na pretragu" (click)="navigator.navigiraj('pretraga')" class=" btn nav-link pretraga">Pretraga</a>
-    <a title="Idi na postavke" class="btn nav-link">Postavke</a>
-    <a title="Odjavi se" class="btn nav-link">Odjava</a>
+    <a (click)="navigator.navigiraj('pocetna')" class="btn nav-link pocetna" title="Idi na početnu stranicu">Početna</a>
+    <a (click)="navigator.navigiraj('pretraga')" class=" btn nav-link pretraga" title="Idi na pretragu">Pretraga</a>
+    <a class="btn nav-link" title="Idi na postavke">Postavke</a>
+    <a class="btn nav-link" title="Odjavi se">Odjava</a>
   </nav>
   <div id="breadcrumb">
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';">
       <ol class="breadcrumb">
-        <li title="Idi na početnu stranicu" (click)="navigator.navigiraj('pocetna')" class="breadcrumb-item pocetna">
+        <li (click)="navigator.navigiraj('pocetna')" class="breadcrumb-item pocetna" title="Idi na početnu stranicu">
           Početna
         </li>
-        <li title="Idi na pretragu" (click)="navigator.navigiraj('pretraga')" class="breadcrumb-item pretraga">
+        <li (click)="navigator.navigiraj('pretraga')" class="breadcrumb-item pretraga" title="Idi na pretragu">
           Pretraga
         </li>
-        <li title="Idi na modifikaciju" (click)="navigator.navigiraj('modifikacija', [Navigator.trenutniIdSobe])"
-            class="breadcrumb-item modifikacija">Modifikacija detalja
+        <li (click)="navigator.navigiraj('modifikacija', [Navigator.trenutniIdSobe])" class="breadcrumb-item modifikacija"
+            title="Idi na modifikaciju">Modifikacija detalja
         </li>
-        <li title="Idi na potvrdu rezervacije" (click)="navigator.navigiraj('potvrda')" class="breadcrumb-item potvrda">
+        <li (click)="navigator.navigiraj('potvrda')" class="breadcrumb-item potvrda" title="Idi na potvrdu rezervacije">
           Potvrda
         </li>
       </ol>
     </nav>
     <div id="dodaj-sobu">
-      <a (click)="navigator.navigiraj('modifikacija', [0])" title="Dodajte novu sobu" class="btn btn-primary">Dodaj
+      <a (click)="navigator.navigiraj('modifikacija', [0])" class="btn btn-primary" title="Dodajte novu sobu">Dodaj
         sobu</a>
     </div>
   </div>
 </header>
-<div *ngIf="Alert.alert.aktivan" id="alert" class="alert alert-{{Alert.alert.tip}}">
+<div *ngIf="Alert.alert.aktivan" class="alert alert-{{Alert.alert.tip}}" id="alert">
   {{Alert.alert.sadrzaj}}
 </div>
-<div *ngIf="modal.aktivan" id="modal-div" class="modal" tabindex="-1">
+<div *ngIf="modal.aktivan" class="modal" id="modal-div" tabindex="-1">
   <div class="modal-content">
     <div class="modal-header">
-      <button title="Izađi" (click)="modal.aktivan = !modal.aktivan" type="button" class="btn-close"></button>
+      <button (click)="modal.aktivan = !modal.aktivan" class="btn-close" title="Izađi" type="button"></button>
     </div>
     <div class="modal-body">
       {{modal.sadrzaj}}
     </div>
     <div class="modal-footer">
-      <button title="Izađi" (click)="modal.otkazi()" type="button" class="btn btn-danger">Izlaz</button>
-      <button title="Potvrdi" (click)="modal.potvrdi()" type="button" class="btn btn-primary">Potvrdi</button>
+      <button (click)="modal.otkazi()" class="btn btn-danger" title="Izađi" type="button">Izlaz</button>
+      <button (click)="modal.potvrdi()" class="btn btn-primary" title="Potvrdi" type="button">Potvrdi</button>
     </div>
   </div>
 </div>

@@ -63,16 +63,16 @@ export class PregledDetaljaComponent implements OnInit {
   datumOdjave: Date = this.datumSutra;
   datumPrijaveElement: any;
   datumOdjaveElement: any;
+  protected readonly Slike = Slike;
 
   constructor(private otvoriDetaljeEndpoint: OtvoriDetaljeEndpoint,
               protected handlerSlika: HandlerSlika,
               private provjeriRezervacijuEndpoint: ProvjeriRezervacijuEndpoint,
               private navigator: Navigator) {
     let podaci = this.navigator.router.getCurrentNavigation()?.extras.state;
-    if(podaci == undefined) {
+    if (podaci == undefined) {
       history.back();
-    }
-    else {
+    } else {
       this.datumPrijave = podaci['datumPrijave']
       this.datumOdjave = podaci['datumOdjave']
       this.brojOdraslih = podaci['brojOdraslih']
@@ -126,6 +126,32 @@ export class PregledDetaljaComponent implements OnInit {
     })
   }
 
+  datediff(first: number, second: number) {
+    return Math.round((second - first) / (1000 * 60 * 60 * 24));
+  }
+
+  provjeriRezervaciju() {
+    let req: NapraviRezervacijuEndpointReq = {
+      brojDjece: this.brojDjece,
+      brojOsoba: this.brojOdraslih,
+      datumDolaska: this.datumPrijave,
+      datumOdlaska: this.datumOdjave,
+      sobaAranzmanId: this.aranzman?.id!,
+      sobaId: this.soba.id
+    }
+    this.provjeriRezervacijuEndpoint.Akcija(req).subscribe({
+      next: async res => {
+        if (res.status == 200) {
+          await this.navigator.navigirajSPodacima('potvrda', res)
+        } else
+          Alert.alert = new Alert(TipAlerta.error, res.message)
+      },
+      error: err => {
+        Alert.alert = new Alert(TipAlerta.error, Konstante.greskaKomunikacija)
+      }
+    })
+  }
+
   protected izracunajCijenu() {
     let aranzmanId = Number((document.getElementById("aranzman") as HTMLSelectElement).value)
     this.aranzman = this.soba.aranzmani.find(a => a.id == aranzmanId);
@@ -154,38 +180,10 @@ export class PregledDetaljaComponent implements OnInit {
       this.cijenaSobe = 0
   }
 
-  datediff(first: number, second: number) {
-    return Math.round((second - first) / (1000 * 60 * 60 * 24));
-  }
-
   private async cijeneUcitane() {
     while (this.soba.cijene.length < this.soba.brojGostiju) {
       await new Promise(() => setTimeout(() => delay(2000)))
     }
     this.izracunajCijenu();
-  }
-
-  protected readonly Slike = Slike;
-
-  provjeriRezervaciju() {
-    let req: NapraviRezervacijuEndpointReq = {
-      brojDjece: this.brojDjece,
-      brojOsoba: this.brojOdraslih,
-      datumDolaska: this.datumPrijave,
-      datumOdlaska: this.datumOdjave,
-      sobaAranzmanId: this.aranzman?.id!,
-      sobaId: this.soba.id
-    }
-    this.provjeriRezervacijuEndpoint.Akcija(req).subscribe({
-      next: async res => {
-        if (res.status == 200) {
-          await this.navigator.navigirajSPodacima('potvrda', res)
-        } else
-          Alert.alert = new Alert(TipAlerta.error, res.message)
-      },
-      error: err => {
-        Alert.alert = new Alert(TipAlerta.error, Konstante.greskaKomunikacija)
-      }
-    })
   }
 }

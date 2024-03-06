@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {NavigationEnd, NavigationStart, Router, RouterEvent} from "@angular/router";
-import {PretragaEndpointReq} from "./endpoints/pretraga-endpoint/pretraga-endpoint-req";
 
 @Injectable({providedIn: "root"})
 export class Navigator {
@@ -13,14 +12,14 @@ export class Navigator {
       if (event instanceof NavigationEnd) {
         this.handlerKartica((event as RouterEvent).url);
       }
-      if(event instanceof NavigationStart) {
+      if (event instanceof NavigationStart) {
         this.router.getCurrentNavigation()!.extras.state = this.podaci;
       }
     })
   }
 
 
-  async navigiraj(url: string, params: any[] = [], extras:any = {}) {
+  async navigiraj(url: string, params: any[] = [], extras: any = {}) {
     Navigator.trenutniIdSobe = params[0]
     if (params[0] != -1) {
       let urlNiz: any[] = [];

@@ -1,12 +1,4 @@
-import {
-  AfterContentInit,
-  AfterViewInit, ApplicationRef,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PretragaEndpointResSoba} from "../../endpoints/pretraga-endpoint/pretraga-endpoint-res";
 import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {FormsModule} from "@angular/forms";
@@ -43,29 +35,9 @@ export class PretragaComponent implements OnInit {
 
   datumDanas = new Date();
   datumSutra = new Date(new Date().setDate(this.datumDanas.getDate() + 1));
-  datumPrijaveElement:any;
-  datumOdjaveElement:any;
-  // datumPrijave: Date =  this.datumDanas; this.datumDanas;
-  // datumOdjave: Date =  this.datumSutra;this.datumSutra;
-  // brojOdraslih: number = 1;
-  // brojDjece: number = 0;
-  //
-  // besplatnoOtkazivanje: boolean = false;
-  // klima: boolean = false;
-  // bazen: boolean = false;
-  // spa: boolean = false;
-  // prilagodjenInvalidima: boolean = false;
-  // teretana: boolean = false;
-  // dozvoljeniLjubimci: boolean = false;
-  // minibar: boolean = false;
-  // balkon: boolean = false;
-  // datumPrijaveElement: any;
-  // datumOdjaveElement: any;
-  // brojBracnihKreveta: number = 0;
-  // brojObicnihKreveta: number = 0;
-  // brojDjecjihKreveta: number = 0;
-
-  podaci:PretragaEndpointReq = {
+  datumPrijaveElement: any;
+  datumOdjaveElement: any;
+  podaci: PretragaEndpointReq = {
     aranzmanId: 0,
     balkon: false,
     bazen: false,
@@ -85,12 +57,13 @@ export class PretragaComponent implements OnInit {
     spa: false,
     teretana: false
   };
+  protected readonly Slike = Slike;
 
   constructor(private pretragaEndpoint: PretragaEndpoint,
               private navigator: Navigator,
-              private getAllAranzmaneEndpoint:GetAllAranzmaneEndpoint) {
+              private getAllAranzmaneEndpoint: GetAllAranzmaneEndpoint) {
     this.podaci = (this.navigator.router.getCurrentNavigation()?.extras.state) as PretragaEndpointReq
-    if(Object.keys(this.podaci).length == 0) {
+    if (Object.keys(this.podaci).length == 0) {
       this.podaci = {
         aranzmanId: 0,
         balkon: false,
@@ -156,25 +129,6 @@ export class PretragaComponent implements OnInit {
     await this.navigator.navigiraj('pregled', [id], this.podaci)
   }
 
-  protected readonly Slike = Slike;
-
-  protected dohvatiSobe() {
-    this.podaci.datumPrijave = this.datumPrijaveElement.valueAsDate;
-    this.podaci.datumOdjave = this.datumOdjaveElement.valueAsDate;
-    if (this.podaci.datumPrijave >= this.podaci.datumOdjave) {
-      this.podaci.datumOdjave = new Date(new Date().setDate(this.podaci.datumPrijave.getDate() + 1))
-      this.datumOdjaveElement.valueAsDate = this.podaci.datumOdjave;
-    }
-    this.podaci.aranzmanId = Number((document.getElementById("filter-aranzman") as HTMLSelectElement).value);
-    this.podaci.filterPoCijeni = Number((document.getElementById("filter-po-cijeni") as HTMLSelectElement).value);
-
-    this.pretragaEndpoint.Akcija(this.podaci).subscribe({
-      next: res => {
-        this.dostupneSobe = res.sobe;
-      }
-    })
-  }
-
   ocistiFiltere() {
     this.podaci = {
       aranzmanId: 0,
@@ -199,5 +153,24 @@ export class PretragaComponent implements OnInit {
     (document.getElementById("filter-aranzman") as HTMLSelectElement).selectedIndex = 0;
     (document.getElementById("filter-po-cijeni") as HTMLSelectElement).selectedIndex = 0;
     this.dohvatiSobe();
+  }
+
+  protected dohvatiSobe() {
+    this.podaci.datumPrijave = this.datumPrijaveElement.valueAsDate;
+    this.podaci.datumOdjave = this.datumOdjaveElement.valueAsDate;
+    if (this.podaci.datumPrijave >= this.podaci.datumOdjave) {
+      this.podaci.datumOdjave = new Date(new Date().setDate(this.podaci.datumPrijave.getDate() + 1))
+      this.datumOdjaveElement.valueAsDate = this.podaci.datumOdjave;
+    }
+    this.podaci.aranzmanId = Number((document.getElementById("filter-aranzman") as HTMLSelectElement).value);
+    this.podaci.filterPoCijeni = Number((document.getElementById("filter-po-cijeni") as HTMLSelectElement).value);
+
+    this.pretragaEndpoint.Akcija(this.podaci).subscribe({
+      next: res => {
+        this.dostupneSobe = res.sobe;
+      },
+      complete: () => this.dostupneSobe?.forEach(s => s.slika = Slike.getRandomSliku())
+    })
+
   }
 }

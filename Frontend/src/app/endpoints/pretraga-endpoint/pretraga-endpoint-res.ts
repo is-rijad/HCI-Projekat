@@ -9,5 +9,6 @@ export interface PretragaEndpointResSoba {
   nazivSobe: string,
   cijena: number,
   brojGostiju: number,
-  opis: string
+  opis: string,
+  slika: string,
 }

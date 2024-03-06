@@ -16,7 +16,8 @@ import {Modal} from "./modal";
 })
 export class AppComponent implements OnInit {
   title = 'Hotel Leo';
-
+  protected readonly Navigator = Navigator;
+  protected readonly Alert = Alert;
 
   constructor(public navigator: Navigator,
               protected modal: Modal) {
@@ -25,7 +26,4 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     await this.navigator.navigiraj("pocetna")
   }
-
-  protected readonly Navigator = Navigator;
-  protected readonly Alert = Alert;
 }

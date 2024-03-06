@@ -43,11 +43,13 @@ nav {
 #lijevi-panel-pretraga, #lijevi-panel-filtriranje {
   padding: 5px;
 }
+
 #lijevi-panel-filtriranje {
   display: none;
   max-height: 72vh;
   overflow-y: scroll;
 }
+
 #desni-panel {
   display: flex;
   flex-wrap: wrap;
