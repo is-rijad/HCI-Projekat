@@ -1,0 +1,65 @@
+nav {
+  margin-bottom: 10px;
+}
+a {
+  cursor: pointer;
+}
+#wrapper {
+  padding: 3px;
+}
+#panel-prethodne-rezervacije {
+  display: none;
+}
+#panel-buduce-rezervacije, #panel-prethodne-rezervacije {
+  overflow-y: scroll;
+}
+#panel-buduce-rezervacije {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  height: fit-content;
+  max-height: 65vh;
+}
+
+.rezervacija-item {
+  display: flex;
+  width: 100%;
+  height: 150px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border: 1px solid darkgray;
+  border-radius: 20px;
+}
+
+.rezervacija-opis-div {
+  width: 100%;
+  padding: 5px;
+  position: relative;
+}
+
+.rezervacija-opis {
+  width: 100%;
+}
+
+.rezervacija-opis-datumi {
+  width: 70%;
+}
+
+.rezervacija-opis-naslov {
+  width: 100%;
+  text-align: center;
+}
+
+.rezervacija-opis-br-osoba {
+  text-align: right;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+
+.rezervacija-opis-br-osoba * {
+  display: inline;
+}
+h4, h6 {
+  cursor: default;
+}

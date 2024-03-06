@@ -39,6 +39,8 @@ namespace Backend.Data {
             modelBuilder.Entity<SobaAranzman>().Navigation(sa => sa.Aranzman).AutoInclude();
             modelBuilder.Entity<SobaKrevet>().Navigation(sk => sk.Krevet).AutoInclude();
             modelBuilder.Entity<ZauzetaSoba>().Navigation(sk => sk.Gost).AutoInclude();
+            modelBuilder.Entity<ZauzetaSoba>().Navigation(sk => sk.Soba).AutoInclude();
+            modelBuilder.Entity<ZauzetaSoba>().Navigation(sk => sk.SobaAranzman).AutoInclude();
 
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) {
                 relationship.DeleteBehavior = DeleteBehavior.Cascade;

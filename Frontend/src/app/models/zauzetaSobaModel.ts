@@ -13,4 +13,5 @@ export interface ZauzetaSobaModel {
   cijena: number;
   datumDolaska: Date;
   datumOdlaska: Date;
+  slikaSobe:string;
 }

@@ -4,6 +4,7 @@ import {PocetnaComponent} from "./components/pocetna/pocetna.component";
 import {PregledDetaljaComponent} from "./components/pregled-detalja/pregled-detalja.component";
 import {ModifikacijaDetaljaComponent} from "./components/modifikacija-detalja/modifikacija-detalja.component";
 import {PotvrdaRezervacijeComponent} from "./components/potvrda-rezervacije/potvrda-rezervacije.component";
+import {MojeRezervacijeComponent} from "./components/moje-rezervacije/moje-rezervacije.component";
 
 export const routes: Routes = [
   {path: '', redirectTo: 'pocetna', pathMatch: 'full'},
@@ -11,5 +12,6 @@ export const routes: Routes = [
   {path: 'pretraga', component: PretragaComponent},
   {path: 'pregled/:id', component: PregledDetaljaComponent},
   {path: 'modifikacija/:id', component: ModifikacijaDetaljaComponent},
-  {path: 'potvrda', component: PotvrdaRezervacijeComponent}
+  {path: 'potvrda', component: PotvrdaRezervacijeComponent},
+  {path: 'moje-rezervacije', component: MojeRezervacijeComponent}
 ];

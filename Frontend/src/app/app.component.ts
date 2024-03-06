@@ -24,6 +24,6 @@ export class AppComponent implements OnInit {
   }
 
   async ngOnInit() {
-    await this.navigator.navigiraj("pocetna")
+    await this.navigator.navigiraj("moje-rezervacije")
   }
 }
