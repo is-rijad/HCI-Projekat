@@ -15,7 +15,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {PretragaEndpointReq} from "../../endpoints/pretraga-endpoint/pretraga-endpoint-req";
 import {Navigator} from "../../navigator";
 import {Slike} from "../../slike";
-import {min} from "rxjs";
 import {AranzmanModel} from "../../models/aranzmanModel";
 import {GetAllAranzmaneEndpoint} from "../../endpoints/aranzmani-endpoint/get-all-aranzmane/get-all-aranzmane-endpoint";
 
@@ -44,39 +43,89 @@ export class PretragaComponent implements OnInit {
 
   datumDanas = new Date();
   datumSutra = new Date(new Date().setDate(this.datumDanas.getDate() + 1));
-  datumPrijave: Date = this.datumDanas;
-  datumOdjave: Date = this.datumSutra;
-  brojOdraslih: number = 1;
-  brojDjece: number = 0;
+  datumPrijaveElement:any;
+  datumOdjaveElement:any;
+  // datumPrijave: Date =  this.datumDanas; this.datumDanas;
+  // datumOdjave: Date =  this.datumSutra;this.datumSutra;
+  // brojOdraslih: number = 1;
+  // brojDjece: number = 0;
+  //
+  // besplatnoOtkazivanje: boolean = false;
+  // klima: boolean = false;
+  // bazen: boolean = false;
+  // spa: boolean = false;
+  // prilagodjenInvalidima: boolean = false;
+  // teretana: boolean = false;
+  // dozvoljeniLjubimci: boolean = false;
+  // minibar: boolean = false;
+  // balkon: boolean = false;
+  // datumPrijaveElement: any;
+  // datumOdjaveElement: any;
+  // brojBracnihKreveta: number = 0;
+  // brojObicnihKreveta: number = 0;
+  // brojDjecjihKreveta: number = 0;
 
-  besplatnoOtkazivanje: boolean = false;
-  klima: boolean = false;
-  bazen: boolean = false;
-  spa: boolean = false;
-  prilagodjenInvalidima: boolean = false;
-  teretana: boolean = false;
-  dozvoljeniLjubimci: boolean = false;
-  minibar: boolean = false;
-  balkon: boolean = false;
-  datumPrijaveElement: any;
-  datumOdjaveElement: any;
-  brojBracnihKreveta: number = 0;
-  brojObicnihKreveta: number = 0;
-  brojDjecjihKreveta: number = 0;
+  podaci:PretragaEndpointReq = {
+    aranzmanId: 0,
+    balkon: false,
+    bazen: false,
+    besplatnoOtkazivanje: false,
+    brojBracnihKreveta: 0,
+    brojDjece: 0,
+    brojDjecjihKreveta: 0,
+    brojObicnihKreveta: 0,
+    brojOdraslih: 1,
+    datumOdjave: this.datumDanas,
+    datumPrijave: this.datumSutra,
+    dozvoljeniLjubimci: false,
+    filterPoCijeni: 0,
+    klima: false,
+    minibar: false,
+    prilagodjenInvalidima: false,
+    spa: false,
+    teretana: false
+  };
+
   constructor(private pretragaEndpoint: PretragaEndpoint,
               private navigator: Navigator,
               private getAllAranzmaneEndpoint:GetAllAranzmaneEndpoint) {
+    this.podaci = (this.navigator.router.getCurrentNavigation()?.extras.state) as PretragaEndpointReq
+    if(Object.keys(this.podaci).length == 0) {
+      this.podaci = {
+        aranzmanId: 0,
+        balkon: false,
+        bazen: false,
+        besplatnoOtkazivanje: false,
+        brojBracnihKreveta: 0,
+        brojDjece: 0,
+        brojDjecjihKreveta: 0,
+        brojObicnihKreveta: 0,
+        brojOdraslih: 1,
+        datumOdjave: this.datumDanas,
+        datumPrijave: this.datumSutra,
+        dozvoljeniLjubimci: false,
+        filterPoCijeni: 0,
+        klima: false,
+        minibar: false,
+        prilagodjenInvalidima: false,
+        spa: false,
+        teretana: false
+      }
+    }
+    this.getAllAranzmaneEndpoint.Akcija().subscribe(res => this.aranzmani = res.aranzmani);
   }
 
   ngOnInit(): void {
+    (document.getElementById("filter-po-cijeni") as HTMLSelectElement).value = this.podaci.filterPoCijeni.toString();
     this.datumPrijaveElement = (document.getElementById("datum-prijave") as HTMLInputElement)
     this.datumOdjaveElement = (document.getElementById("datum-odjave") as HTMLInputElement)
     this.datumPrijaveElement = this.datumPrijaveElement as HTMLInputElement;
     this.datumOdjaveElement = this.datumOdjaveElement as HTMLInputElement;
-    this.datumPrijaveElement.valueAsDate = this.datumPrijave;
-    this.datumOdjaveElement.valueAsDate = this.datumOdjave;
+    this.datumPrijaveElement.valueAsDate = this.podaci.datumPrijave;
+    this.datumOdjaveElement.valueAsDate = this.podaci.datumOdjave;
     this.datumPrijaveElement.min = this.datumDanas.toISOString().split('T')[0]
-    this.datumOdjaveElement.min = new Date(new Date().setDate(this.datumPrijave.getDate() + 1)).toISOString().split('T')[0]
+    this.datumOdjaveElement.min = new Date(new Date().setDate(this.podaci.datumPrijave.getDate() + 1)).toISOString().split('T')[0]
+
 
     let elementi = document.getElementsByClassName("lijevi-panel-button")!;
     elementi[0].classList.add("active");
@@ -97,46 +146,29 @@ export class PretragaComponent implements OnInit {
         this.filtriranjeUpaljeno = !this.filtriranjeUpaljeno;
       })
     }
-    this.getAllAranzmaneEndpoint.Akcija().subscribe(res => this.aranzmani = res.aranzmani);
     this.dohvatiSobe();
 
   }
 
-  async otvoriDetalje(id: number, podaci: any) {
+  async otvoriDetalje(id: number) {
     Navigator.trenutniIdSobe = id;
-    await this.navigator.navigiraj('pregled', [id], podaci)
+    this.podaci.filterPoCijeni = Number((document.getElementById("filter-po-cijeni") as HTMLSelectElement).value);
+    await this.navigator.navigiraj('pregled', [id], this.podaci)
   }
 
   protected readonly Slike = Slike;
 
   protected dohvatiSobe() {
-    this.datumPrijave = this.datumPrijaveElement.valueAsDate;
-    this.datumOdjave = this.datumOdjaveElement.valueAsDate;
-    if (this.datumPrijave >= this.datumOdjave) {
-      this.datumOdjave = new Date(new Date().setDate(this.datumPrijave.getDate() + 1))
-      this.datumOdjaveElement.valueAsDate = this.datumOdjave;
+    this.podaci.datumPrijave = this.datumPrijaveElement.valueAsDate;
+    this.podaci.datumOdjave = this.datumOdjaveElement.valueAsDate;
+    if (this.podaci.datumPrijave >= this.podaci.datumOdjave) {
+      this.podaci.datumOdjave = new Date(new Date().setDate(this.podaci.datumPrijave.getDate() + 1))
+      this.datumOdjaveElement.valueAsDate = this.podaci.datumOdjave;
     }
-      let req: PretragaEndpointReq = {
-        aranzmanId: Number((document.getElementById("filter-aranzman") as HTMLSelectElement).value),
-        brojBracnihKreveta: this.brojBracnihKreveta,
-        brojDjecjihKreveta: this.brojDjecjihKreveta,
-        brojObicnihKreveta: this.brojObicnihKreveta,
-        filterPoCijeni: Number((document.getElementById("filter-po-cijeni") as HTMLSelectElement).value),
-        balkon: this.balkon,
-        bazen: this.bazen,
-        besplatnoOtkazivanje: this.besplatnoOtkazivanje,
-        dozvoljeniLjubimci: this.dozvoljeniLjubimci,
-        klima: this.klima,
-        minibar: this.minibar,
-        prilagodjenInvalidima: this.prilagodjenInvalidima,
-        spa: this.spa,
-        teretana: this.teretana,
-        brojDjece: this.brojDjece,
-        brojOdraslih: this.brojOdraslih,
-        datumOdjave: this.datumOdjave,
-        datumPrijave: this.datumPrijave
-    };
-    this.pretragaEndpoint.Akcija(req).subscribe({
+    this.podaci.aranzmanId = Number((document.getElementById("filter-aranzman") as HTMLSelectElement).value);
+    this.podaci.filterPoCijeni = Number((document.getElementById("filter-po-cijeni") as HTMLSelectElement).value);
+
+    this.pretragaEndpoint.Akcija(this.podaci).subscribe({
       next: res => {
         this.dostupneSobe = res.sobe;
       }
@@ -144,18 +176,26 @@ export class PretragaComponent implements OnInit {
   }
 
   ocistiFiltere() {
-    this.besplatnoOtkazivanje = false;
-    this.klima = false;
-    this.bazen = false;
-    this.spa = false;
-    this.prilagodjenInvalidima = false;
-    this.teretana = false;
-    this.dozvoljeniLjubimci = false;
-    this.minibar = false;
-    this.balkon = false;
-    this.brojBracnihKreveta = 0;
-    this.brojObicnihKreveta = 0;
-    this.brojDjecjihKreveta = 0;
+    this.podaci = {
+      aranzmanId: 0,
+      balkon: false,
+      bazen: false,
+      besplatnoOtkazivanje: false,
+      brojBracnihKreveta: 0,
+      brojDjece: 0,
+      brojDjecjihKreveta: 0,
+      brojObicnihKreveta: 0,
+      brojOdraslih: 1,
+      datumOdjave: this.datumDanas,
+      datumPrijave: this.datumSutra,
+      dozvoljeniLjubimci: false,
+      filterPoCijeni: 0,
+      klima: false,
+      minibar: false,
+      prilagodjenInvalidima: false,
+      spa: false,
+      teretana: false
+    };
     (document.getElementById("filter-aranzman") as HTMLSelectElement).selectedIndex = 0;
     (document.getElementById("filter-po-cijeni") as HTMLSelectElement).selectedIndex = 0;
     this.dohvatiSobe();

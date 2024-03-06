@@ -1,15 +1,20 @@
 import {Injectable} from "@angular/core";
-import {NavigationEnd, Router, RouterEvent} from "@angular/router";
+import {NavigationEnd, NavigationStart, Router, RouterEvent} from "@angular/router";
+import {PretragaEndpointReq} from "./endpoints/pretraga-endpoint/pretraga-endpoint-req";
 
 @Injectable({providedIn: "root"})
 export class Navigator {
   static trenutniIdSobe: number = -1;
   static trenutniElementi: HTMLCollectionOf<Element> | null = null;
+  podaci: any;
 
   constructor(public router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.handlerKartica((event as RouterEvent).url);
+      }
+      if(event instanceof NavigationStart) {
+        this.router.getCurrentNavigation()!.extras.state = this.podaci;
       }
     })
   }
@@ -23,11 +28,14 @@ export class Navigator {
       for (let i of params) {
         urlNiz.push(i);
       }
+      this.podaci = extras;
+
       await this.router.navigate(urlNiz, {state: extras});
     }
   }
 
   async navigirajSPodacima(url: string, extras: any) {
+    this.podaci = extras;
     await this.router.navigate([`/${url}`], {state: extras})
   }
 
