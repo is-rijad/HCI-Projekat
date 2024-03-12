@@ -102,7 +102,8 @@ export class MojeRezervacijeComponent implements OnInit{
           else
             Alert.alert = new Alert(TipAlerta.error, res.message);
         },
-        complete: () => this.getBuduceRezervacije()
+        complete: () => this.getBuduceRezervacije(),
+        error: err => Alert.alert = new Alert(TipAlerta.error, "Greška u komunikaciji sa serverom!")
       })
     }
   }

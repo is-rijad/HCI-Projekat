@@ -10,6 +10,7 @@ import {Slike} from "../../slike";
 import {AranzmanModel} from "../../models/aranzmanModel";
 import {GetAllAranzmaneEndpoint} from "../../endpoints/aranzmani-endpoint/get-all-aranzmane/get-all-aranzmane-endpoint";
 import {AuthServis} from "../../auth-servis";
+import {Alert, TipAlerta} from "../../alert";
 
 @Component({
   selector: 'app-pretraga',
@@ -174,6 +175,7 @@ export class PretragaComponent implements OnInit {
       next: res => {
         this.dostupneSobe = res.sobe;
       },
+      error: err => Alert.alert = new Alert(TipAlerta.error, "Greška u komunikaciji sa serverom!"),
       complete: () => this.dostupneSobe?.forEach(s => s.slika = Slike.getRandomSliku())
     })
 

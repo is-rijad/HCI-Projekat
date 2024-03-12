@@ -46,13 +46,12 @@ export class LoginComponent {
           }
         else {
             this.lozinka=""
-
           Alert.alert = new Alert(TipAlerta.error, res.message);
         }
       },
       error: err => {
         this.lozinka = ""
-        Alert.alert = new Alert(TipAlerta.error, err.error());
+        Alert.alert = new Alert(TipAlerta.error, "Greška u komunikaciji sa serverom!");
         }
       })
     }

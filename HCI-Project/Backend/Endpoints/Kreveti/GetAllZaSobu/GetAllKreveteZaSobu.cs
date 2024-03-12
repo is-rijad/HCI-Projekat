@@ -58,7 +58,7 @@ namespace Backend.Endpoints.Kreveti.GetAllZaSobu
             if (responseKreveti.Count == 0)
             {
                 response.Status = 404;
-                response.Message = "Nije pronađen nijedan aranžman.";
+                response.Message = "Nije pronađen nijedan krevet.";
             }
             response.Kreveti = responseKreveti.OrderByDescending(k => k.BrojKreveta).ToList();
             return response;

@@ -52,7 +52,7 @@ export class RegistracijaComponent {
         },
         error: err => {
           this.req.lozinka = ""
-          Alert.alert = new Alert(TipAlerta.error, err.error());
+          Alert.alert = new Alert(TipAlerta.error, "Greška u komunikaciji sa serverom!")
         }
       })
     }

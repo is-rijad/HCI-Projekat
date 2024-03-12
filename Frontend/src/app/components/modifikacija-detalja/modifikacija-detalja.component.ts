@@ -132,7 +132,8 @@ export class ModifikacijaDetaljaComponent implements OnInit {
           if (res.status == 200) {
             Alert.alert = new Alert(TipAlerta.success, res.message)
           }
-        }
+        },
+        error: err => Alert.alert = new Alert(TipAlerta.error, "Greška u komunikaciji sa serverom!")
       })
     }
   }

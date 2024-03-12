@@ -31,7 +31,7 @@ namespace Backend.Endpoints.Rezervacije.GetBuduceRezervacijeZaGosta {
             if (rezervacije.Count == 0)
             {
                 response.Status = 404;
-                response.Message = "Nije pronađena nijedna rezervacija!";
+                response.Message = "Nije pronađena nijedna buduća rezervacija!";
             }
             response.Rezervacije = new List<RezervacijaModel>();
             foreach (var rezervacija in rezervacije)

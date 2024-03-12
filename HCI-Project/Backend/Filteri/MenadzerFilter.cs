@@ -13,7 +13,7 @@ namespace Backend.Filteri {
                 return;
             }
             if (!nalog.IsMenadzer) {
-                context.Result = new UnauthorizedObjectResult("Niste logirani!");
+                context.Result = new UnauthorizedObjectResult("Niste menadžer!");
                 return;
             }
             base.OnActionExecuting(context);

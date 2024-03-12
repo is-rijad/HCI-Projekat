@@ -93,6 +93,7 @@ export class PregledDetaljaComponent implements OnInit {
       next: res => {
         this.soba = res.soba;
       },
+      error: err => Alert.alert = new Alert(TipAlerta.error, "Greška u komunikaciji sa serverom!"),
       complete: async () => {
         await this.cijeneUcitane();
         let aranzmaniSelect = document.getElementById("aranzman");
