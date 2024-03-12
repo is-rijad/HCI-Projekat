@@ -11,10 +11,10 @@ public class NapraviRezervacijuEndpoint : BaseEndpoint<NapraviRezervacijuEndpoin
 {
     private readonly AuthServis _authServis;
     private readonly HCIDBContext _dbContext;
-    private readonly ProvjeriRezervaciju _provjeriRezervaciju;
+    private readonly Servisi.ProvjeriRezervaciju _provjeriRezervaciju;
 
     public NapraviRezervacijuEndpoint(HCIDBContext context,
-        ProvjeriRezervaciju provjeriRezervaciju,
+        Servisi.ProvjeriRezervaciju provjeriRezervaciju,
         AuthServis authServis)
     {
         _dbContext = context;

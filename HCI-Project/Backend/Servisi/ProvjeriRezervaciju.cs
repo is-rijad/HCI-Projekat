@@ -2,6 +2,7 @@
 using Backend.Data.Modeli;
 using Backend.Endpoints;
 using Backend.Endpoints.Rezervacije.NapraviRezervaciju;
+using Backend.Endpoints.Rezervacije.ProvjeriRezervaciju;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Servisi;
