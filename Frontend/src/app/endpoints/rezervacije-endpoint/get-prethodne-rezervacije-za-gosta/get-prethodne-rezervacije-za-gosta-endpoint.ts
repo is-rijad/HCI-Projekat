@@ -4,16 +4,15 @@ import {BaseEndpoint} from "../../base-endpoint";
 import {GetPrethodneRezervacijeZaGostaRes} from "./get-prethodne-rezervacije-za-gosta-res";
 import {Observable} from "rxjs";
 import {Config} from "../../../config";
-import {GetBuduceRezervacijeZaGostaRes} from "../get-buduce-rezervacije-za-gosta/get-buduce-rezervacije-za-gosta-res";
 
 @Injectable()
-export class GetPrethodneRezervacijeZaGostaEndpoint implements BaseEndpoint<void, GetPrethodneRezervacijeZaGostaRes>{
-  constructor(private httpClient:HttpClient) {
+export class GetPrethodneRezervacijeZaGostaEndpoint implements BaseEndpoint<void, GetPrethodneRezervacijeZaGostaRes> {
+  constructor(private httpClient: HttpClient) {
   }
 
   Akcija(req: void): Observable<GetPrethodneRezervacijeZaGostaRes> {
     let url = Config.adresaServera + `GetPrethodneRezervacijeZaGosta`;
-    return this.httpClient.get<GetPrethodneRezervacijeZaGostaRes>(url, {withCredentials:true});
+    return this.httpClient.get<GetPrethodneRezervacijeZaGostaRes>(url, {withCredentials: true});
 
   }
 

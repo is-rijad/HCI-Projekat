@@ -1,18 +1,23 @@
 nav {
   margin-bottom: 10px;
 }
+
 a {
   cursor: pointer;
 }
+
 #wrapper {
   padding: 3px;
 }
+
 #panel-prethodne-rezervacije {
   display: none;
 }
+
 #panel-buduce-rezervacije, #panel-prethodne-rezervacije {
   overflow-y: scroll;
 }
+
 #panel-buduce-rezervacije {
   display: flex;
   flex-wrap: wrap;
@@ -60,6 +65,7 @@ a {
 .rezervacija-opis-br-osoba * {
   display: inline;
 }
+
 h4, h6 {
   cursor: default;
 }

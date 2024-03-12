@@ -4,17 +4,20 @@ form {
   padding: 10px;
   height: 60vh;
   flex-direction: row;
-  gap:10px;
+  gap: 10px;
   justify-content: center;
 }
+
 #login-btn {
   margin-left: 50%;
   width: 50%;
   margin-top: 15%;
 }
+
 input {
   cursor: text;
 }
+
 h2 {
   width: fit-content;
   margin-left: auto;

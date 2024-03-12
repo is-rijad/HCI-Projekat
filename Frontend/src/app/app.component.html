@@ -6,8 +6,9 @@
   <nav class="nav nav-pills nav-fill">
     <a (click)="navigator.navigiraj('pocetna')" class="btn nav-link pocetna" title="Idi na početnu stranicu">Početna</a>
     <a (click)="navigator.navigiraj('pretraga')" class=" btn nav-link pretraga" title="Idi na pretragu">Pretraga</a>
-    <a *ngIf="authServis.isLogiran()" (click)="navigator.navigiraj('moje-rezervacije')" class="btn nav-link moje-rezervacije" title="Idi na moje rezervacije">Moje rezervacije</a>
-    <a *ngIf="authServis.isLogiran()" (click)="odjaviSe()" class="btn nav-link" title="Odjavi se">Odjava</a>
+    <a (click)="navigator.navigiraj('moje-rezervacije')" *ngIf="authServis.isLogiran()"
+       class="btn nav-link moje-rezervacije" title="Idi na moje rezervacije">Moje rezervacije</a>
+    <a (click)="odjaviSe()" *ngIf="authServis.isLogiran()" class="btn nav-link" title="Odjavi se">Odjava</a>
   </nav>
   <div id="breadcrumb">
     <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';">
@@ -18,13 +19,16 @@
         <li (click)="navigator.navigiraj('pretraga')" class="breadcrumb-item pretraga" title="Idi na pretragu">
           Pretraga
         </li>
-        <li *ngIf="authServis.isMenadzer()" (click)="navigator.navigiraj('modifikacija', [Navigator.trenutniIdSobe])" class="breadcrumb-item modifikacija"
+        <li (click)="navigator.navigiraj('modifikacija', [Navigator.trenutniIdSobe])" *ngIf="authServis.isMenadzer()"
+            class="breadcrumb-item modifikacija"
             title="Idi na modifikaciju">Modifikacija detalja
         </li>
-        <li *ngIf="!authServis.isMenadzer()" (click)="navigator.navigiraj('pregled', [Navigator.trenutniIdSobe])" class="breadcrumb-item pregled"
+        <li (click)="navigator.navigiraj('pregled', [Navigator.trenutniIdSobe])" *ngIf="!authServis.isMenadzer()"
+            class="breadcrumb-item pregled"
             title="Idi na pregled detalja">Pregled detalja
         </li>
-        <li *ngIf="!authServis.isMenadzer()" (click)="navigator.navigiraj('potvrda')" class="breadcrumb-item potvrda" title="Idi na potvrdu rezervacije">
+        <li (click)="navigator.navigiraj('potvrda')" *ngIf="!authServis.isMenadzer()" class="breadcrumb-item potvrda"
+            title="Idi na potvrdu rezervacije">
           Potvrda
         </li>
       </ol>

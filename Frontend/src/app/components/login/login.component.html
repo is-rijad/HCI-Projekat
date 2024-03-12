@@ -3,21 +3,24 @@
   <!-- Email input -->
   <div class="form-outline mb-4">
     <label class="form-label" for="email">Email</label>
-    <input [ngModelOptions]="{standalone: true}" [(ngModel)]="email" type="email" id="email" class="form-control" />
+    <input [(ngModel)]="email" [ngModelOptions]="{standalone: true}" class="form-control" id="email" type="email"/>
   </div>
 
   <!-- Password input -->
   <div class="form-outline mb-4">
     <label class="form-label" for="lozinka">Lozinka</label>
-    <input [ngModelOptions]="{standalone: true}" [(ngModel)]="lozinka" type="password" id="lozinka" class="form-control" />
+    <input [(ngModel)]="lozinka" [ngModelOptions]="{standalone: true}" class="form-control" id="lozinka"
+           type="password"/>
   </div>
 
 
   <!-- Submit button -->
-  <button (click)="ulogujSe()" id="login-btn" title="Ulogujte se" type="button" class="btn btn-primary btn-block mb-4">Uloguj se</button>
+  <button (click)="ulogujSe()" class="btn btn-primary btn-block mb-4" id="login-btn" title="Ulogujte se" type="button">
+    Uloguj se
+  </button>
 
   <!-- Register buttons -->
   <div class="text-center">
-    <p>Nemate račun? <a class="link" (click)="navigator.navigiraj('registracija')" >Registrujte se</a></p>
+    <p>Nemate račun? <a (click)="navigator.navigiraj('registracija')" class="link">Registrujte se</a></p>
   </div>
 </form>

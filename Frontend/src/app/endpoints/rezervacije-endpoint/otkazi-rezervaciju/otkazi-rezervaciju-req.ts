@@ -1,3 +1,3 @@
 export interface OtkaziRezervacijuReq {
-  rezervacijaId:number
+  rezervacijaId: number
 }

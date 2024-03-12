@@ -1,6 +1,5 @@
-﻿namespace Backend.Endpoints.Rezervacije.NapraviRezervaciju
+﻿namespace Backend.Endpoints.Rezervacije.NapraviRezervaciju;
+
+public class NapraviRezervacijuEndpointRes : BaseResponse
 {
-    public class NapraviRezervacijuEndpointRes: BaseResponse
-    {
-    }
 }

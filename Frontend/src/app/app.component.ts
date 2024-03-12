@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {PretragaComponent} from "./components/pretraga/pretraga.component";
@@ -26,8 +26,8 @@ export class AppComponent {
 
   constructor(public navigator: Navigator,
               protected modal: Modal,
-              private logoutEndpoint:LogoutEndpoint,
-              protected authServis:AuthServis) {
+              private logoutEndpoint: LogoutEndpoint,
+              protected authServis: AuthServis) {
   }
 
   odjaviSe() {
@@ -36,8 +36,7 @@ export class AppComponent {
         if (res.status == 200) {
           this.authServis.setLoginInfo(undefined)
           await this.navigator.navigiraj('pocetna');
-        }
-        else {
+        } else {
           Alert.alert = new Alert(TipAlerta.error, res.message);
         }
       },

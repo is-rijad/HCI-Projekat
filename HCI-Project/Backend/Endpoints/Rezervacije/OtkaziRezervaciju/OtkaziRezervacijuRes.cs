@@ -1,5 +1,5 @@
-﻿namespace Backend.Endpoints.Rezervacije.OtkaziRezervaciju {
-    public class OtkaziRezervacijuRes : BaseResponse
-    {
-    }
+﻿namespace Backend.Endpoints.Rezervacije.OtkaziRezervaciju;
+
+public class OtkaziRezervacijuRes : BaseResponse
+{
 }

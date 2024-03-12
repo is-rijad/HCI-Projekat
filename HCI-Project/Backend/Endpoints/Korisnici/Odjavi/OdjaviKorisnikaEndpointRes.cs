@@ -1,4 +1,5 @@
-﻿namespace Backend.Endpoints.Korisnici.Uloguj {
-    public class OdjaviKorisnikaEndpointRes  : BaseResponse{
-    }
+﻿namespace Backend.Endpoints.Korisnici.Odjavi;
+
+public class OdjaviKorisnikaEndpointRes : BaseResponse
+{
 }

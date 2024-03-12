@@ -1,9 +1,8 @@
 ﻿using Backend.Data.Modeli;
 
-namespace Backend.Endpoints.Kreveti.GetAll
+namespace Backend.Endpoints.Kreveti.GetAll;
+
+public class GetAllKreveteRes : BaseResponse
 {
-    public class GetAllKreveteRes : BaseResponse
-    {
-        public List<Krevet>? Kreveti { get; set; } = null;
-    }
+    public List<Krevet>? Kreveti { get; set; } = null;
 }

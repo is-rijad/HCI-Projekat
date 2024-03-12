@@ -15,9 +15,9 @@ export const routes: Routes = [
   {path: 'pocetna', component: PocetnaComponent},
   {path: 'pretraga', component: PretragaComponent},
   {path: 'pregled/:id', component: PregledDetaljaComponent},
-  {path: 'modifikacija/:id', component: ModifikacijaDetaljaComponent, canActivate:[AuthGuard,MenadzerGuard]},
-  {path: 'potvrda', component: PotvrdaRezervacijeComponent, canActivate:[AuthGuard]},
-  {path: 'moje-rezervacije', component: MojeRezervacijeComponent, canActivate:[AuthGuard]},
+  {path: 'modifikacija/:id', component: ModifikacijaDetaljaComponent, canActivate: [AuthGuard, MenadzerGuard]},
+  {path: 'potvrda', component: PotvrdaRezervacijeComponent, canActivate: [AuthGuard]},
+  {path: 'moje-rezervacije', component: MojeRezervacijeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'registracija', component: RegistracijaComponent}
 ];

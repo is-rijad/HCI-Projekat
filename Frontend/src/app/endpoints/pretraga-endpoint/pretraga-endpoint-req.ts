@@ -1,5 +1,3 @@
-import {SobaModel} from "../../models/sobaModel";
-
 export interface PretragaEndpointReq {
   datumPrijave: Date;
   datumOdjave: Date;

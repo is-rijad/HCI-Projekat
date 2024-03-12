@@ -15,7 +15,8 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button (click)="handlerSlika.isModalVidljiv = !handlerSlika.isModalVidljiv" class="btn btn-secondary" title="Izađi"
+      <button (click)="handlerSlika.isModalVidljiv = !handlerSlika.isModalVidljiv" class="btn btn-secondary"
+              title="Izađi"
               type="button">Izlaz
       </button>
     </div>
@@ -47,22 +48,26 @@
     <div id="rezervacija-period">
       <h4>Period</h4>
       <label class="form-label" for="datum-prijave">Datum prijave:</label>
-      <input (input)="izracunajCijenu()" class="form-control form-control-date mb-2" id="datum-prijave" title="Izaberite datum prijave."
+      <input (input)="izracunajCijenu()" class="form-control form-control-date mb-2" id="datum-prijave"
+             title="Izaberite datum prijave."
              type="date">
 
       <label class="form-label" for="datum-odjave">Datum odjave:</label>
-      <input (input)="izracunajCijenu()" class="form-control form-control-date mb-2" id="datum-odjave" title="Izaberite datum odjave."
+      <input (input)="izracunajCijenu()" class="form-control form-control-date mb-2" id="datum-odjave"
+             title="Izaberite datum odjave."
              type="date">
     </div>
 
     <div id="rezervacija-za-osoba">
       <h4>Za osoba</h4>
       <label class="form-label" for="broj-odraslih">Broj odraslih:</label>
-      <input (input)="izracunajCijenu()" [(ngModel)]="brojOdraslih" class="form-control form-control-number mb-2" id="broj-odraslih" max="{{soba.brojGostiju}}"
+      <input (input)="izracunajCijenu()" [(ngModel)]="brojOdraslih" class="form-control form-control-number mb-2"
+             id="broj-odraslih" max="{{soba.brojGostiju}}"
              min="1" title="Izaberite broj odraslih osoba." type="number">
 
       <label class="form-label" for="broj-djece">Broj djece:</label>
-      <input (input)="izracunajCijenu()" [(ngModel)]="brojDjece" class="form-control form-control-number mb-2" id="broj-djece" max="{{soba.brojGostiju}}"
+      <input (input)="izracunajCijenu()" [(ngModel)]="brojDjece" class="form-control form-control-number mb-2"
+             id="broj-djece" max="{{soba.brojGostiju}}"
              min="0" title="Izaberite broj djece." type="number">
 
     </div>
@@ -88,7 +93,8 @@
     <h4>Soba posjeduje</h4>
 
     <div style="display: block; width: 100%">
-      <input [ngModel]="soba.besplatnoOtkazivanje" class="form-check form-check-input form-check-inline" id="besplatno-otkazivanje"
+      <input [ngModel]="soba.besplatnoOtkazivanje" class="form-check form-check-input form-check-inline"
+             id="besplatno-otkazivanje"
              onclick="return false;" title="Da li želite besplatno otkazivanje?"
              type="checkbox">
       <label class="form-check-label" for="besplatno-otkazivanje">Besplatno otkazivanje</label>
@@ -123,13 +129,15 @@
       <label class="form-check-label" for="balkon">Balkon</label>
     </div>
     <div>
-      <input [ngModel]="soba.dozvoljeniLjubimci" class="form-check form-check-input form-check-inline" id="dozvoljeni-ljubimci"
+      <input [ngModel]="soba.dozvoljeniLjubimci" class="form-check form-check-input form-check-inline"
+             id="dozvoljeni-ljubimci"
              onclick="return false;" title="Da li želite sobu u kojoj su dozvoljeni ljubimci?"
              type="checkbox">
       <label class="form-check-label" for="dozvoljeni-ljubimci">Dozvoljeni ljubimci</label>
     </div>
     <div>
-      <input [ngModel]="soba.prilagodjenInvalidima" class="form-check form-check-input form-check-inline" id="prilagodjeno-invalidima"
+      <input [ngModel]="soba.prilagodjenInvalidima" class="form-check form-check-input form-check-inline"
+             id="prilagodjeno-invalidima"
              onclick="return false;" title="Da li želite sobu koja je prilagođena invalidima?"
              type="checkbox">
       <label class="form-check-label" for="prilagodjeno-invalidima">Prilagođeno invalidima</label>

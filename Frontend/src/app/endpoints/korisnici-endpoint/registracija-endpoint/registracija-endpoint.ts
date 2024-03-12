@@ -8,7 +8,7 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class RegistracijaEndpoint implements BaseEndpoint<RegistracijaEndpointReq, BaseResponse> {
-  constructor(private httpClient:HttpClient) {
+  constructor(private httpClient: HttpClient) {
   }
 
   Akcija(req: RegistracijaEndpointReq): Observable<BaseResponse> {

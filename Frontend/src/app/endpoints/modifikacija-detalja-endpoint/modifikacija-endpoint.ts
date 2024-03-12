@@ -13,6 +13,6 @@ export class ModifikacijaEndpoint implements BaseEndpoint<ModifikacijaEndpointRe
 
   Akcija(req: ModifikacijaEndpointReq): Observable<ModifikacijaEndpointRes> {
     let url = Config.adresaServera + "Sobe/ModifikujSobu";
-    return this.httpClient.post<ModifikacijaEndpointRes>(url, req, {withCredentials:true});
+    return this.httpClient.post<ModifikacijaEndpointRes>(url, req, {withCredentials: true});
   }
 }

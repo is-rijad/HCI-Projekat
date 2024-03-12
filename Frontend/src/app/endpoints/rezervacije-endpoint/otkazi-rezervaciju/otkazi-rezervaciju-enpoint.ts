@@ -7,13 +7,13 @@ import {Observable} from "rxjs";
 import {Config} from "../../../config";
 
 @Injectable()
-export class OtkaziRezervacijuEnpoint implements BaseEndpoint<OtkaziRezervacijuReq, OtkaziRezervacijuRes>{
-  constructor(private httpClient:HttpClient) {
+export class OtkaziRezervacijuEnpoint implements BaseEndpoint<OtkaziRezervacijuReq, OtkaziRezervacijuRes> {
+  constructor(private httpClient: HttpClient) {
   }
 
   Akcija(req: OtkaziRezervacijuReq): Observable<OtkaziRezervacijuRes> {
     let url = Config.adresaServera + `OtkaziRezervaciju`;
-    return this.httpClient.delete<OtkaziRezervacijuRes>(url, {body: req, withCredentials:true});
+    return this.httpClient.delete<OtkaziRezervacijuRes>(url, {body: req, withCredentials: true});
   }
 
 }

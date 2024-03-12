@@ -43,7 +43,7 @@ import {ActivatedRoute} from "@angular/router";
   ]
 })
 export class ModifikacijaDetaljaComponent implements OnInit {
-  id:any;
+  id: any;
   soba: SobaModel = {
     aranzmani: [],
     cijene: [],
@@ -79,7 +79,7 @@ export class ModifikacijaDetaljaComponent implements OnInit {
               protected navigator: Navigator,
               protected handlerSlika: HandlerSlika,
               protected modal: Modal,
-              private activatedRoute:ActivatedRoute) {
+              private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(value => {
       this.id = value['id']
     })

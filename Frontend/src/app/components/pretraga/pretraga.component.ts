@@ -64,7 +64,7 @@ export class PretragaComponent implements OnInit {
   constructor(private pretragaEndpoint: PretragaEndpoint,
               private navigator: Navigator,
               private getAllAranzmaneEndpoint: GetAllAranzmaneEndpoint,
-              private authServis:AuthServis) {
+              private authServis: AuthServis) {
     this.podaci = (this.navigator.podaci) as PretragaEndpointReq
     if (this.podaci == undefined || Object.keys(this.podaci).length == 0) {
       this.podaci = {
@@ -129,7 +129,7 @@ export class PretragaComponent implements OnInit {
   async otvoriDetalje(id: number) {
     Navigator.trenutniIdSobe = id;
     this.podaci.filterPoCijeni = Number((document.getElementById("filter-po-cijeni") as HTMLSelectElement).value);
-    if(!this.authServis.isMenadzer())
+    if (!this.authServis.isMenadzer())
       await this.navigator.navigiraj('pregled', [id], this.podaci)
     else
       await this.navigator.navigiraj('modifikacija', [id])

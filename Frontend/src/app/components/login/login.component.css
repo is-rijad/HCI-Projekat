@@ -4,13 +4,16 @@ form {
   margin-left: 35vw;
   margin-right: 35vw;
 }
+
 #login-btn {
   margin-left: 80%;
   width: 20%;
 }
+
 input {
   cursor: text;
 }
+
 h2 {
   width: fit-content;
   margin-left: auto;

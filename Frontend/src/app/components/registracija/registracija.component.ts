@@ -1,8 +1,6 @@
-import { Component, isStandalone } from '@angular/core';
+import {Component, isStandalone} from '@angular/core';
 import {Navigator} from "../../navigator";
 import {Validator} from "../../validator";
-import {LoginEndpoint} from "../../endpoints/korisnici-endpoint/login-endpoint/login-endpoint";
-import {LoginReq} from "../../endpoints/korisnici-endpoint/login-endpoint/login-req";
 import {Alert, TipAlerta} from "../../alert";
 import {RegistracijaEndpoint} from "../../endpoints/korisnici-endpoint/registracija-endpoint/registracija-endpoint";
 import {HttpClientModule} from "@angular/common/http";
@@ -23,17 +21,19 @@ import {FormsModule} from "@angular/forms";
   ]
 })
 export class RegistracijaComponent {
-  req:RegistracijaEndpointReq = {
+  req: RegistracijaEndpointReq = {
     datumRodjenja: new Date(), drzava: "", email: "", grad: "", ime: "", lozinka: "", prezime: ""
 
   }
-  constructor(protected navigator:Navigator,
-              protected validator:Validator,
-              private registracijaEndpoint:RegistracijaEndpoint) {
+  protected readonly isStandalone = isStandalone;
+
+  constructor(protected navigator: Navigator,
+              protected validator: Validator,
+              private registracijaEndpoint: RegistracijaEndpoint) {
   }
 
   registrujSe() {
-    if(this.validator.validirajText(this.req.ime) &&
+    if (this.validator.validirajText(this.req.ime) &&
       this.validator.validirajText(this.req.prezime) &&
       this.validator.validirajText(this.req.grad) &&
       this.validator.validirajText(this.req.drzava) &&
@@ -55,12 +55,12 @@ export class RegistracijaComponent {
           Alert.alert = new Alert(TipAlerta.error, "Greška u komunikaciji sa serverom!")
         }
       })
-    }
-    else {
+    } else {
       Alert.alert = new Alert(TipAlerta.error, "Unos nije validan!");
-      this.req.lozinka=""
+      this.req.lozinka = ""
     }
   }
+
   private popraviText() {
     this.req.ime = this.req.ime?.trim();
     this.req.ime = this.req.ime[0]?.toUpperCase() + this.req.ime?.substring(1);
@@ -71,5 +71,4 @@ export class RegistracijaComponent {
     this.req.drzava = this.req.drzava?.trim();
     this.req.drzava = this.req.drzava[0]?.toUpperCase() + this.req.drzava?.substring(1);
   }
-  protected readonly isStandalone = isStandalone;
 }

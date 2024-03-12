@@ -1,9 +1,8 @@
 ﻿using Backend.Data.Modeli;
 
-namespace Backend.Endpoints.Aranzmani.GetAll
+namespace Backend.Endpoints.Aranzmani.GetAll;
+
+public class GetAllAranzmaneRes : BaseResponse
 {
-    public class GetAllAranzmaneRes : BaseResponse
-    {
-        public List<Aranzman>? Aranzmani { get; set; } = null;
-    }
+    public List<Aranzman>? Aranzmani { get; set; } = null;
 }

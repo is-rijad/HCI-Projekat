@@ -23,42 +23,41 @@ import {AuthServis} from "../../auth-servis";
   ]
 })
 export class LoginComponent {
-  email:string = "";
-  lozinka:string = "";
-  constructor(protected navigator:Navigator,
-              protected validator:Validator,
-              private loginEndpoint:LoginEndpoint,
-              private authServis:AuthServis) {
+  email: string = "";
+  lozinka: string = "";
+  protected readonly isStandalone = isStandalone;
+
+  constructor(protected navigator: Navigator,
+              protected validator: Validator,
+              private loginEndpoint: LoginEndpoint,
+              private authServis: AuthServis) {
   }
 
   ulogujSe() {
-    if(this.validator.validirajEmail(this.email) &&
-        this.validator.validirajLozinku(this.lozinka)) {
-      let req:LoginReq = {
-        email:this.email,
-        lozinka:this.lozinka
+    if (this.validator.validirajEmail(this.email) &&
+      this.validator.validirajLozinku(this.lozinka)) {
+      let req: LoginReq = {
+        email: this.email,
+        lozinka: this.lozinka
       }
       this.loginEndpoint.Akcija(req).subscribe({
         next: async res => {
           if (res.status == 200) {
             this.authServis.setLoginInfo(res.token)
             await this.navigator.navigirajSPodacima(Navigator.trazenaKomponenta, this.navigator.podaci);
+          } else {
+            this.lozinka = ""
+            Alert.alert = new Alert(TipAlerta.error, res.message);
           }
-        else {
-            this.lozinka=""
-          Alert.alert = new Alert(TipAlerta.error, res.message);
-        }
-      },
-      error: err => {
-        this.lozinka = ""
-        Alert.alert = new Alert(TipAlerta.error, "Greška u komunikaciji sa serverom!");
+        },
+        error: err => {
+          this.lozinka = ""
+          Alert.alert = new Alert(TipAlerta.error, "Greška u komunikaciji sa serverom!");
         }
       })
-    }
-    else {
+    } else {
       Alert.alert = new Alert(TipAlerta.error, "Unos nije validan!");
-      this.lozinka=""
+      this.lozinka = ""
     }
   }
-  protected readonly isStandalone = isStandalone;
 }

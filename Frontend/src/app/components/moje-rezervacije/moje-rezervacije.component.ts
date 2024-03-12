@@ -1,9 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ZauzetaSobaModel} from "../../models/zauzetaSobaModel";
 import {DatePipe, NgForOf} from "@angular/common";
-import {
-  GetBuduceRezervacijeZaGostaRes
-} from "../../endpoints/rezervacije-endpoint/get-buduce-rezervacije-za-gosta/get-buduce-rezervacije-za-gosta-res";
 import {
   GetBuduceRezervacijeZaGostaEndpoint
 } from "../../endpoints/rezervacije-endpoint/get-buduce-rezervacije-za-gosta/get-buduce-rezervacije-za-gosta-endpoint";
@@ -36,15 +32,15 @@ import {Alert, TipAlerta} from "../../alert";
     OtkaziRezervacijuEnpoint
   ]
 })
-export class MojeRezervacijeComponent implements OnInit{
+export class MojeRezervacijeComponent implements OnInit {
   buduceRezervacijeUpaljene: boolean = true;
   buduceRezervacije: RezervacijaModel[] = [];
   prosleRezervacije: RezervacijaModel[] = [];
 
-  constructor(private getBuduceRezervacijeZaGostaEndpoint:GetBuduceRezervacijeZaGostaEndpoint,
-              private getPrethodneRezervacijeZaGostaEndpoint:GetPrethodneRezervacijeZaGostaEndpoint,
-              private modal:Modal,
-              private otkaziRezervacijuEnpoint:OtkaziRezervacijuEnpoint) {
+  constructor(private getBuduceRezervacijeZaGostaEndpoint: GetBuduceRezervacijeZaGostaEndpoint,
+              private getPrethodneRezervacijeZaGostaEndpoint: GetPrethodneRezervacijeZaGostaEndpoint,
+              private modal: Modal,
+              private otkaziRezervacijuEnpoint: OtkaziRezervacijuEnpoint) {
   }
 
   ngOnInit(): void {
@@ -70,34 +66,19 @@ export class MojeRezervacijeComponent implements OnInit{
       })
     }
   }
-  private getBuduceRezervacije() {
-    this.getBuduceRezervacijeZaGostaEndpoint.Akcija().subscribe({
-      next: res => {
-        this.buduceRezervacije = res.rezervacije
-      },
-      complete: () => this.buduceRezervacije.forEach(br => br.rezervacija.slikaSobe = Slike.getRandomSliku())
-    })
-  }
-  private getPrethodneRezervacije() {
-    this.getPrethodneRezervacijeZaGostaEndpoint.Akcija().subscribe({
-      next: res => {
-        this.prosleRezervacije = res.rezervacije
-      },
-      complete: () => this.prosleRezervacije.forEach(br => br.rezervacija.slikaSobe = Slike.getRandomSliku())
-    })
-  }
+
   protected async otkaziRezervaciju(id: number, naziv: string) {
     this.modal.napraviDijalog(`Da li ste sigurni da želite otkazati ${naziv} rezervaciju`);
     while (this.modal.potvdna == null) {
       await new Promise(r => setTimeout(r, 200))
     }
-    if(this.modal.potvdna) {
-      let req:OtkaziRezervacijuReq = {
-        rezervacijaId:id
+    if (this.modal.potvdna) {
+      let req: OtkaziRezervacijuReq = {
+        rezervacijaId: id
       };
       this.otkaziRezervacijuEnpoint.Akcija(req).subscribe({
         next: res => {
-          if(res.status == 200)
+          if (res.status == 200)
             Alert.alert = new Alert(TipAlerta.success, res.message);
           else
             Alert.alert = new Alert(TipAlerta.error, res.message);
@@ -106,5 +87,23 @@ export class MojeRezervacijeComponent implements OnInit{
         error: err => Alert.alert = new Alert(TipAlerta.error, "Greška u komunikaciji sa serverom!")
       })
     }
+  }
+
+  private getBuduceRezervacije() {
+    this.getBuduceRezervacijeZaGostaEndpoint.Akcija().subscribe({
+      next: res => {
+        this.buduceRezervacije = res.rezervacije
+      },
+      complete: () => this.buduceRezervacije.forEach(br => br.rezervacija.slikaSobe = Slike.getRandomSliku())
+    })
+  }
+
+  private getPrethodneRezervacije() {
+    this.getPrethodneRezervacijeZaGostaEndpoint.Akcija().subscribe({
+      next: res => {
+        this.prosleRezervacije = res.rezervacije
+      },
+      complete: () => this.prosleRezervacije.forEach(br => br.rezervacija.slikaSobe = Slike.getRandomSliku())
+    })
   }
 }

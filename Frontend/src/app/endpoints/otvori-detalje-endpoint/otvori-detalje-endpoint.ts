@@ -8,9 +8,10 @@ import {ActivatedRoute} from "@angular/router";
 
 @Injectable()
 export class OtvoriDetaljeEndpoint implements BaseEndpoint<void, OtvoriDetaljeEndpointRes> {
-  id:any;
+  id: any;
+
   constructor(private httpClient: HttpClient,
-              private activatedRoute:ActivatedRoute) {
+              private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(value => {
       this.id = value['id']
     })

@@ -1,4 +1,5 @@
-﻿namespace Backend.Endpoints {
-    public class NoRequest {
-    }
+﻿namespace Backend.Endpoints;
+
+public class NoRequest
+{
 }

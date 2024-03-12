@@ -39,7 +39,8 @@
     <label for="opce-informacije-naziv">Naziv:</label>
     <input [(ngModel)]="soba.nazivSobe" class="form-control" id="opce-informacije-naziv" type="text">
     <label for="opce-informacije-detaljno">Detaljno:</label>
-    <textarea [(ngModel)]="soba.opis" class="form-control" cols="60" id="opce-informacije-detaljno" placeholder="Enter text"
+    <textarea [(ngModel)]="soba.opis" class="form-control" cols="60" id="opce-informacije-detaljno"
+              placeholder="Enter text"
               rows="5"></textarea>
     <label for="broj-osoba">Broj osoba:</label>
     <input (input)="dohvatiCijene()" [(ngModel)]="soba.brojGostiju" class="form-control form-control-number"
@@ -78,7 +79,8 @@
     <div *ngFor="let krevet of soba.kreveti" id="krevet-itemi">
       <div class="krevet-item">
         <label for="broj-kreveta-{{krevet.krevetId}}}">{{krevet.krevet.tip}} kreveti:</label>
-        <input [(ngModel)]="krevet.brojKreveta" class="form-control form-control-number" id="broj-kreveta-{{krevet.krevetId}}}"
+        <input [(ngModel)]="krevet.brojKreveta" class="form-control form-control-number"
+               id="broj-kreveta-{{krevet.krevetId}}}"
                style="width: 50%" type="number">
       </div>
     </div>
@@ -93,7 +95,8 @@
       <label class="form-check-label" for="besplatno-otkazivanje">Besplatno otkazivanje</label>
     </div>
     <div>
-      <input [(ngModel)]="soba.klima" class="form-check form-check-input form-check-inline" id="klima" title="Da li želite sobu s klimom?"
+      <input [(ngModel)]="soba.klima" class="form-check form-check-input form-check-inline" id="klima"
+             title="Da li želite sobu s klimom?"
              type="checkbox">
       <label class="form-check-label" for="klima">Klima</label>
     </div>
@@ -103,22 +106,26 @@
       <label class="form-check-label" for="teretana">Teretana</label>
     </div>
     <div>
-      <input [(ngModel)]="soba.bazen" class="form-check form-check-input form-check-inline" id="bazen" title="Da li želite sobu s pristupom bazenu?"
+      <input [(ngModel)]="soba.bazen" class="form-check form-check-input form-check-inline" id="bazen"
+             title="Da li želite sobu s pristupom bazenu?"
              type="checkbox">
       <label class="form-check-label" for="bazen">Bazen</label>
     </div>
     <div>
-      <input [(ngModel)]="soba.spa" class="form-check form-check-input form-check-inline" id="spa" title="Da li želite sobu s pristupom spa centru?"
+      <input [(ngModel)]="soba.spa" class="form-check form-check-input form-check-inline" id="spa"
+             title="Da li želite sobu s pristupom spa centru?"
              type="checkbox">
       <label class="form-check-label" for="spa">Spa</label>
     </div>
     <div>
-      <input [(ngModel)]="soba.balkon" class="form-check form-check-input form-check-inline" id="balkon" title="Da li želite sobu s pristupom balkonu?"
+      <input [(ngModel)]="soba.balkon" class="form-check form-check-input form-check-inline" id="balkon"
+             title="Da li želite sobu s pristupom balkonu?"
              type="checkbox">
       <label class="form-check-label" for="balkon">Balkon</label>
     </div>
     <div>
-      <input [(ngModel)]="soba.dozvoljeniLjubimci" class="form-check form-check-input form-check-inline" id="dozvoljeni-ljubimci"
+      <input [(ngModel)]="soba.dozvoljeniLjubimci" class="form-check form-check-input form-check-inline"
+             id="dozvoljeni-ljubimci"
              title="Da li želite sobu u kojoj su dozvoljeni ljubimci?" type="checkbox">
       <label class="form-check-label" for="dozvoljeni-ljubimci">Dozvoljeni ljubimci</label>
     </div>
@@ -138,7 +145,8 @@
     </div>
     <div *ngFor="let aranzman of soba.aranzmani" class="aranzman-itemi">
       <div>
-        <input class="form-check form-check-input form-check-inline aranzman-check" id="aranzman-{{aranzman.aranzmanId}}"
+        <input class="form-check form-check-input form-check-inline aranzman-check"
+               id="aranzman-{{aranzman.aranzmanId}}"
                type="checkbox">
         <label for="aranzman-{{aranzman.aranzmanId}}">{{aranzman.aranzman.nazivAranzmana}}</label>
       </div>

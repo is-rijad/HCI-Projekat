@@ -1,8 +1,8 @@
-﻿using Backend.Data.Modeli;
+﻿using Backend.Endpoints.Rezervacije.GetBuduceRezervacijeZaGosta;
 
-namespace Backend.Endpoints.Rezervacije.GetBuduceRezervacijeZaGosta {
-    public class GetPrethodneRezervacijeZaGostaRes : BaseResponse {
-        public List<RezervacijaModel>? Rezervacije { get; set; }
+namespace Backend.Endpoints.Rezervacije.GetPrethodneRezervacijeZaGosta;
 
-    }
+public class GetPrethodneRezervacijeZaGostaRes : BaseResponse
+{
+    public List<RezervacijaModel>? Rezervacije { get; set; }
 }

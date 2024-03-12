@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {BaseEndpoint} from "../../base-endpoint";
-import {GetAllAranzmaneEndpointRes} from "../../aranzmani-endpoint/get-all-aranzmane/get-all-aranzmane-endpoint-res";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Config} from "../../../config";

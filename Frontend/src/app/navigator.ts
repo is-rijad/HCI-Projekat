@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
-import {NavigationEnd, NavigationStart, Router, RouterEvent} from "@angular/router";
+import {NavigationEnd, Router, RouterEvent} from "@angular/router";
 
 @Injectable({providedIn: "root"})
 export class Navigator {
-  static trazenaKomponenta:string="";
+  static trazenaKomponenta: string = "";
   static trenutniIdSobe: number = -1;
   static trenutniElementi: HTMLCollectionOf<Element> | null = null;
   podaci: any;

@@ -4,14 +4,14 @@ import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {GetAllKreveteZaSobuEndpointRes} from "./get-all-krevete-za-sobu-endpoint-res";
 import {Config} from "../../../config";
-import {Navigator} from "../../../navigator";
 import {ActivatedRoute} from "@angular/router";
 
 @Injectable()
 export class GetAllKreveteZaSobuEndpoint implements BaseEndpoint<void, GetAllKreveteZaSobuEndpointRes> {
-  id:any;
+  id: any;
+
   constructor(private httpClient: HttpClient,
-              private activatedRoute:ActivatedRoute) {
+              private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(value => {
       this.id = value['id']
     })

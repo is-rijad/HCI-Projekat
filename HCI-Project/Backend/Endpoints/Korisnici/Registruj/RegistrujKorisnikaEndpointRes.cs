@@ -1,4 +1,5 @@
-﻿namespace Backend.Endpoints.Korisnici.Registruj {
-    public class RegistrujKorisnikaEndpointRes  : BaseResponse{
-    }
+﻿namespace Backend.Endpoints.Korisnici.Registruj;
+
+public class RegistrujKorisnikaEndpointRes : BaseResponse
+{
 }

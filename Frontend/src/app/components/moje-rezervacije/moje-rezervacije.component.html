@@ -1,55 +1,62 @@
 <div id="wrapper">
-<nav class="nav nav-pills nav-fill">
-  <a title="Pogledaj buduće rezervacije" id="buduce-rezervacije-button" class="nav-link kartica-button">Buduće rezervacije</a>
-  <a title="Pogledaj prethodne rezervacije" id="prethodne-rezervacije-button" class="nav-link kartica-button">Prethodne rezervacije</a>
-</nav>
-<div id="panel-buduce-rezervacije">
-  <div *ngFor="let rezervacija of buduceRezervacije" class="rezervacija-item">
-    <div class="rezervacija-slika">
-      <img alt="" class="rezervacija-slika-slika" height="150" src="{{rezervacija.rezervacija.slikaSobe}}" width="220">
-    </div>
-    <div class="rezervacija-opis-div">
-      <div>
-        <h4 class="p-3 rezervacija-opis-naslov">{{rezervacija.nazivSobe}}</h4>
+  <nav class="nav nav-pills nav-fill">
+    <a class="nav-link kartica-button" id="buduce-rezervacije-button" title="Pogledaj buduće rezervacije">Buduće
+      rezervacije</a>
+    <a class="nav-link kartica-button" id="prethodne-rezervacije-button" title="Pogledaj prethodne rezervacije">Prethodne
+      rezervacije</a>
+  </nav>
+  <div id="panel-buduce-rezervacije">
+    <div *ngFor="let rezervacija of buduceRezervacije" class="rezervacija-item">
+      <div class="rezervacija-slika">
+        <img alt="" class="rezervacija-slika-slika" height="150" src="{{rezervacija.rezervacija.slikaSobe}}"
+             width="220">
       </div>
-      <div class="rezervacija-opis">
-        <h6 class="rezervacija-opis-datumi">{{rezervacija.rezervacija.datumDolaska | date: 'dd-MM-yyyy'}} - {{rezervacija.rezervacija.datumOdlaska | date: 'dd-MM-yyyy'}}</h6>
-        <a (click)="otkaziRezervaciju(rezervacija.rezervacija.id, rezervacija.nazivSobe)" title="Otkažite rezervaciju" class="btn btn-danger otkazi-rezervaciju">Otkaži rezervaciju</a>
-        <div class="rezervacija-opis-br-osoba">
-          <h6>{{rezervacija.rezervacija.brojOsoba}}</h6>
-          <h6> odraslih, </h6>
-          <h6>{{rezervacija.rezervacija.brojDjece}}</h6>
-          <h6> djece</h6>
-          <br>
-          <h4>{{rezervacija.rezervacija.cijena}}</h4>
-          <h4> KM</h4>
+      <div class="rezervacija-opis-div">
+        <div>
+          <h4 class="p-3 rezervacija-opis-naslov">{{rezervacija.nazivSobe}}</h4>
+        </div>
+        <div class="rezervacija-opis">
+          <h6 class="rezervacija-opis-datumi">{{rezervacija.rezervacija.datumDolaska | date: 'dd-MM-yyyy'}}
+            - {{rezervacija.rezervacija.datumOdlaska | date: 'dd-MM-yyyy'}}</h6>
+          <a (click)="otkaziRezervaciju(rezervacija.rezervacija.id, rezervacija.nazivSobe)" class="btn btn-danger otkazi-rezervaciju"
+             title="Otkažite rezervaciju">Otkaži rezervaciju</a>
+          <div class="rezervacija-opis-br-osoba">
+            <h6>{{rezervacija.rezervacija.brojOsoba}}</h6>
+            <h6> odraslih, </h6>
+            <h6>{{rezervacija.rezervacija.brojDjece}}</h6>
+            <h6> djece</h6>
+            <br>
+            <h4>{{rezervacija.rezervacija.cijena}}</h4>
+            <h4> KM</h4>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div id="panel-prethodne-rezervacije">
-  <div *ngFor="let rezervacija of prosleRezervacije" class="rezervacija-item">
-    <div class="rezervacija-slika">
-      <img alt="" class="rezervacija-slika-slika" height="150" src="{{rezervacija.rezervacija.slikaSobe}}" width="220">
-    </div>
-    <div class="rezervacija-opis-div">
-      <div>
-        <h4 class="p-3 rezervacija-opis-naslov">{{rezervacija.nazivSobe}}</h4>
+  <div id="panel-prethodne-rezervacije">
+    <div *ngFor="let rezervacija of prosleRezervacije" class="rezervacija-item">
+      <div class="rezervacija-slika">
+        <img alt="" class="rezervacija-slika-slika" height="150" src="{{rezervacija.rezervacija.slikaSobe}}"
+             width="220">
       </div>
-      <div class="rezervacija-opis">
-        <h6 class="rezervacija-opis-datumi">{{rezervacija.rezervacija.datumDolaska | date: 'dd-MM-yyyy'}} - {{rezervacija.rezervacija.datumOdlaska | date: 'dd-MM-yyyy'}}</h6>
-        <div class="rezervacija-opis-br-osoba">
-          <h6>{{rezervacija.rezervacija.brojOsoba}}</h6>
-          <h6> odraslih, </h6>
-          <h6>{{rezervacija.rezervacija.brojDjece}}</h6>
-          <h6> djece</h6>
-          <br>
-          <h4>{{rezervacija.rezervacija.cijena}}</h4>
-          <h4> KM</h4>
+      <div class="rezervacija-opis-div">
+        <div>
+          <h4 class="p-3 rezervacija-opis-naslov">{{rezervacija.nazivSobe}}</h4>
+        </div>
+        <div class="rezervacija-opis">
+          <h6 class="rezervacija-opis-datumi">{{rezervacija.rezervacija.datumDolaska | date: 'dd-MM-yyyy'}}
+            - {{rezervacija.rezervacija.datumOdlaska | date: 'dd-MM-yyyy'}}</h6>
+          <div class="rezervacija-opis-br-osoba">
+            <h6>{{rezervacija.rezervacija.brojOsoba}}</h6>
+            <h6> odraslih, </h6>
+            <h6>{{rezervacija.rezervacija.brojDjece}}</h6>
+            <h6> djece</h6>
+            <br>
+            <h4>{{rezervacija.rezervacija.cijena}}</h4>
+            <h4> KM</h4>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>

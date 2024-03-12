@@ -8,9 +8,10 @@ import {Navigator} from "../../navigator";
   templateUrl: './pocetna.component.html',
   styleUrl: './pocetna.component.css'
 })
-export class PocetnaComponent implements OnInit{
-  constructor(protected navigator:Navigator) {
+export class PocetnaComponent implements OnInit {
+  constructor(protected navigator: Navigator) {
   }
+
   async ngOnInit(): Promise<void> {
     await this.navigator.navigiraj('pocetna');
   }

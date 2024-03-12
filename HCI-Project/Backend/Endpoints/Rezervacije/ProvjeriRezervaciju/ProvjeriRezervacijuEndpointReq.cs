@@ -1,7 +1,7 @@
-﻿namespace Backend.Endpoints.Rezervacije.NapraviRezervaciju
+﻿using Backend.Endpoints.Rezervacije.NapraviRezervaciju;
+
+namespace Backend.Endpoints.Rezervacije.ProvjeriRezervaciju;
+
+public class ProvjeriRezervacijuEndpointReq : NapraviRezervacijuEndpointReq
 {
-    public class ProvjeriRezervacijuEndpointReq : NapraviRezervacijuEndpointReq
-    {
-        
-    }
 }

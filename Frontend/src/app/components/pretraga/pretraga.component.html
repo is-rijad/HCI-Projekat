@@ -6,11 +6,13 @@
     </nav>
     <div id="lijevi-panel-pretraga">
       <label class="form-label" for="datum-prijave">Datum prijave:</label>
-      <input (input)="dohvatiSobe()" class="form-control form-control-date mb-2" id="datum-prijave" title="Izaberite datum prijave."
+      <input (input)="dohvatiSobe()" class="form-control form-control-date mb-2" id="datum-prijave"
+             title="Izaberite datum prijave."
              type="date">
 
       <label class="form-label" for="datum-odjave">Datum odjave:</label>
-      <input (input)="dohvatiSobe()" class="form-control form-control-date mb-2" id="datum-odjave" title="Izaberite datum odjave."
+      <input (input)="dohvatiSobe()" class="form-control form-control-date mb-2" id="datum-odjave"
+             title="Izaberite datum odjave."
              type="date">
 
       <label class="form-label" for="broj-odraslih">Broj odraslih:</label>
@@ -24,7 +26,8 @@
              type="number">
 
       <div style="display: flex; align-items: center">
-        <input (input)="dohvatiSobe()" [(ngModel)]="podaci.besplatnoOtkazivanje" class="form-check form-check-input form-check-inline"
+        <input (input)="dohvatiSobe()" [(ngModel)]="podaci.besplatnoOtkazivanje"
+               class="form-check form-check-input form-check-inline"
                id="besplatno-otkazivanje"
                title="Izaberite broj djece." type="checkbox">
         <label class="form-check-label" for="besplatno-otkazivanje">Besplatno otkazivanje</label>
@@ -63,26 +66,31 @@
 
       <h5 class="mb-2 mt-2">Ostali filteri</h5>
       <div style="margin-bottom: 5px">
-        <input (input)="dohvatiSobe()" [(ngModel)]="podaci.besplatnoOtkazivanje" class="form-check form-check-input form-check-inline"
+        <input (input)="dohvatiSobe()" [(ngModel)]="podaci.besplatnoOtkazivanje"
+               class="form-check form-check-input form-check-inline"
                id="filter-besplatno-otkazivanje" title="Da li želite besplatno otkazivanje?"
                type="checkbox">
         <label class="form-check-label" for="filter-besplatno-otkazivanje">Besplatno otkazivanje</label>
       </div>
-      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 5px; padding-right: 5px">
+      <div
+        style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 5px; padding-right: 5px">
         <div>
-          <input (input)="dohvatiSobe()" [(ngModel)]="podaci.klima" class="form-check form-check-input form-check-inline"
+          <input (input)="dohvatiSobe()" [(ngModel)]="podaci.klima"
+                 class="form-check form-check-input form-check-inline"
                  id="klima" title="Da li želite sobu s klimom?"
                  type="checkbox">
           <label class="form-check-label" for="klima">Klima</label>
         </div>
         <div>
-          <input (input)="dohvatiSobe()" [(ngModel)]="podaci.teretana" class="form-check form-check-input form-check-inline"
+          <input (input)="dohvatiSobe()" [(ngModel)]="podaci.teretana"
+                 class="form-check form-check-input form-check-inline"
                  id="teretana" title="Da li želite sobu s pristupom teretani?"
                  type="checkbox">
           <label class="form-check-label" for="teretana">Teretana</label>
         </div>
         <div>
-          <input (input)="dohvatiSobe()" [(ngModel)]="podaci.bazen" class="form-check form-check-input form-check-inline"
+          <input (input)="dohvatiSobe()" [(ngModel)]="podaci.bazen"
+                 class="form-check form-check-input form-check-inline"
                  id="bazen" title="Da li želite sobu s pristupom bazenu?"
                  type="checkbox">
           <label class="form-check-label" for="bazen">Bazen</label>
@@ -94,19 +102,22 @@
           <label class="form-check-label" for="spa">Spa</label>
         </div>
         <div>
-          <input (input)="dohvatiSobe()" [(ngModel)]="podaci.balkon" class="form-check form-check-input form-check-inline"
+          <input (input)="dohvatiSobe()" [(ngModel)]="podaci.balkon"
+                 class="form-check form-check-input form-check-inline"
                  id="balkon" title="Da li želite sobu s pristupom balkonu?"
                  type="checkbox">
           <label class="form-check-label" for="balkon">Balkon</label>
         </div>
         <div>
-          <input (input)="dohvatiSobe()" [(ngModel)]="podaci.dozvoljeniLjubimci" class="form-check form-check-input form-check-inline"
+          <input (input)="dohvatiSobe()" [(ngModel)]="podaci.dozvoljeniLjubimci"
+                 class="form-check form-check-input form-check-inline"
                  id="dozvoljeni-ljubimci" title="Da li želite sobu u kojoj su dozvoljeni ljubimci?"
                  type="checkbox">
           <label class="form-check-label" for="dozvoljeni-ljubimci">Dozvoljeni ljubimci</label>
         </div>
         <div>
-          <input (input)="dohvatiSobe()" [(ngModel)]="podaci.prilagodjenInvalidima" class="form-check form-check-input form-check-inline"
+          <input (input)="dohvatiSobe()" [(ngModel)]="podaci.prilagodjenInvalidima"
+                 class="form-check form-check-input form-check-inline"
                  id="prilagodjeno-invalidima" title="Da li želite sobu koja je prilagođena invalidima?"
                  type="checkbox">
           <label class="form-check-label" for="prilagodjeno-invalidima">Prilagođeno invalidima</label>

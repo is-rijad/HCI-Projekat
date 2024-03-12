@@ -4,14 +4,14 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Config} from "../../../config";
-import {Navigator} from "../../../navigator";
 import {ActivatedRoute} from "@angular/router";
 
 @Injectable()
 export class GetAllCijeneZaSobuEndpoint implements BaseEndpoint<number, GetAllCijeneZaSobuEndpointRes> {
-  id:any;
+  id: any;
+
   constructor(private httpClient: HttpClient,
-              private activatedRoute:ActivatedRoute) {
+              private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(value => {
       this.id = value['id']
     })

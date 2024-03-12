@@ -1,5 +1,4 @@
-import { BaseResponse } from "../../base-response"
-import {Token} from "../../../models/token";
+import {BaseResponse} from "../../base-response"
 
-export interface LogoutRes extends BaseResponse{
+export interface LogoutRes extends BaseResponse {
 }

@@ -4,7 +4,7 @@ body {
   overflow-y: hidden;
 }
 
-label, select, a, .form-check-input, input{
+label, select, a, .form-check-input, input {
   cursor: pointer;
 }
 
