@@ -1,0 +1,69 @@
+<header>
+  <div id="informacije">
+    <img (click)="navigator.navigiraj('pocetna')" src="assets/logo.png" title="Idi na pocetnu stranicu" width="50">
+    <h1 (click)="navigator.navigiraj('pocetna')" title="Idi na pocetnu stranicu">Hotel Leo</h1>
+  </div>
+  <nav class="nav nav-pills nav-fill">
+    <a (click)="navigator.navigiraj('pocetna')" class="btn nav-link pocetna" title="Idi na početnu stranicu">Početna</a>
+    <a (click)="navigator.navigiraj('pretraga')" class=" btn nav-link pretraga" title="Idi na pretragu">Pretraga</a>
+    <a (click)="navigator.navigiraj('moje-rezervacije')" *ngIf="authServis.isLogiran()"
+       class="btn nav-link moje-rezervacije" title="Idi na moje rezervacije">Moje rezervacije</a>
+    <a (click)="odjaviSe()" *ngIf="authServis.isLogiran()" class="btn nav-link" title="Odjavi se">Odjava</a>
+  </nav>
+  <div id="breadcrumb">
+    <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';">
+      <ol class="breadcrumb">
+        <li (click)="navigator.navigiraj('pocetna')" class="breadcrumb-item pocetna" title="Idi na početnu stranicu">
+          Početna
+        </li>
+        <li (click)="navigator.navigiraj('pretraga')" class="breadcrumb-item pretraga" title="Idi na pretragu">
+          Pretraga
+        </li>
+        <li (click)="navigator.navigiraj('modifikacija', [Navigator.trenutniIdSobe])" *ngIf="authServis.isMenadzer()"
+            class="breadcrumb-item modifikacija"
+            title="Idi na modifikaciju">Modifikacija detalja
+        </li>
+        <li (click)="navigator.navigiraj('pregled', [Navigator.trenutniIdSobe])" *ngIf="!authServis.isMenadzer()"
+            class="breadcrumb-item pregled"
+            title="Idi na pregled detalja">Pregled detalja
+        </li>
+        <li (click)="navigator.navigiraj('potvrda')" *ngIf="!authServis.isMenadzer()" class="breadcrumb-item potvrda"
+            title="Idi na potvrdu rezervacije">
+          Potvrda
+        </li>
+      </ol>
+    </nav>
+    <div style="display: flex; justify-items: center">
+      <div *ngIf="authServis.isMenadzer()" id="dodaj-sobu">
+        <a (click)="navigator.navigiraj('modifikacija', [0])" class="btn btn-primary" title="Dodajte novu sobu">Dodaj
+          sobu</a>
+      </div>
+
+      <div *ngIf="!authServis.isLogiran()" id="registruj-se">
+        <a (click)="navigator.navigiraj('registracija')" class="btn btn-primary" title="Registrujte se">Registruj se</a>
+      </div>
+      <div *ngIf="!authServis.isLogiran()" id="uloguj-se">
+        <a (click)="navigator.navigiraj('login')" class="btn btn-primary" title="Ulogujte se">Uloguj se</a>
+      </div>
+    </div>
+
+  </div>
+</header>
+<div *ngIf="Alert.alert.aktivan" class="alert alert-{{Alert.alert.tip}}" id="alert">
+  {{Alert.alert.sadrzaj}}
+</div>
+<div *ngIf="modal.aktivan" class="modal" id="modal-div" tabindex="-1">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button (click)="modal.aktivan = !modal.aktivan" class="btn-close" title="Izađi" type="button"></button>
+    </div>
+    <div class="modal-body">
+      {{modal.sadrzaj}}
+    </div>
+    <div class="modal-footer">
+      <button (click)="modal.otkazi()" class="btn btn-danger" title="Izađi" type="button">Izlaz</button>
+      <button (click)="modal.potvrdi()" class="btn btn-primary" title="Potvrdi" type="button">Potvrdi</button>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

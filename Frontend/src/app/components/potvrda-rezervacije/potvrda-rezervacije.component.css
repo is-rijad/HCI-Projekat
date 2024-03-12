@@ -1,0 +1,26 @@
+#body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, fit-content(100%));
+  grid-gap: 20px;
+  padding: 10px;
+  padding-top: 0;
+}
+
+div * {
+  margin-top: 10px;
+}
+
+#rezervacija-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#rezervacija-button a {
+  width: 90%;
+  cursor: pointer;
+  text-align: center;
+}
+

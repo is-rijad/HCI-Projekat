@@ -1,0 +1,50 @@
+<h2>Dobrodošli, registrujte se</h2>
+<form>
+  <div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="ime">Ime</label>
+      <input [(ngModel)]="req.ime" [ngModelOptions]="{standalone:true}" class="form-control" id="ime" type="text"/>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="prezime">Prezime</label>
+      <input [(ngModel)]="req.prezime" [ngModelOptions]="{standalone:true}" class="form-control" id="prezime"
+             type="text"/>
+    </div>
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="email">Email</label>
+      <input [(ngModel)]="req.email" [ngModelOptions]="{standalone:true}" class="form-control" id="email" type="email"/>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="lozinka">Lozinka</label>
+      <input [(ngModel)]="req.lozinka" [ngModelOptions]="{standalone:true}" class="form-control" id="lozinka"
+             type="password"/>
+    </div>
+  </div>
+  <div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="datum-rodjenja">Datum rodjenja</label>
+      <input [(ngModel)]="req.datumRodjenja" [ngModelOptions]="{standalone:true}" class="form-control" id="datum-rodjenja"
+             type="date"/>
+    </div>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="drzava">Država</label>
+      <input [(ngModel)]="req.drzava" [ngModelOptions]="{standalone:true}" class="form-control" id="drzava"
+             type="text"/>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="grad">Grad</label>
+      <input [(ngModel)]="req.grad" [ngModelOptions]="{standalone:true}" class="form-control" id="grad" type="text"/>
+    </div>
+
+
+    <!-- Submit button -->
+    <button (click)="registrujSe()" class="btn btn-primary btn-block mb-4" id="login-btn" title="Registrujte se"
+            type="button">Registruj se
+    </button>
+  </div>
+</form>
+

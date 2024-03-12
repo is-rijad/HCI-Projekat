@@ -1,0 +1,161 @@
+input, select, textarea {
+  background-color: darkgray;
+}
+
+input:disabled {
+  background-color: rgba(0, 0, 0, 0.36);
+}
+
+.form-control {
+  width: 70%;
+}
+
+#body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, fit-content(100%));
+  grid-gap: 10px;
+  padding: 0 10px 10px;
+  overflow-y: scroll;
+  height: 74vh;
+}
+
+div * {
+  margin-top: 10px;
+}
+
+#slika {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#slika div h6 {
+  display: inline;
+  font-size: xx-large;
+}
+
+.slika-strelica:hover {
+  font-weight: bolder;
+}
+
+.slika-strelica {
+  cursor: pointer;
+}
+
+#slika img {
+  display: block;
+  object-fit: contain;
+  width: 500px;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+#opce-informacije {
+  width: 70%;
+  margin-left: 10%;
+}
+
+#opce-informacije * {
+  display: block;
+  width: 100%;
+}
+
+#opce-informacije-naziv {
+  text-align: center;
+}
+
+#opce-informacije-detaljno {
+  min-height: 350px;
+  max-height: 350px;
+}
+
+#cijene-header {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20%;
+}
+
+#aranzmani {
+  width: 100%;
+}
+
+#aranzmani-naslovi {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.aranzman-itemi {
+  display: flex;
+  justify-content: space-between;
+}
+
+#soba-posjeduje {
+  width: 100%;
+  grid-column: 1;
+  display: flex;
+  justify-content: normal;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#kreveti {
+  margin: 0 20px 0 20px;
+  width: 80%;
+}
+
+.krevet-item {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+#slika-modal-div {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  overflow: hidden;
+}
+
+#slika-modal-div img {
+  width: 80vw;
+  height: 60vh;
+}
+
+#slika-modal-div .modal-content {
+  height: 100vh;
+  margin-top: 0px;
+}
+
+#slika-modal-div .modal-body h6 {
+  font-size: xxx-large;
+}
+
+#slika-modal-div .modal-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+#slika-modal-div .modal-body div {
+  width: 100%;
+}
+
+#slika-modal-div .modal-body div h6 {
+  display: inline;
+}
+
+#spremi-otkazi {
+  grid-column: 3;
+  display: flex;
+  justify-self: end;
+  gap: 10px;
+  margin-right: 20px;
+}
+

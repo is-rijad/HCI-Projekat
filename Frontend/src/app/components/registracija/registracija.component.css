@@ -1,0 +1,27 @@
+form {
+  display: flex;
+  width: 100vw;
+  padding: 10px;
+  height: 60vh;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}
+
+#login-btn {
+  margin-left: 50%;
+  width: 50%;
+  margin-top: 15%;
+}
+
+input {
+  cursor: text;
+}
+
+h2 {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  font-family: "Arial Rounded MT Bold";
+}

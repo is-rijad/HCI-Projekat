@@ -1,0 +1,158 @@
+<div *ngIf="handlerSlika.isModalVidljiv" class="modal" id="slika-modal-div" tabindex="-1">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button (click)="handlerSlika.isModalVidljiv = !handlerSlika.isModalVidljiv" class="btn-close" title="Izađi"
+              type="button"></button>
+    </div>
+    <div class="modal-body">
+      <h6 (click)="handlerSlika.promijeniSliku(-1)" class="slika-strelica" title="Prethodna slika"><</h6>
+      <img alt="" id="full-screen-slika" src="{{Slike.nizSlika[handlerSlika.trenutniIndexSlike - 1]}}">
+      <h6 (click)="handlerSlika.promijeniSliku(1)" class="slika-strelica" title="Sljedeća slika">></h6>
+      <div style="text-align: center">
+        <h6>{{handlerSlika.trenutniIndexSlike}}</h6>
+        <h6>/</h6>
+        <h6>{{Slike.nizSlika.length}}</h6>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button (click)="handlerSlika.isModalVidljiv = !handlerSlika.isModalVidljiv" class="btn btn-secondary"
+              title="Izađi"
+              type="button">Izlaz
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<div id="body">
+  <div id="slika">
+    <img (click)="handlerSlika.isModalVidljiv = !handlerSlika.isModalVidljiv" alt=""
+         id="slika-slika" src="{{Slike.nizSlika[0]}}" title="Prikaži preko cijelog zaslona">
+    <div style="text-align: center">
+      <h6 (click)="handlerSlika.promijeniSliku(-1)" class="slika-strelica" title="Prethodna slika"><</h6>
+      <h6>{{handlerSlika.trenutniIndexSlike}}</h6>
+      <h6>/</h6>
+      <h6>{{Slike.nizSlika.length}}</h6>
+      <h6 (click)="handlerSlika.promijeniSliku(1)" class="slika-strelica" title="Sljedeća slika">></h6>
+    </div>
+
+
+  </div>
+  <div id="opce-informacije">
+    <h1 id="opce-informacije-naziv">{{soba.nazivSobe}}</h1>
+    <textarea [ngModel]="soba.opis" class="form-control" cols="60" id="opce-informacije-detaljno" readonly
+              rows="5"></textarea>
+  </div>
+
+  <div id="rezervacija">
+    <div id="rezervacija-period">
+      <h4>Period</h4>
+      <label class="form-label" for="datum-prijave">Datum prijave:</label>
+      <input (input)="izracunajCijenu()" class="form-control form-control-date mb-2" id="datum-prijave"
+             title="Izaberite datum prijave."
+             type="date">
+
+      <label class="form-label" for="datum-odjave">Datum odjave:</label>
+      <input (input)="izracunajCijenu()" class="form-control form-control-date mb-2" id="datum-odjave"
+             title="Izaberite datum odjave."
+             type="date">
+    </div>
+
+    <div id="rezervacija-za-osoba">
+      <h4>Za osoba</h4>
+      <label class="form-label" for="broj-odraslih">Broj odraslih:</label>
+      <input (input)="izracunajCijenu()" [(ngModel)]="brojOdraslih" class="form-control form-control-number mb-2"
+             id="broj-odraslih" max="{{soba.brojGostiju}}"
+             min="1" title="Izaberite broj odraslih osoba." type="number">
+
+      <label class="form-label" for="broj-djece">Broj djece:</label>
+      <input (input)="izracunajCijenu()" [(ngModel)]="brojDjece" class="form-control form-control-number mb-2"
+             id="broj-djece" max="{{soba.brojGostiju}}"
+             min="0" title="Izaberite broj djece." type="number">
+
+    </div>
+    <div id="rezervacija-aranzman">
+      <h4>Aranžman</h4>
+      <select (input)="izracunajCijenu()" class="form-select form-control" id="aranzman" title="Izaberite aranžman.">
+
+      </select>
+    </div>
+
+    <div id="rezervacija-cijena">
+      <h4>Cijena</h4>
+      <h1>{{cijenaSobe}}</h1>
+      <h1>KM</h1>
+    </div>
+
+    <div id="rezervacija-button">
+      <a (click)="provjeriRezervaciju()" class="btn btn-primary" title="Napravi rezervaciju">Rezerviši</a>
+    </div>
+  </div>
+
+  <div id="soba-posjeduje">
+    <h4>Soba posjeduje</h4>
+
+    <div style="display: block; width: 100%">
+      <input [ngModel]="soba.besplatnoOtkazivanje" class="form-check form-check-input form-check-inline"
+             id="besplatno-otkazivanje"
+             onclick="return false;" title="Da li želite besplatno otkazivanje?"
+             type="checkbox">
+      <label class="form-check-label" for="besplatno-otkazivanje">Besplatno otkazivanje</label>
+    </div>
+    <div>
+      <input [ngModel]="soba.klima" class="form-check form-check-input form-check-inline" id="klima"
+             onclick="return false;" title="Da li želite sobu s klimom?" type="checkbox">
+      <label class="form-check-label" for="klima">Klima</label>
+    </div>
+    <div>
+      <input [ngModel]="soba.teretana" class="form-check form-check-input form-check-inline" id="teretana"
+             onclick="return false;" title="Da li želite sobu s pristupom teretani?"
+             type="checkbox">
+      <label class="form-check-label" for="teretana">Teretana</label>
+    </div>
+    <div>
+      <input [ngModel]="soba.bazen" class="form-check form-check-input form-check-inline" id="bazen"
+             onclick="return false;" title="Da li želite sobu s pristupom bazenu?"
+             type="checkbox">
+      <label class="form-check-label" for="bazen">Bazen</label>
+    </div>
+    <div>
+      <input [ngModel]="soba.spa" class="form-check form-check-input form-check-inline" id="spa"
+             onclick="return false;" title="Da li želite sobu s pristupom spa centru?"
+             type="checkbox">
+      <label class="form-check-label" for="spa">Spa</label>
+    </div>
+    <div>
+      <input [ngModel]="soba.balkon" class="form-check form-check-input form-check-inline" id="balkon"
+             onclick="return false;" title="Da li želite sobu s pristupom balkonu?"
+             type="checkbox">
+      <label class="form-check-label" for="balkon">Balkon</label>
+    </div>
+    <div>
+      <input [ngModel]="soba.dozvoljeniLjubimci" class="form-check form-check-input form-check-inline"
+             id="dozvoljeni-ljubimci"
+             onclick="return false;" title="Da li želite sobu u kojoj su dozvoljeni ljubimci?"
+             type="checkbox">
+      <label class="form-check-label" for="dozvoljeni-ljubimci">Dozvoljeni ljubimci</label>
+    </div>
+    <div>
+      <input [ngModel]="soba.prilagodjenInvalidima" class="form-check form-check-input form-check-inline"
+             id="prilagodjeno-invalidima"
+             onclick="return false;" title="Da li želite sobu koja je prilagođena invalidima?"
+             type="checkbox">
+      <label class="form-check-label" for="prilagodjeno-invalidima">Prilagođeno invalidima</label>
+    </div>
+  </div>
+
+  <div id="kreveti">
+    <h4>Kreveti</h4>
+    <div *ngFor="let krevet of soba.kreveti" id="krevet-itemi">
+      <div class="krevet-item">
+        <h5>{{krevet.brojKreveta}}</h5>
+        <h5>{{krevet.krevet.tip}} krevet</h5>
+      </div>
+    </div>
+  </div>
+
+
+</div>
