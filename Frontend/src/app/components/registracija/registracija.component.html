@@ -1,0 +1,44 @@
+<h2>Dobrodošli, registrujte se</h2>
+<form>
+  <div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="ime">Ime</label>
+    <input [(ngModel)]="req.ime" [ngModelOptions]="{standalone:true}" type="text" id="ime" class="form-control" />
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="prezime">Prezime</label>
+    <input [(ngModel)]="req.prezime" [ngModelOptions]="{standalone:true}" type="text" id="prezime" class="form-control" />
+  </div>
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="email">Email</label>
+    <input [(ngModel)]="req.email" [ngModelOptions]="{standalone:true}" type="email" id="email" class="form-control" />
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="lozinka">Lozinka</label>
+    <input [(ngModel)]="req.lozinka" [ngModelOptions]="{standalone:true}" type="password" id="lozinka" class="form-control" />
+  </div>
+  </div>
+  <div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="datum-rodjenja">Datum rodjenja</label>
+    <input [(ngModel)]="req.datumRodjenja" [ngModelOptions]="{standalone:true}" type="date" id="datum-rodjenja" class="form-control" />
+  </div>
+
+  <div class="form-outline mb-4">
+    <label class="form-label" for="drzava">Država</label>
+    <input [(ngModel)]="req.drzava" [ngModelOptions]="{standalone:true}" type="text" id="drzava" class="form-control" />
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="grad">Grad</label>
+    <input [(ngModel)]="req.grad" [ngModelOptions]="{standalone:true}" type="text" id="grad" class="form-control" />
+  </div>
+
+
+  <!-- Submit button -->
+  <button (click)="registrujSe()" id="login-btn" title="Registrujte se" type="button" class="btn btn-primary btn-block mb-4">Registruj se</button>
+  </div>
+</form>
+

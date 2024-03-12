@@ -3,24 +3,21 @@ import {NavigationEnd, NavigationStart, Router, RouterEvent} from "@angular/rout
 
 @Injectable({providedIn: "root"})
 export class Navigator {
+  static trazenaKomponenta:string="";
   static trenutniIdSobe: number = -1;
   static trenutniElementi: HTMLCollectionOf<Element> | null = null;
   podaci: any;
 
   constructor(public router: Router) {
-    this.router.events.subscribe((event) => {
+    this.router.events.subscribe(async (event) => {
       if (event instanceof NavigationEnd) {
         this.handlerKartica((event as RouterEvent).url);
-      }
-      if (event instanceof NavigationStart) {
-        this.router.getCurrentNavigation()!.extras.state = this.podaci;
       }
     })
   }
 
 
   async navigiraj(url: string, params: any[] = [], extras: any = {}) {
-    Navigator.trenutniIdSobe = params[0]
     if (params[0] != -1) {
       let urlNiz: any[] = [];
       urlNiz.push(`../${url}`);
@@ -28,7 +25,6 @@ export class Navigator {
         urlNiz.push(i);
       }
       this.podaci = extras;
-
       await this.router.navigate(urlNiz, {state: extras});
     }
   }

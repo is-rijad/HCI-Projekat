@@ -266,6 +266,33 @@ namespace Backend.Migrations
                     b.ToTable("SobeKreveti");
                 });
 
+            modelBuilder.Entity("Backend.Data.Modeli.Tokeni", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsLogiran")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("KorisnickiNalogId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("Vrijeme")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tokeni");
+                });
+
             modelBuilder.Entity("Backend.Data.Modeli.ZauzetaSoba", b =>
                 {
                     b.Property<int>("Id")

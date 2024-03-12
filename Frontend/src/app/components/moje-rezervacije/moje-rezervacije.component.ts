@@ -71,7 +71,7 @@ export class MojeRezervacijeComponent implements OnInit{
     }
   }
   private getBuduceRezervacije() {
-    this.getBuduceRezervacijeZaGostaEndpoint.Akcija({gostId:9}).subscribe({
+    this.getBuduceRezervacijeZaGostaEndpoint.Akcija().subscribe({
       next: res => {
         this.buduceRezervacije = res.rezervacije
       },
@@ -79,7 +79,7 @@ export class MojeRezervacijeComponent implements OnInit{
     })
   }
   private getPrethodneRezervacije() {
-    this.getPrethodneRezervacijeZaGostaEndpoint.Akcija({gostId:9}).subscribe({
+    this.getPrethodneRezervacijeZaGostaEndpoint.Akcija().subscribe({
       next: res => {
         this.prosleRezervacije = res.rezervacije
       },

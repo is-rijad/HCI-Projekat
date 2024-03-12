@@ -1,6 +1,7 @@
 ﻿using System.Collections.Immutable;
 using Backend.Data;
 using Backend.Data.Modeli;
+using Backend.Filteri;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

@@ -9,6 +9,7 @@ import {Navigator} from "../../navigator";
 import {Slike} from "../../slike";
 import {AranzmanModel} from "../../models/aranzmanModel";
 import {GetAllAranzmaneEndpoint} from "../../endpoints/aranzmani-endpoint/get-all-aranzmane/get-all-aranzmane-endpoint";
+import {AuthServis} from "../../auth-servis";
 
 @Component({
   selector: 'app-pretraga',
@@ -61,8 +62,9 @@ export class PretragaComponent implements OnInit {
 
   constructor(private pretragaEndpoint: PretragaEndpoint,
               private navigator: Navigator,
-              private getAllAranzmaneEndpoint: GetAllAranzmaneEndpoint) {
-    this.podaci = (this.navigator.router.getCurrentNavigation()?.extras.state) as PretragaEndpointReq
+              private getAllAranzmaneEndpoint: GetAllAranzmaneEndpoint,
+              private authServis:AuthServis) {
+    this.podaci = (this.navigator.podaci) as PretragaEndpointReq
     if (this.podaci == undefined || Object.keys(this.podaci).length == 0) {
       this.podaci = {
         aranzmanId: 0,
@@ -126,7 +128,10 @@ export class PretragaComponent implements OnInit {
   async otvoriDetalje(id: number) {
     Navigator.trenutniIdSobe = id;
     this.podaci.filterPoCijeni = Number((document.getElementById("filter-po-cijeni") as HTMLSelectElement).value);
-    await this.navigator.navigiraj('pregled', [id], this.podaci)
+    if(!this.authServis.isMenadzer())
+      await this.navigator.navigiraj('pregled', [id], this.podaci)
+    else
+      await this.navigator.navigiraj('modifikacija', [id])
   }
 
   ocistiFiltere() {

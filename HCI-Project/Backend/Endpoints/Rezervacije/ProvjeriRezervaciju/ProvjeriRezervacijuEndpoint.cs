@@ -1,5 +1,6 @@
 ﻿using Backend.Data;
 using Backend.Data.Modeli;
+using Backend.Filteri;
 using Backend.Servisi;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,6 @@ namespace Backend.Endpoints.Rezervacije.NapraviRezervaciju
             _dbContext = context;
             _provjeriRezervaciju = provjeriRezervaciju;
         }
-
         [HttpPost]
         public override async Task<BaseResponse> Akcija(NapraviRezervacijuEndpointReq req)
         {

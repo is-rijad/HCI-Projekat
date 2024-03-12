@@ -20,6 +20,7 @@ import {
   GetAllKreveteZaSobuEndpoint
 } from "../../endpoints/kreveti-endpoint/get-all-krevete-za-sobu/get-all-krevete-za-sobu-endpoint";
 import {Modal} from "../../modal";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-modifikacija-detalja',
@@ -42,6 +43,7 @@ import {Modal} from "../../modal";
   ]
 })
 export class ModifikacijaDetaljaComponent implements OnInit {
+  id:any;
   soba: SobaModel = {
     aranzmani: [],
     cijene: [],
@@ -76,14 +78,18 @@ export class ModifikacijaDetaljaComponent implements OnInit {
               private getAllCijeneZaSobuEndpoint: GetAllCijeneZaSobuEndpoint,
               protected navigator: Navigator,
               protected handlerSlika: HandlerSlika,
-              protected modal: Modal) {
+              protected modal: Modal,
+              private activatedRoute:ActivatedRoute) {
+    this.activatedRoute.params.subscribe(value => {
+      this.id = value['id']
+    })
 
   }
 
   ngOnInit(): void {
     this.soba.brojSlika = Slike.nizSlika.length;
 
-    if (Navigator.trenutniIdSobe != 0) {
+    if (this.id != 0) {
       this.otvoriDetaljeEndpoint.Akcija().subscribe({
         next: res => {
           this.soba = res.soba;

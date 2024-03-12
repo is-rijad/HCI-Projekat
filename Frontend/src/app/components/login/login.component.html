@@ -1,0 +1,23 @@
+<h2>Dobrodošli nazad, ulogujte se</h2>
+<form>
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="email">Email</label>
+    <input [ngModelOptions]="{standalone: true}" [(ngModel)]="email" type="email" id="email" class="form-control" />
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="lozinka">Lozinka</label>
+    <input [ngModelOptions]="{standalone: true}" [(ngModel)]="lozinka" type="password" id="lozinka" class="form-control" />
+  </div>
+
+
+  <!-- Submit button -->
+  <button (click)="ulogujSe()" id="login-btn" title="Ulogujte se" type="button" class="btn btn-primary btn-block mb-4">Uloguj se</button>
+
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p>Nemate račun? <a class="link" (click)="navigator.navigiraj('registracija')" >Registrujte se</a></p>
+  </div>
+</form>

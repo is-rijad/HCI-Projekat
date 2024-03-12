@@ -1,5 +1,6 @@
 ﻿using Backend.Data;
 using Backend.Endpoints.Rezervacije.GetBuduceRezervacijeZaGosta;
+using Backend.Filteri;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,8 @@ namespace Backend.Endpoints.Rezervacije.OtkaziRezervaciju {
         {
             _dbContext = context;
         }
+        [AuthFilter]
+
         [HttpDelete]
         public override async Task<OtkaziRezervacijuRes> Akcija([FromBody]OtkaziRezervacijuReq req)
         {

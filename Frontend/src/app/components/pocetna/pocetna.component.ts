@@ -9,7 +9,7 @@ import {Navigator} from "../../navigator";
   styleUrl: './pocetna.component.css'
 })
 export class PocetnaComponent implements OnInit{
-  constructor(private navigator:Navigator) {
+  constructor(protected navigator:Navigator) {
   }
   async ngOnInit(): Promise<void> {
     await this.navigator.navigiraj('pocetna');

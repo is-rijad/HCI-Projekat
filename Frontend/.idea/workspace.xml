@@ -5,10 +5,75 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="852d609e-a4a5-4fbe-83b1-e7f4046b6b91" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/auth-guard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/auth-servis.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/login/login.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/login/login.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/registracija/registracija.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/registracija/registracija.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/registracija/registracija.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/endpoints/korisnici-endpoint/login-endpoint/login-endpoint.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/endpoints/korisnici-endpoint/login-endpoint/login-res.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/endpoints/korisnici-endpoint/logout-endpoint/logout-endpoint.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/endpoints/korisnici-endpoint/logout-endpoint/logout-res.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/endpoints/korisnici-endpoint/registracija-endpoint/registracija-endpoint-req.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/endpoints/korisnici-endpoint/registracija-endpoint/registracija-endpoint.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/menadzer-guard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/models/korisnicki-nalog.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/models/token.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/validator.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/moje-rezervacije/moje-rezervacije.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/moje-rezervacije/moje-rezervacije.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/pocetna/pocetna.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pocetna/pocetna.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/pocetna/pocetna.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pocetna/pocetna.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/pocetna/pocetna.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pocetna/pocetna.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/pregled-detalja/pregled-detalja.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pregled-detalja/pregled-detalja.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/pretraga/pretraga.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pretraga/pretraga.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/pretraga/pretraga.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/pretraga/pretraga.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/aranzmani-endpoint/get-aranzmane-za-sobu/get-all-aranzmane-za-sobu-endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/aranzmani-endpoint/get-aranzmane-za-sobu/get-all-aranzmane-za-sobu-endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/aranzmani-endpoint/get-cijene-za-sobu/get-all-cijene-za-sobu-endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/aranzmani-endpoint/get-cijene-za-sobu/get-all-cijene-za-sobu-endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/kreveti-endpoint/get-all-krevete-za-sobu/get-all-krevete-za-sobu-endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/kreveti-endpoint/get-all-krevete-za-sobu/get-all-krevete-za-sobu-endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/login-endpoint/login-endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/login/login.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/login-endpoint/login-req.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/korisnici-endpoint/login-endpoint/login-req.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/modifikacija-detalja-endpoint/modifikacija-endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/modifikacija-detalja-endpoint/modifikacija-endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/otvori-detalje-endpoint/otvori-detalje-endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/otvori-detalje-endpoint/otvori-detalje-endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/pretraga-endpoint/pretraga-endpoint-req.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/pretraga-endpoint/pretraga-endpoint-req.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/rezervacije-endpoint/get-buduce-rezervacije-za-gosta/get-buduce-rezervacije-za-gosta-endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/rezervacije-endpoint/get-buduce-rezervacije-za-gosta/get-buduce-rezervacije-za-gosta-endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/rezervacije-endpoint/get-buduce-rezervacije-za-gosta/get-buduce-rezervacije-za-gosta-req.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/rezervacije-endpoint/get-prethodne-rezervacije-za-gosta/get-prethodne-rezervacije-za-gosta-endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/rezervacije-endpoint/get-prethodne-rezervacije-za-gosta/get-prethodne-rezervacije-za-gosta-endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/rezervacije-endpoint/get-prethodne-rezervacije-za-gosta/get-prethodne-rezervacije-za-gosta-req.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/rezervacije-endpoint/napravi-rezervaciju/napravi-rezervaciju-endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/rezervacije-endpoint/napravi-rezervaciju/napravi-rezervaciju-endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/rezervacije-endpoint/otkazi-rezervaciju/otkazi-rezervaciju-enpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/rezervacije-endpoint/otkazi-rezervaciju/otkazi-rezervaciju-enpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/endpoints/rezervacije-endpoint/provjeri-rezervaciju/provjeri-rezervaciju-endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/endpoints/rezervacije-endpoint/provjeri-rezervaciju/provjeri-rezervaciju-endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/navigator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/navigator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Backend.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Data/HCIDBContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Data/HCIDBContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Aranzmani/GetAll/GetAllAranzmane.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Aranzmani/GetAll/GetAllAranzmane.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Aranzmani/GetAllZaSobu/GetAllAranzmaneZaSobu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Aranzmani/GetAllZaSobu/GetAllAranzmaneZaSobu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Cijene/GetCijenuZaId/GetCijenuIdEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Cijene/GetCijenuZaId/GetCijenuIdEndpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Kreveti/GetAll/GetAllKrevete.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Kreveti/GetAll/GetAllKrevete.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Kreveti/GetAllZaSobu/GetAllKreveteZaSobu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Kreveti/GetAllZaSobu/GetAllKreveteZaSobu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/GetBuduceRezervacijeZaGosta/GetBuduceRezervacijeZaGostaEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/GetBuduceRezervacijeZaGosta/GetBuduceRezervacijeZaGostaEndpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/GetBuduceRezervacijeZaGosta/GetBuduceRezervacijeZaGostaEndpointReq.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/GetPrethodneRezervacijeZaGosta/GetPrethodneRezervacijeZaGosta.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/GetPrethodneRezervacijeZaGosta/GetPrethodneRezervacijeZaGosta.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/GetPrethodneRezervacijeZaGosta/GetPrethodneRezervacijeZaGostaReq.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/NapraviRezervaciju/NapraviRezervacijuEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/NapraviRezervaciju/NapraviRezervacijuEndpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/OtkaziRezervaciju/OtkaziRezervacijuEnpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/OtkaziRezervaciju/OtkaziRezervacijuEnpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/ProvjeriRezervaciju/ProvjeriRezervacijuEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/ProvjeriRezervaciju/ProvjeriRezervacijuEndpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSobe/GetSobeEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSobe/GetSobeEndpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSobuId/GetSobuIdEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/GetSobuId/GetSobuIdEndpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/ModifikujSobu/ModifikujSobuEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Sobe/ModifikujSobu/ModifikujSobuEndpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Migrations/HCIDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Migrations/HCIDBContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Servisi/ProvjeriRezervaciju.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Servisi/ProvjeriRezervaciju.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +122,7 @@
     &quot;git-widget-placeholder&quot;: &quot;development&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;jsx.switch.disabled&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/isrij/source/repos/HCI-Projekat/Frontend/src/app/endpoints/rezervacije-endpoint/otkazi-rezervaciju&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/isrij/source/repos/HCI-Projekat/Frontend/src/app/endpoints/korisnici-endpoint/registracija-endpoint&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -73,18 +138,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\rezervacije-endpoint\otkazi-rezervaciju" />
-      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\rezervacije-endpoint" />
-      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\rezervacije-endpoint\provjeri-rezervaciju" />
+      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\korisnici-endpoint\registracija-endpoint" />
       <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app" />
-      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\assets\HotelSlike" />
+      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\korisnici-endpoint" />
+      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\korisnici-endpoint\login-endpoint" />
+      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\rezervacije-endpoint\otkazi-rezervaciju" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app" />
+      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\korisnici-endpoint" />
       <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\kreveti-endpoint\get-all-krevete-za-sobu" />
       <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\aranzmani-endpoint\get-all-aranzmane" />
       <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\components" />
-      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend" />
-      <recent name="C:\Users\isrij\source\repos\HCI-Projekat\Frontend\src\app\endpoints\login-endpoint" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
@@ -138,7 +203,9 @@
       <workItem from="1709669373501" duration="5672000" />
       <workItem from="1709740607647" duration="6876000" />
       <workItem from="1709754048318" duration="5244000" />
-      <workItem from="1710011438834" duration="3411000" />
+      <workItem from="1710011438834" duration="7865000" />
+      <workItem from="1710249377423" duration="6797000" />
+      <workItem from="1710267085737" duration="8597000" />
     </task>
     <servers />
   </component>

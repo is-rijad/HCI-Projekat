@@ -1,5 +1,6 @@
 ﻿using Backend.Data;
 using Backend.Data.Modeli;
+using Backend.Filteri;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,8 @@ namespace Backend.Endpoints.Sobe.ModifikujSobu {
         {
             _dbContext = context;
         }
+        [AuthFilter]
+        [MenadzerFilter]
         [HttpPost]
         public override async Task<ModifikujSobuEndpointRes> Akcija([FromBody] ModifikujSobuEndpointReq req)
         {

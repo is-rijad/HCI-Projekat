@@ -1,5 +1,6 @@
 ﻿using Backend.Data;
 using Backend.Data.Modeli;
+using Backend.Filteri;
 using Backend.Migrations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ namespace Backend.Endpoints.Sobe.GetSobuId {
         {
             _dbContext = context;
         }
+
         [HttpGet]
         public override async Task<GetSobuIdEndpointRes> Akcija([FromQuery] GetSobuIdEndpointReq req)
         {

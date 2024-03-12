@@ -1,6 +1,7 @@
 ﻿using Backend.Data;
 using Backend.Data.Modeli;
 using Backend.Endpoints.Aranzmani.GetAllZaSobu;
+using Backend.Filteri;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

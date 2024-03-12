@@ -15,6 +15,7 @@ namespace Backend.Data {
         public DbSet<Aranzman> Aranzmani { get; set; }
         public DbSet<SobaAranzman> SobeAranzmani { get; set; }
         public DbSet<Cijena> Cijene { get; set; }
+        public DbSet<Tokeni> Tokeni { get; set; }
         
 
 

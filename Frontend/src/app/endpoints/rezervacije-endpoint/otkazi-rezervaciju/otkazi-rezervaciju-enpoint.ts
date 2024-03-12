@@ -13,7 +13,7 @@ export class OtkaziRezervacijuEnpoint implements BaseEndpoint<OtkaziRezervacijuR
 
   Akcija(req: OtkaziRezervacijuReq): Observable<OtkaziRezervacijuRes> {
     let url = Config.adresaServera + `OtkaziRezervaciju`;
-    return this.httpClient.delete<OtkaziRezervacijuRes>(url, {body: req});
+    return this.httpClient.delete<OtkaziRezervacijuRes>(url, {body: req, withCredentials:true});
   }
 
 }

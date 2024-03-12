@@ -71,7 +71,7 @@ export class PregledDetaljaComponent implements OnInit {
               private navigator: Navigator) {
     let podaci = this.navigator.router.getCurrentNavigation()?.extras.state;
     if (podaci == undefined) {
-      history.back();
+      history.back()
     } else {
       this.datumPrijave = podaci['datumPrijave']
       this.datumOdjave = podaci['datumOdjave']

@@ -4,15 +4,20 @@ import {BaseEndpoint} from "../base-endpoint";
 import {OtvoriDetaljeEndpointRes} from "./otvori-detalje-endpoint-res";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
-import {Navigator} from "../../navigator";
+import {ActivatedRoute} from "@angular/router";
 
 @Injectable()
 export class OtvoriDetaljeEndpoint implements BaseEndpoint<void, OtvoriDetaljeEndpointRes> {
-  constructor(private httpClient: HttpClient) {
+  id:any;
+  constructor(private httpClient: HttpClient,
+              private activatedRoute:ActivatedRoute) {
+    this.activatedRoute.params.subscribe(value => {
+      this.id = value['id']
+    })
   }
 
   Akcija(): Observable<OtvoriDetaljeEndpointRes> {
-    let url = Config.adresaServera + "Sobe/GetSobuId/?Id=" + Navigator.trenutniIdSobe;
+    let url = Config.adresaServera + "Sobe/GetSobuId/?Id=" + this.id;
     return this.httpClient.get<OtvoriDetaljeEndpointRes>(url);
   }
 }

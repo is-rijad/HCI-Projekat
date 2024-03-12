@@ -13,6 +13,6 @@ export class NapraviRezervacijuEndpoint implements BaseEndpoint<NapraviRezervaci
 
   Akcija(req: NapraviRezervacijuEndpointReq): Observable<BaseResponse> {
     let url = Config.adresaServera + "Rezervacije/NapraviRezervaciju"
-    return this.httpClient.post<BaseResponse>(url, req);
+    return this.httpClient.post<BaseResponse>(url, req, {withCredentials:true});
   }
 }

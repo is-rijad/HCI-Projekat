@@ -1,4 +1,5 @@
 ﻿using System.Reflection.Metadata.Ecma335;
+using System.Text.Json;
 using Backend.Data;
 using Backend.Data.Modeli;
 using Backend.Endpoints;
@@ -10,10 +11,12 @@ namespace Backend.Servisi
 {
     public class ProvjeriRezervaciju {
         private readonly HCIDBContext _dbContext;
+        private readonly IHttpContextAccessor _accesor;
 
-        public ProvjeriRezervaciju(HCIDBContext context)
+        public ProvjeriRezervaciju(HCIDBContext context, IHttpContextAccessor accessor)
         {
             _dbContext = context;
+            _accesor = accessor;
         }
         public async Task<BaseResponse> Provjeri(NapraviRezervacijuEndpointReq req) {
             var soba = await _dbContext.Sobe.FirstOrDefaultAsync(s => s.Id == req.SobaId);
@@ -66,7 +69,7 @@ namespace Backend.Servisi
                 DetaljiRezervacije = (new ZauzetaSoba()
                 {
                     SobaId = req.SobaId,
-                    GostId = 9, //IZMJENA
+                    GostId = 0,
                     SobaAranzmanId = (req.SobaAranzmanId is not null) ? req.SobaAranzmanId!.Value : -1,
                     BrojOsoba = req.BrojOsoba,
                     BrojDjece = req.BrojDjece,

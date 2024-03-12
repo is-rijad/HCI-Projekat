@@ -1,6 +1,7 @@
 ﻿using Backend.Data;
 using Backend.Data.Modeli;
 using Backend.Endpoints.Rezervacije.NapraviRezervaciju;
+using Backend.Filteri;
 using Backend.Servisi;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

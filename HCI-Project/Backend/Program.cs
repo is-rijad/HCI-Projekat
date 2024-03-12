@@ -11,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<HCIDBContext>(options =>
     options.UseSqlServer(config.GetConnectionString("HCI_Database")));
 builder.Services.AddTransient<ProvjeriRezervaciju>();
+builder.Services.AddTransient<AuthServis>();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
