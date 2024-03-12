@@ -21,6 +21,7 @@ import {
 } from "../../endpoints/kreveti-endpoint/get-all-krevete-za-sobu/get-all-krevete-za-sobu-endpoint";
 import {Modal} from "../../modal";
 import {ActivatedRoute} from "@angular/router";
+import {addWarning} from "@angular-devkit/build-angular/src/utils/webpack-diagnostics";
 
 @Component({
   selector: 'app-modifikacija-detalja',
@@ -86,7 +87,7 @@ export class ModifikacijaDetaljaComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.soba.brojSlika = Slike.nizSlika.length;
 
     if (this.id != 0) {
@@ -109,7 +110,7 @@ export class ModifikacijaDetaljaComponent implements OnInit {
       },
       complete: () => this.sviKrevetiUcitani = true
     })
-    this.dohvatiCijene();
+    await this.dohvatiCijene();
   }
 
   async spremiPromjene() {
@@ -150,7 +151,10 @@ export class ModifikacijaDetaljaComponent implements OnInit {
     }
   }
 
-  dohvatiCijene() {
+  async dohvatiCijene() {
+    while (this.soba.brojGostiju == 0 && this.id != 0) {
+      await new Promise(e => setTimeout(e, 200));
+    }
     this.getAllCijeneZaSobuEndpoint.Akcija(this.soba.brojGostiju).subscribe({
       next: res => {
         this.soba.cijene = res.cijene
