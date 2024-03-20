@@ -23,14 +23,12 @@ public class GetCijenuIdEndpoint : BaseEndpoint<GetCijenuZaIdEndpointReq, GetCij
         if (req.Id == 0)
         {
             for (var i = req.BrojOsoba; i >= 1; i--)
-            {
                 responseCijene.Add(new Cijena
                 {
                     BrojOsoba = i,
                     CijenaSobe = 0,
                     SobaId = req.Id
                 });
-            }
         }
         else
         {
@@ -39,22 +37,17 @@ public class GetCijenuIdEndpoint : BaseEndpoint<GetCijenuZaIdEndpointReq, GetCij
             if (cijene.Count > req.BrojOsoba)
             {
                 var posljednjiIndex = cijene.Count - req.BrojOsoba;
-                for (int i = 0, j = 0; i < posljednjiIndex; i++)
-                {
-                    cijene.RemoveAt(j);
-                }
+                for (int i = 0, j = 0; i < posljednjiIndex; i++) cijene.RemoveAt(j);
             }
             else
             {
                 for (var i = cijene.Count; i < req.BrojOsoba; i++)
-                {
                     cijene.Add(new Cijena
                     {
                         BrojOsoba = i + 1,
                         CijenaSobe = 0,
                         SobaId = req.Id
                     });
-                }
             }
 
 

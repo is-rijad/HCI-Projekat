@@ -10,11 +10,14 @@ public class AuthServis
 {
     private readonly HCIDBContext _dbContext;
     private readonly IHttpContextAccessor _httpContextAccesor;
+    private readonly Validator _validator;
 
-    public AuthServis(HCIDBContext context, IHttpContextAccessor accessor)
+    public AuthServis(HCIDBContext context, IHttpContextAccessor accessor,
+        Validator validator)
     {
         _dbContext = context;
         _httpContextAccesor = accessor;
+        _validator = validator;
     }
 
     public Tokeni? GetCookie()
@@ -42,6 +45,9 @@ public class AuthServis
 
     public async Task<Tokeni> UlogujKorisnika(UlogujKorisnikaEndpointReq req)
     {
+        if (!_validator.ValidirajEmail(req.Email)
+            || _validator.ValidirajLozinku(req.Lozinka))
+            throw new Exception("Unos nije validan!");
         var korisnik = await _dbContext.KorisnickiNalozi.FirstOrDefaultAsync(k => k.Email == req.Email);
         var token = string.Empty;
         if (korisnik == null) throw new Exception("Korisnicki podaci nisu ispravni!");

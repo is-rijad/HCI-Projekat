@@ -23,6 +23,8 @@ public class ProvjeriRezervaciju
         var soba = await _dbContext.Sobe.FirstOrDefaultAsync(s => s.Id == req.SobaId);
         if (soba == null)
             return new BaseResponse { Message = "Soba nije pronađena!", Status = 404 };
+        if (req.BrojDjece < 0 || req.BrojOsoba < 0 || req.BrojOsoba > soba.BrojGostiju)
+            return new BaseResponse { Message = "Broj osoba nije validan!", Status = 400 };
 
         var rezervacije = await _dbContext.ZauzeteSobe
             .Where(s => s.SobaId == req.SobaId && s.DatumOdlaska.Date >= DateTime.Today).OrderBy(s => s.DatumDolaska)
