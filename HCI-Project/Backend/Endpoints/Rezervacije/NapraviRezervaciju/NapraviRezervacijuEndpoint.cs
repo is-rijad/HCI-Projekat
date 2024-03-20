@@ -30,10 +30,7 @@ public class NapraviRezervacijuEndpoint : BaseEndpoint<NapraviRezervacijuEndpoin
         var gostId = token!.KorisnickiNalogId;
         var sobaDostupna = await _provjeriRezervaciju.Provjeri(req);
         var response = sobaDostupna as ProvjeriRezervacijuEndpointRes;
-        if (response == null)
-        {
-            return sobaDostupna;
-        }
+        if (response == null) return sobaDostupna;
 
         response.DetaljiRezervacije.GostId = gostId;
         await _dbContext.ZauzeteSobe.AddAsync(response.DetaljiRezervacije!);

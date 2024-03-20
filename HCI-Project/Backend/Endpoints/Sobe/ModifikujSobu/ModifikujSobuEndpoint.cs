@@ -1,5 +1,6 @@
 ﻿using Backend.Data;
 using Backend.Filteri;
+using Backend.Servisi;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,10 +10,12 @@ namespace Backend.Endpoints.Sobe.ModifikujSobu;
 public class ModifikujSobuEndpoint : BaseEndpoint<ModifikujSobuEndpointReq, ModifikujSobuEndpointRes>
 {
     private readonly HCIDBContext _dbContext;
+    private readonly Validator _validator;
 
-    public ModifikujSobuEndpoint(HCIDBContext context)
+    public ModifikujSobuEndpoint(HCIDBContext context, Validator validator)
     {
         _dbContext = context;
+        _validator = validator;
     }
 
     [AuthFilter]
@@ -21,6 +24,13 @@ public class ModifikujSobuEndpoint : BaseEndpoint<ModifikujSobuEndpointReq, Modi
     public override async Task<ModifikujSobuEndpointRes> Akcija([FromBody] ModifikujSobuEndpointReq req)
     {
         var response = new ModifikujSobuEndpointRes();
+        if (!ValidirajUnos(req))
+        {
+            response.Status = 400;
+            response.Message = "Unos nije validan!";
+            return response;
+        }
+
         var soba = await _dbContext.Sobe.Where(s => s.Id == req.Soba.Id).FirstOrDefaultAsync();
         if (soba == null)
         {
@@ -49,5 +59,17 @@ public class ModifikujSobuEndpoint : BaseEndpoint<ModifikujSobuEndpointReq, Modi
         await _dbContext.SobeKreveti.Where(sk => sk.SobaId == req.Soba.Id).ExecuteDeleteAsync();
         await _dbContext.SobeAranzmani.Where(sk => sk.SobaId == req.Soba.Id).ExecuteDeleteAsync();
         await _dbContext.Cijene.Where(sk => sk.SobaId == req.Soba.Id).ExecuteDeleteAsync();
+    }
+
+    private bool ValidirajUnos(ModifikujSobuEndpointReq req)
+    {
+        if (req.Soba.BrojGostiju < 1)
+            return false;
+        if (!_validator.ValidirajText(req.Soba.NazivSobe)
+            || !_validator.ValidirajText(req.Soba.Opis))
+            return false;
+        if (req.Cijene.Count < req.Soba.BrojGostiju)
+            return false;
+        return true;
     }
 }

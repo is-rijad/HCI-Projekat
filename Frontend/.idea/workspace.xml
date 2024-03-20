@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="852d609e-a4a5-4fbe-83b1-e7f4046b6b91" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/modifikacija-detalja/modifikacija-detalja.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/NapraviRezervaciju/NapraviRezervacijuEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/NapraviRezervaciju/NapraviRezervacijuEndpoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/ProvjeriRezervaciju/ProvjeriRezervacijuEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Endpoints/Rezervacije/ProvjeriRezervaciju/ProvjeriRezervacijuEndpoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HCI-Project/Backend/Servisi/ProvjeriRezervaciju.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HCI-Project/Backend/Servisi/ProvjeriRezervaciju.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +74,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "development",
     "ignore.virus.scanning.warn.message": "true",
     "jsx.switch.disabled": "true",
     "last_opened_file_path": "C:/Users/isrij/source/repos/HCI-Projekat/Frontend/src/app/endpoints/korisnici-endpoint/registracija-endpoint",
@@ -165,6 +161,8 @@
       <workItem from="1710011438834" duration="7865000" />
       <workItem from="1710249377423" duration="6797000" />
       <workItem from="1710267085737" duration="10131000" />
+      <workItem from="1710770957035" duration="73000" />
+      <workItem from="1710953222573" duration="819000" />
     </task>
     <servers />
   </component>
