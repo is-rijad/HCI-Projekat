@@ -12,7 +12,7 @@ public class Tokeni
 
     [ForeignKey(nameof(KorisnickiNalog))] public int KorisnickiNalogId { get; set; }
 
-    [NotMapped] public KorisnickiNalog? KorisnickiNalog { get; set; }
+    public KorisnickiNalog? KorisnickiNalog { get; set; }
 
     public DateTime Vrijeme { get; set; }
     public bool IsLogiran { get; set; }

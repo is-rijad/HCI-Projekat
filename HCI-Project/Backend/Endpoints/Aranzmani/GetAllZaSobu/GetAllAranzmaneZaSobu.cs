@@ -56,7 +56,7 @@ public class GetAllAranzmaneZaSobu : BaseEndpoint<int, GetAllAranzmaneZaSobuRes>
                     AranzmanId = aranzman.Id,
                     Doplata = doplata,
                     Soba = soba,
-                    SobaId = soba.Id
+                    SobaId = soba.Id.Value
                 });
             }
 

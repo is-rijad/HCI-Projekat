@@ -27,7 +27,7 @@ public class GetSobeEndpoint : BaseEndpoint<GetSobeReq, GetSobeRes>
         var sveSobe = new List<int>();
         foreach (var soba in listaSoba)
             if (FiltrirajSobe(soba, req))
-                sveSobe.Add(soba.Id);
+                sveSobe.Add(soba.Id.Value);
 
         var sobe = new GetSobeRes();
         foreach (var soba in sveSobe)
@@ -46,7 +46,7 @@ public class GetSobeEndpoint : BaseEndpoint<GetSobeReq, GetSobeRes>
                 var rezultatRes = rezultat as ProvjeriRezervacijuEndpointRes;
                 sobe.Sobe.Add(new PregledSobeRes
                 {
-                    Id = rezultatRes!.Soba!.Id,
+                    Id = rezultatRes!.Soba!.Id.Value,
                     BrojGostiju = req.BrojOdraslih,
                     Cijena = rezultatRes.DetaljiRezervacije!.Cijena,
                     NazivSobe = rezultatRes.Soba.NazivSobe,

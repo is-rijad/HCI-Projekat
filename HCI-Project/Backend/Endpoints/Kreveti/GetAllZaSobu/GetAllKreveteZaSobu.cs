@@ -48,7 +48,7 @@ public class GetAllKreveteZaSobu : BaseEndpoint<int, GetAllKreveteZaSobuRes>
                     Krevet = krevet,
                     KrevetId = krevet.Id,
                     BrojKreveta = kreveti,
-                    SobaId = soba.Id
+                    SobaId = soba.Id.Value
                 });
             }
         }

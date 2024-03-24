@@ -23,11 +23,11 @@ public class RegistrujKorisnikaEndpoint : BaseEndpoint<RegistrujKorisnikaEndpoin
     {
         var response = new RegistrujKorisnikaEndpointRes();
         if (!_validator.ValidirajEmail(req.Email)
-            || _validator.ValidirajLozinku(req.Lozinka)
-            || _validator.ValidirajText(req.Ime)
-            || _validator.ValidirajText(req.Prezime)
-            || _validator.ValidirajText(req.Grad)
-            || _validator.ValidirajText(req.Drzava))
+            || !_validator.ValidirajLozinku(req.Lozinka)
+            || !_validator.ValidirajText(req.Ime)
+            || !_validator.ValidirajText(req.Prezime)
+            || !_validator.ValidirajText(req.Grad)
+            || !_validator.ValidirajText(req.Drzava))
         {
             response.Status = 400;
             response.Message = "Uneseni podaci nisu validni!";

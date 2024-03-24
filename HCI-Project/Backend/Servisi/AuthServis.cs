@@ -46,7 +46,7 @@ public class AuthServis
     public async Task<Tokeni> UlogujKorisnika(UlogujKorisnikaEndpointReq req)
     {
         if (!_validator.ValidirajEmail(req.Email)
-            || _validator.ValidirajLozinku(req.Lozinka))
+            || !_validator.ValidirajLozinku(req.Lozinka))
             throw new Exception("Unos nije validan!");
         var korisnik = await _dbContext.KorisnickiNalozi.FirstOrDefaultAsync(k => k.Email == req.Email);
         var token = string.Empty;

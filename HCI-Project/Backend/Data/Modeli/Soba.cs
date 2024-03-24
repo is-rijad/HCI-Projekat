@@ -6,7 +6,7 @@ namespace Backend.Data.Modeli;
 [Table("Sobe")]
 public class Soba
 {
-    [Key] public int Id { get; set; }
+    [Key] public int? Id { get; set; }
 
     [Required] public int BrojGostiju { get; set; }
 
@@ -27,8 +27,8 @@ public class Soba
     public bool Minibar { get; set; }
     public bool Balkon { get; set; }
 
-    public List<SobaKrevet> Kreveti { get; set; }
-    public List<SobaAranzman> Aranzmani { get; set; }
-    public List<ZauzetaSoba> ZauzetaSoba { get; set; }
-    public List<Cijena> Cijene { get; set; }
+    public List<SobaKrevet>? Kreveti { get; set; }
+    public List<SobaAranzman>? Aranzmani { get; set; }
+    public List<ZauzetaSoba>? ZauzetaSoba { get; set; }
+    public List<Cijena>? Cijene { get; set; }
 }

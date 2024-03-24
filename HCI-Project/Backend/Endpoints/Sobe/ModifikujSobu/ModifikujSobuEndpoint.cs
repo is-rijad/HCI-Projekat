@@ -1,4 +1,5 @@
 ﻿using Backend.Data;
+using Backend.Data.Modeli;
 using Backend.Filteri;
 using Backend.Servisi;
 using Microsoft.AspNetCore.Mvc;
@@ -31,20 +32,48 @@ public class ModifikujSobuEndpoint : BaseEndpoint<ModifikujSobuEndpointReq, Modi
             return response;
         }
 
-        var soba = await _dbContext.Sobe.Where(s => s.Id == req.Soba.Id).FirstOrDefaultAsync();
-        if (soba == null)
+        Soba? soba = null;
+        if (req.Soba.Id != 0)
         {
-            response.Status = 404;
-            response.Message = "Soba nije pronađena!";
-            return response;
+            soba = await _dbContext.Sobe.Where(s => s.Id == req.Soba.Id).FirstOrDefaultAsync();
+            if (soba == null)
+            {
+                response.Status = 404;
+                response.Message = "Soba nije pronađena!";
+                return response;
+            }
         }
-
-        soba = req.Soba;
+        else
+        {
+             req.Soba.Id = null;
+             req.Soba.Aranzmani = null;
+             req.Soba.Cijene = null;
+             req.Soba.ZauzetaSoba = null;
+             req.Soba.Kreveti = null;
+             soba = (await _dbContext.Sobe.AddAsync(req.Soba)).Entity;
+             await _dbContext.SaveChangesAsync();
+        }
 
         await Task.Run(() => ObrisiStarePodatke(req));
 
-        req.Aranzmani.ForEach(a => a.Aranzman = null);
-        req.Kreveti.ForEach(k => k.Krevet = null);
+        req.Aranzmani.ForEach(a =>
+        {
+            a.Id = null;
+            a.SobaId = soba.Id.Value;
+            a.Aranzman = null;
+        });
+
+        req.Kreveti.ForEach(a =>
+        {
+            a.Id = null;
+            a.SobaId = soba.Id.Value;
+            a.Krevet = null;
+        });
+        req.Cijene.ForEach(a =>
+        {
+            a.Id = null;
+            a.SobaId = soba.Id.Value;
+        });
         await _dbContext.SobeAranzmani.AddRangeAsync(req.Aranzmani);
         await _dbContext.SobeKreveti.AddRangeAsync(req.Kreveti);
         await _dbContext.Cijene.AddRangeAsync(req.Cijene);

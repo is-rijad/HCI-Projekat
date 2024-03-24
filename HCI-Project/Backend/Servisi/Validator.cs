@@ -18,7 +18,7 @@ public class Validator
 
     public bool ValidirajText(string text)
     {
-        var regex = new Regex("^[A-Za-z]+$");
+        var regex = new Regex("[A-Za-z]+");
         return regex.IsMatch(text);
     }
 }
