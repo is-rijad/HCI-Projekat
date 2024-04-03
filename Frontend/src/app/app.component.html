@@ -6,7 +6,7 @@
   <nav class="nav nav-pills nav-fill">
     <a (click)="navigator.navigiraj('pocetna')" class="btn nav-link pocetna" title="Idi na početnu stranicu">Početna</a>
     <a (click)="navigator.navigiraj('pretraga')" class=" btn nav-link pretraga" title="Idi na pretragu">Pretraga</a>
-    <a (click)="navigator.navigiraj('moje-rezervacije')" *ngIf="authServis.isLogiran()"
+    <a (click)="navigator.navigiraj('moje-rezervacije')" *ngIf="authServis.isLogiran() && !authServis.isMenadzer()"
        class="btn nav-link moje-rezervacije" title="Idi na moje rezervacije">Moje rezervacije</a>
     <a (click)="odjaviSe()" *ngIf="authServis.isLogiran()" class="btn nav-link" title="Odjavi se">Odjava</a>
   </nav>
